@@ -16,7 +16,7 @@
         @if(bookings.isEmpty())
             <div class="card">
                 <div class="card-body">
-                    <p class="text-center">Du hast noch keine Reservierungen.</p>
+                    <p class="text-center">${context.localize("bookings.none")}</p>
                 </div>
             </div>
         @else
