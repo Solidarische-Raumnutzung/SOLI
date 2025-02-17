@@ -2,7 +2,7 @@ services:
   soli:
     depends_on:
       - database
-    image: ghcr.io/solidarische-raumnutzung/solidarische-raumnutzung:latest
+    image: ghcr.io/solidarische-raumnutzung/soli:latest
     restart: unless-stopped
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
