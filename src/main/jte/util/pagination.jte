@@ -11,7 +11,7 @@
            href="${baseUrl}?page=${content.getNumber() - 1}&size=${content.getSize()}">${context.localize("pagination.previous")}</a>
     @else <span class="join-item btn btn-outline btn-disabled">${context.localize("pagination.previous")}</span>
     @endif
-    <span class="join-item btn btn-outline">${context.localize("pagination.page")} ${content.getNumber() + 1} ${context.localize("pagination.of")} ${content.getTotalPages()}</span>
+    <span class="join-item btn btn-outline">${context.localize("pagination.page", content.getNumber() + 1, content.getTotalPages())}</span>
     @if(content.hasNext())
         <a class="join-item btn btn-outline"
            href="${baseUrl}?page=${content.getNumber() + 1}&size=${content.getSize()}">${context.localize("pagination.next")}</a>
