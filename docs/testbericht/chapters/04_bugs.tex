@@ -88,4 +88,14 @@ Die folgenden Abschnitte beschreiben die gefundenen Fehler und die durchgeführt
 \textbf{Fehlergrund:} Buchungen, die nicht im Client gerundet wurden, führen zu einer Fehlermeldung.
 \textbf{Behebung:} Buchungen werden zusätzlich im Server gerundet, um Fehlermeldungen zu vermeiden.
 
+\section{Korrekte darstellung der Priorität-badges}
+\textbf{Fehlersymptom:} Die Priorität-Badges werden nicht korrekt dargestellt und nicht übersetzt.
+\textbf{Fehlergrund:} Die Text-attribute der Badge wurde überschrieben.
+\textbf{Behebung:} Die Text-attribute der Badge wird nicht mehr überschrieben.
+
+\section{Pagination: "Seite X von Y" hat hover effekt}
+\textbf{Fehlersymptom:} Bei einer Gliederung einer Liste auf mehrere Seiten wird der Text "Seite X von Y" als Button dargestellt und wird somit hervorgehoben wenn die Maus sich darüber befindet.
+\textbf{Fehlergrund:} Falsche Css Klassen wurden verwendet.
+\textbf{Behebung:} Füge richtige Css Klassen hinzu.
+
 \todo{Jeden gefundenen Bug dokumentieren}
