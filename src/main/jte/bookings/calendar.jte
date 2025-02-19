@@ -68,7 +68,6 @@
 
                     badge.className += 'badge ml-2 badge-sm';
                     badge.textContent = priorityNames[arg.event.extendedProps.priority];
-                    badge.textContent = arg.event.extendedProps.priority;
                     badge.title = "${context.localize("bookings.priority.tooltip2")}";
 
                     return { domNodes: arrayOfDomNodes }
