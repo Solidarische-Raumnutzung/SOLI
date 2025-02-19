@@ -3,6 +3,7 @@
 @import edu.kit.hci.soli.dto.LayoutParams
 @import edu.kit.hci.soli.config.template.JteContext
 @import org.springframework.security.web.csrf.CsrfToken
+@import java.util.UUID
 @import static org.springframework.http.HttpMethod.*
 
 @param JteContext context
@@ -73,9 +74,13 @@
                     @endfor
                 @endif
             </ul>
-            @template.util.form(csrf = csrf, action = "/" + attemptedBooking.getRoom().getId() + "/bookings/new/conflict", method = POST, content = @`
-                <button class="btn btn-primary" type="submit" title="${context.localize("bookings.conflict.solve.tooltip")}">${context.localize("bookings.conflict.solve")}</button>
-            `)
+
+            <div class="modal-action">
+                <a class="btn" href="/">${context.localize("generic.cancel")}</a>
+                @template.util.form(csrf = csrf, action = "/" + attemptedBooking.getRoom().getId() + "/bookings/new/conflict", method = POST, content = @`
+                    <button class="btn btn-primary" type="submit" title="${context.localize("bookings.conflict.solve.tooltip")}">${context.localize("bookings.conflict.solve")}</button>
+                `)
+            </div>
         </div>
     </div>
 `)
