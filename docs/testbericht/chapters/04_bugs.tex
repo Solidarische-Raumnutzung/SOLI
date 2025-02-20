@@ -102,4 +102,9 @@ Die folgenden Abschnitte beschreiben die gefundenen Fehler und die durchgeführt
 \reason{Falsche Css Klassen wurden verwendet.}
 \solution{Füge richtige Css Klassen hinzu.}
 
+\section{Footer überdeckt Sidebar auf kleineren Bildschirmen}
+\symptom{Der Footer überdeckt die Sidebar auf kleineren Bildschirmen.}
+\reason{Der Footer wurde fix positioniert, was zur Folge hatte, dass seine Höhe nicht berücksichtigt wurde.}
+\solution{Die Sidebar wurde mittels Flexbox so angepasst, dass der Footer keine besondere Positionierung benötigt.}
+
 \todo{Jeden gefundenen Bug dokumentieren}
