@@ -3,7 +3,6 @@
 @import edu.kit.hci.soli.dto.LayoutParams
 @import edu.kit.hci.soli.config.template.JteContext
 @import org.springframework.security.web.csrf.CsrfToken
-@import java.util.UUID
 @import static org.springframework.http.HttpMethod.*
 
 @param JteContext context
