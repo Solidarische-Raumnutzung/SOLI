@@ -142,6 +142,13 @@
                             </div>
                         </div>
 
+                        @if(layout.getRoom() != null)
+                            <div class="divider"></div>
+                            <li class="pointer-events-none">
+                                <label>${context.localize("layout.current_room", layout.getRoom().getName())}</label>
+                            </li>
+                        @endif
+
                         @if(layout.getLogin().kind() == LoginStateModel.Kind.ADMIN)
                             <div class="divider"></div>
 
