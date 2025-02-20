@@ -104,8 +104,8 @@
             </div>
             <div class="drawer-side shadow-xl">
                 <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
-                <div class="min-h-screen bg-base-200">
-                    <ul class="menu bg-base-200 text-base-content min-h-80 w-80 p-4">
+                <div class="flex flex-col min-h-screen bg-base-200">
+                    <ul class="menu bg-base-200 text-base-content w-80 p-4 flex-grow">
                         <div class="flex flex-row gap-3">
                             <li>
                                 <div class="basis-1/4">
@@ -175,7 +175,7 @@
                         @endif
                     </ul>
 
-                    <footer class="footer sm:footer-horizontal bg-base-300 text-base-content p-10 fixed bottom-0 w-full">
+                    <footer class="footer sm:footer-horizontal bg-base-300 text-base-content p-10 w-full">
                         <nav>
                             <h6 class="footer-title">${context.localize("layout.legal")}</h6>
                             <a href="https://www.gnu.org/licenses/gpl-3.0.html" class="link link-hover">${context.localize("layout.license")}</a>

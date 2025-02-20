@@ -2,5 +2,40 @@
 
 \chapter{Werkzeuge}
 \label{ch:tools}
-\todo{JUnit, JaCoCo, Coverage, GitHubCI + jacoco + security tests, dependabot, Codequalität}
 
+In diesem Kapitel werden die verschiedenen Werkzeuge beschrieben, die im Projekt verwendet wurden, um die Entwicklung, das Testen und die Qualitätssicherung zu unterstützen.
+
+\section{JUnit}
+JUnit ist ein Framework zum Schreiben und Ausführen von Unit-Tests in Java.
+Es ermöglicht das Testen einzelner Methoden und Klassen, um sicherzustellen, dass sie wie erwartet funktionieren.
+Wir setzen dieses Framework für Unittests auf allen Ebenen sowie für Integrationstests ein.
+Damit können wir sicherstellen, dass der Code korrekt funktioniert und Fehler frühzeitig identifizieren.
+Da bereits in der Implementierungsphase Unittests für die einzelnen Komponenten geschrieben wurden, konnten wir sicherstellen,
+dass unsere Anpassungen in der Qualitätssicherung keine neuen Fehler eingeführt haben.
+Außerdem haben wir weitere Tests geschrieben, um sicherzustellen, dass die neuen Funktionen korrekt funktionieren.
+
+\section{JaCoCo}
+JaCoCo (Java Code Coverage) ist ein Werkzeug zur Messung der Testabdeckung.
+Es zeigt an, welche Teile des Codes durch Tests abgedeckt sind und welche nicht, was hilft, ungetesteten Code zu identifizieren.
+Wir haben JaCoCo verwendet, um sicherzustellen, dass unsere Tests eine ausreichende Abdeckung des Codes haben.
+Dadurch können wir Fehler durch ungetesteten Code vermeiden und die Qualität des Codes verbessern.
+
+\section{GitHub CI}
+GitHub CI (Continuous Integration) ist ein Dienst, der automatisch Builds und Tests ausführt, wenn Code in ein GitHub-Repository eingecheckt wird.
+Dies hilft, sicherzustellen, dass der Code immer in einem funktionsfähigen Zustand ist.
+Wir setzten GitHub CI sowohl bei jedem Commit als auch bei jedem Pull-Request ein,
+um unsere Tests auszuführen, die Coverage zu überprüfen und Encoding-Probleme zu identifizieren.
+Dadurch konnten wir den Review-Prozess beschleunigen und sicherstellen, dass der Code immer in einem funktionsfähigen Zustand ist.
+
+\section{Security Tests}
+GitHub bietet auch die Möglichkeit, automatische Sicherheitstests und Abhängigkeitsanalysen durchzuführen.
+Mit diesen Tests können Sicherheitslücken und Schwachstellen in den Abhängigkeiten des Projekts identifiziert werden.
+Außerdem nutzen wir Dependabot, um automatisch Abhängigkeiten zu aktualisieren und Sicherheitslücken zu schließen.
+
+\section{Codequalität}
+Zur Überprüfung und Verbesserung der Codequalität haben wir die Analysewerkzeuge von IntelliJ IDEA verwendet.
+Diese Werkzeuge helfen, potenzielle Probleme im Code zu identifizieren und zu beheben, um die Qualität des Codes zu verbessern.
+In Kombination mit ausführlichen Code-Reviews konnten wir sicherstellen, dass der Code so sauber und wartbar wie möglich ist.
+Weitere Werkzeuge wie Checkstyle, Google Java Format, Palantir Java Format, Error Prone und andere
+wurden als Optionen zur Automatisierung dieses Prozesses in Betracht gezogen und evaluiert,
+zum Vermeiden des durch sie verursachten Mehraufwands durch aufwändige Konfiguration für bestenfalls minimale Verbesserungen aber nicht eingesetzt.
