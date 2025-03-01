@@ -30,6 +30,8 @@
 
     <link rel="icon" type="image/x-type" sizes="16x16" href="/favicon.ico">
 
+    <!-- Note that the stable 5.0 release breaks our use of the button design and messes with our layout -->
+    <!-- Since this is purely for styling, we can safely use this beta version instead -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daisyui@5.0.0-beta.1/daisyui.css" />
     <!-- This version of tailwind is incredibly old, but appears to be the latest one that can be used in any (sane) manner. -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"/>
