@@ -2,7 +2,6 @@
 
 \chapter{Szenarien}
 \label{ch:scenarios}
-\todo{Komplette Testszenarien aus dem Pflichtenheft durchgehen}
 
 \begin{table}[htbp]
     \centering
@@ -31,10 +30,10 @@
     \begin{tabularx}{\textwidth}{ l|X|l }
         \textbf{Nr.} & \textbf{Testszenarien Beschreibung} & \textbf{Ergebnis} \\ \hline\hline
         \ref{S10} & Besuch der Landeseite und Anmeldung/Abmeldung & Positiv\\
-        \ref{S20} & Reservierung eines Raums und Stornierung & TBD.\\
-        \ref{S30} & Terminverwaltung durch das Adminkonto & TBD.\\
-        \ref{S40} & Kontoverwaltung durch das Adminkonto & TBD.\\
-        \ref{S50} & Terminkonflikt auflösung & TBD.\\
+        \ref{S20} & Reservierung eines Raums und Stornierung & Positiv\\
+        \ref{S30} & Terminverwaltung durch das Adminkonto & Positiv\\
+        \ref{S40} & Kontoverwaltung durch das Adminkonto & Positiv\\
+        \ref{S50} & Terminkonflikt auflösung & Positiv\\
     \end{tabularx}
     \caption{Überblick der Testszenarien.}
     \label{tab:scenario_table}
@@ -49,7 +48,7 @@
         \item Der Nutzende meldet sich ab ⟨T30⟩.
     \end{enumerate}
     \item[Ergebnis:] Positiv.
-    Der Nutzende konnte sich erfolgreich anmelden und abmelden.
+    Die An- und Abmeldung funktioniert für KIT Konten, Gastkonten sowie Admin Konten.
 \end{scenario}
 
 \begin{scenario}{20}{Reservierung eines Raums und Stornierung}
@@ -63,7 +62,9 @@
         \item Der Nutzende storniert die Reservierung ⟨T90⟩.
         \item Andere Nutzende, welchen sich diesen Termin vorgemerkt hatten, werden benachrichtigt, dass der Raum nun Frei ist ⟨T70⟩.
     \end{enumerate}
-    \item[Ergebnis:] TBD.
+    \item[Ergebnis:] Positiv.
+    Die Reservierung von Räumen funktionert, sowie die Stornierung von Reservierungen.
+    Dabei werden Nutzende darauf hingewiesen, dass sie den Raum nicht buchen können, wenn sich die Buchung außerhalb der Öffnungszeiten befindet.
 \end{scenario}
 
 \begin{scenario}{30}{Terminverwaltung durch das Adminkonto}
@@ -74,7 +75,8 @@
         \item Der Admin löscht bestehende Termine ⟨T50⟩.
         \item Der Admin meldet sich ab ⟨T30⟩.
     \end{enumerate}
-    \item[Ergebnis:] TBD.
+    \item[Ergebnis:] Positiv.
+    Admins können sich anmelden und genauso wie reguläre Konten Termine erstellen als auch löschen.
 \end{scenario}
 
 \pagebreak
@@ -92,7 +94,8 @@
         \item Das Anmelden mit dem deaktiviertem Konto sollte ebenfalls fehlschlagen ⟨T20⟩.
         \item Die Ansicht \textit{Kalender} sollte die neuen Öffnungszeiten darstellen.
     \end{enumerate}
-    \item[Ergebnis:] TBD.
+    \item[Ergebnis:] Positiv.
+    Admins können Konten deaktivieren und die Öffnungszeiten ändern, sowie die Gastkonto funktionalität insgesamt ausschalten.
 \end{scenario}
 
 \begin{scenario}{50}{Terminkonflikt auflösung}
@@ -104,5 +107,6 @@
         \item Konto 2 erstellt einen Termin, welcher den anderen überlappt.
         \item Es wird überprüft, ob die erwartete Konfliktauflösung stattgefunden hat und ggf.\ die dafür benötigten E-Mails versendet wurden ⟨T130⟩.
     \end{enumerate}
-    \item[Ergebnis:] TBD.
+    \item[Ergebnis:] Positiv.
+    Terminkonflikte werden erkannt und die Nutzenden per E-Mail benachrichtigt.
 \end{scenario}
