@@ -3,7 +3,6 @@
 - [Entwurfsheft](https://solidarische-raumnutzung.github.io/SOLI/entwurfsheft.pdf)
 - [Implementationsbericht](https://solidarische-raumnutzung.github.io/SOLI/implementationsbericht.pdf)
 - [Testbericht](https://solidarische-raumnutzung.github.io/SOLI/testbericht.pdf)
-- [Beispielpräsentation](https://solidarische-raumnutzung.github.io/SOLI/presentation.pdf)
 - [Andere Artefakte](https://solidarische-raumnutzung.github.io/SOLI/)
 - [Deployment](https://cc415dc2-136a-4cfd-adc9-45a126ee849e.ka.bw-cloud-instance.org/)
 
