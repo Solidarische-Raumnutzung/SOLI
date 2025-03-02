@@ -4,21 +4,23 @@ import edu.kit.hci.soli.controller.MainController;
 import edu.kit.hci.soli.dto.KnownError;
 import edu.kit.hci.soli.test.TestService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -90,5 +92,39 @@ public class MainControllerTest {
         ExtendedModelMap model = new ExtendedModelMap();
         String result = mainController.getDisabled(model);
         assertEquals("error/disabled_user", result);
+    }
+
+    @Test
+    public void testSecurityTxt() {
+        HttpServletResponse response = mock(HttpServletResponse.class);
+        String result = mainController.securityTxt(response);
+        assertTrue(result.startsWith("""
+                Contact: soli@iar.kit.edu
+                Expires: 2099-12-31T23:00:00.000Z
+                Preferred-Languages: de, en
+                Canonical: """));
+        assertTrue(result.endsWith(".well-known/security.txt\n"));
+    }
+
+    @Test
+    public void testPublisherInfoEN() {
+        HttpServletResponse response = mock(HttpServletResponse.class);
+        HttpServletRequest request = mock(HttpServletRequest.class);
+
+        when(request.getLocale()).thenReturn(Locale.ENGLISH);
+
+        String result = mainController.publisherInfo(response, request);
+        assertTrue(result.startsWith("Contact: soli@iar.kit.edu"));
+    }
+
+    @Test
+    public void testPublisherInfoDE() {
+        HttpServletResponse response = mock(HttpServletResponse.class);
+        HttpServletRequest request = mock(HttpServletRequest.class);
+
+        when(request.getLocale()).thenReturn(Locale.GERMANY);
+
+        String result = mainController.publisherInfo(response, request);
+        assertTrue(result.startsWith("Kontakt: soli@iar.kit.edu"));
     }
 }
