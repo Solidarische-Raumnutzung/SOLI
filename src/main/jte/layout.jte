@@ -193,7 +193,7 @@
                         </nav>
                         <nav>
                             <h6 class="footer-title">${context.localize("layout.about")}</h6>
-                            <a href="https://github.com/Solidarische-Raumnutzung/SOLI" class="link link-hover">Source (GitHub)</a>
+                            <a href="https://github.com/Solidarische-Raumnutzung/SOLI" class="link link-hover">${context.localize("layout.source")}</a>
                             <a href="https://hci.iar.kit.edu/" class="link link-hover">HCI</a>
                             <a href="" class="link link-hover">${context.localize("layout.publisher")}</a> <%-- TODO add this --%>
                         </nav>
