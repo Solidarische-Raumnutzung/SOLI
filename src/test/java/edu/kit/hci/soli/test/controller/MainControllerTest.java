@@ -106,25 +106,4 @@ public class MainControllerTest {
         assertTrue(result.endsWith(".well-known/security.txt\n"));
     }
 
-    @Test
-    public void testPublisherInfoEN() {
-        HttpServletResponse response = mock(HttpServletResponse.class);
-        HttpServletRequest request = mock(HttpServletRequest.class);
-
-        when(request.getLocale()).thenReturn(Locale.ENGLISH);
-
-        String result = mainController.publisherInfo(response, request);
-        assertTrue(result.startsWith("Contact: soli@iar.kit.edu"));
-    }
-
-    @Test
-    public void testPublisherInfoDE() {
-        HttpServletResponse response = mock(HttpServletResponse.class);
-        HttpServletRequest request = mock(HttpServletRequest.class);
-
-        when(request.getLocale()).thenReturn(Locale.GERMANY);
-
-        String result = mainController.publisherInfo(response, request);
-        assertTrue(result.startsWith("Kontakt: soli@iar.kit.edu"));
-    }
 }

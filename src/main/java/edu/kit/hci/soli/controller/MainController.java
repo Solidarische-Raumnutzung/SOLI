@@ -98,11 +98,10 @@ public class MainController extends AbstractErrorController {
     /**
      * Returns the view for the publisher information (impressum).
      *
-     * @param model the model to be used in the view
      * @return the view name
      */
     @RequestMapping("/publisher")
-    public String getImpressum(Model model) {
+    public String getPublisher() {
         return "publisher";
     }
 

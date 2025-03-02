@@ -6,7 +6,7 @@
 
 @template.layout(page = context.page("layout.publisher"), context = context, layout = layout, content = @`
     <div class="container">
-        <h1>${context.localize("layout.publisher")}</h1>
+        <h1>${context.localize("layout.publisherInfo")}</h1>
         <h2>TBD.</h2>
     </div>
 `)
