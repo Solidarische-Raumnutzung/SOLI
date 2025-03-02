@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.web.servlet.error.AbstractErrorController;
 import org.springframework.boot.web.error.ErrorAttributeOptions;
 import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
-import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,19 +26,16 @@ import static org.springframework.boot.web.error.ErrorAttributeOptions.Include.P
 @Slf4j
 public class MainController extends AbstractErrorController {
     private final SoliConfiguration soliConfiguration;
-    private final MessageSource messageSource;
 
     /**
      * Constructs a MainController with the specified {@link DefaultErrorAttributes}.
      *
      * @param errorAttributes   the default error attributes
      * @param soliConfiguration the configuration of the application
-     * @param messageSource     the message source
      */
-    public MainController(DefaultErrorAttributes errorAttributes, SoliConfiguration soliConfiguration, MessageSource messageSource) {
+    public MainController(DefaultErrorAttributes errorAttributes, SoliConfiguration soliConfiguration) {
         super(errorAttributes);
         this.soliConfiguration = soliConfiguration;
-        this.messageSource = messageSource;
     }
 
     /**
@@ -100,16 +96,14 @@ public class MainController extends AbstractErrorController {
     }
 
     /**
-     * Returns the publisher info.
+     * Returns the view for the publisher information (impressum).
      *
-     * @param response the Http response
-     * @param request the Http request
-     * @return the publisher info content
+     * @param model the model to be used in the view
+     * @return the view name
      */
-    @GetMapping("/publisher")
-    @ResponseBody
-    public String publisherInfo(HttpServletResponse response, HttpServletRequest request) {
-        response.setContentType("text/plain");
-        return messageSource.getMessage("layout.publisherInfo", null, request.getLocale());
+    @RequestMapping("/publisher")
+    public String getImpressum(Model model) {
+        return "publisher";
     }
+
 }
