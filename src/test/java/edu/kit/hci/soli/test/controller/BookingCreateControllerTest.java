@@ -274,6 +274,8 @@ public class BookingCreateControllerTest {
     void testStartBeforeOpeningHours_ReturnsInvalidTimeError() {
         Room room = testService.room;
         room.setOpeningHours(Map.of(DayOfWeek.MONDAY, new TimeTuple(LocalTime.of(9, 0), LocalTime.of(17, 0))));
+        roomRepository.save(room);
+
         CreateEventForm formData = new CreateEventForm(
                 timeService.minimumTime(testService.room).with(DayOfWeek.MONDAY).withHour(8),
                 timeService.minimumTime(testService.room).with(DayOfWeek.MONDAY).withHour(10).toLocalTime(),
