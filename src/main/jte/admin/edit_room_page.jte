@@ -28,6 +28,7 @@
             <label class="fieldset-legend" for="description">${context.localize("rooms.description")}</label>
             <textarea id="description" name="description" class="input textarea textarea-bordered"
                       placeholder="${context.localize("rooms.description")}"
+                      title="${context.localize("rooms.description.tooltip")}"
             >${description}</textarea>
 
             <br><br>
@@ -37,7 +38,7 @@
 
             <br><br>
 
-            <input type="submit" class="input btn btn-primary" value="OK">
+            <input type="submit" class="input btn btn-primary" value="${context.localize("rooms.save")}">
         `)
     </fieldset>
 `)

@@ -62,8 +62,12 @@ public class JteContext implements LocalizationSupport {
         return output -> {};
     }
 
+    public int index(DayOfWeek day) {
+        return day == DayOfWeek.SUNDAY ? 0 : day.getValue();
+    }
+
     public String format(DayOfWeek day) {
-        return symbols.getWeekdays()[day == DayOfWeek.SUNDAY ? 1 : day.getValue() + 1];
+        return symbols.getWeekdays()[index(day) + 1];
     }
 
     public String format(Month month) {

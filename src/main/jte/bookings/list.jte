@@ -16,7 +16,7 @@
         @if(bookings.isEmpty())
             <div class="card">
                 <div class="card-body">
-                    <p class="text-center">Du hast noch keine Reservierungen.</p>
+                    <p class="text-center">${context.localize("bookings.none")}</p>
                 </div>
             </div>
         @else
@@ -43,7 +43,7 @@
                         <td>${context.localize("bookings.priority." + booking.getPriority())}</td>
                         <td>
                             @template.util.form(csrf = csrf, action = "/" + booking.getRoom().getId() + "/bookings/" + booking.getId(), method = DELETE, content = @`
-                                <button type="submit" class="btn btn-ghost">
+                                <button type="submit" class="btn btn-ghost" title="${context.localize("bookings.delete.tooltip")}">
                                     <i class="fas fa-trash-alt"></i>
                                     ${context.localize("bookings.delete")}
                                 </button>

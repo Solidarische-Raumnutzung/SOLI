@@ -3,6 +3,7 @@ package edu.kit.hci.soli.test.controller;
 import edu.kit.hci.soli.controller.RoomsController;
 import edu.kit.hci.soli.domain.Room;
 import edu.kit.hci.soli.dto.KnownError;
+import edu.kit.hci.soli.dto.LayoutParams;
 import edu.kit.hci.soli.dto.form.EditOrCreateRoomForm;
 import edu.kit.hci.soli.service.RoomService;
 import edu.kit.hci.soli.test.TestService;
@@ -18,6 +19,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.ui.ExtendedModelMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 @SpringBootTest
 @AutoConfigureTestDatabase
@@ -56,7 +58,8 @@ public class RoomsControllerTest {
     public void testDeleteUnknownRoom() {
         ExtendedModelMap model = new ExtendedModelMap();
         MockHttpServletResponse response = new MockHttpServletResponse();
-        assertEquals("error/known", roomsController.deleteRoom(model, response, testService.room.getId() + 1));
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        assertEquals("error/known", roomsController.deleteRoom(model, response, testService.room.getId() + 1, testService.paramsFor(testService.user, request)));
         assertEquals(KnownError.NOT_FOUND, model.getAttribute("error"));
         assertEquals(1, roomService.getAll().size());
     }
@@ -65,7 +68,20 @@ public class RoomsControllerTest {
     public void testDeleteRoom() {
         ExtendedModelMap model = new ExtendedModelMap();
         MockHttpServletResponse response = new MockHttpServletResponse();
-        assertEquals("redirect:/admin/rooms", roomsController.deleteRoom(model, response, testService.room.getId()));
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        assertEquals("redirect:/admin/rooms", roomsController.deleteRoom(model, response, testService.room.getId(), testService.paramsFor(testService.user, request)));
+        assertEquals(0, roomService.getAll().size());
+    }
+
+    @Test
+    public void testDeleteSelectedRoom() {
+        ExtendedModelMap model = new ExtendedModelMap();
+        MockHttpServletResponse response = new MockHttpServletResponse();
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        LayoutParams layoutParams = testService.paramsFor(testService.user, request);
+        layoutParams.setRoom(testService.room);
+        assertEquals("redirect:/admin/rooms", roomsController.deleteRoom(model, response, testService.room.getId(), layoutParams));
+        assertNull(layoutParams.getRoom());
         assertEquals(0, roomService.getAll().size());
     }
 

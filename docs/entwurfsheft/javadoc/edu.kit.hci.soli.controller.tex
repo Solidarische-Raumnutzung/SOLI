@@ -1,0 +1,601 @@
+
+
+\section{Package edu.kit.hci.soli.controller}
+\begin{adjustwidth}{1.5em}{0pt}
+  \subsection{Class BookingCreateController\label{edu.kit.hci.soli.controller.BookingCreateController} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{public  class \texttt{\hyperref[edu.kit.hci.soli.controller.BookingCreateController]{\texttt{BookingCreateController}}}} \\
+      \hline
+      \emph{Behaviour} & Controller for handling booking creation requests.  \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Constructor\label{edu.kit.hci.soli.controller.BookingCreateController@edu.kit.hci.soli.controller.BookingCreateController(edu.kit.hci.soli.service.BookingsService,edu.kit.hci.soli.service.RoomService)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.controller.BookingCreateController]{\texttt{BookingCreateController}}}(\texttt{\hyperref[edu.kit.hci.soli.service.BookingsService]{\texttt{BookingsService}}} bookingsService, \texttt{\hyperref[edu.kit.hci.soli.service.RoomService]{\texttt{RoomService}}} roomService)} \\
+        \hline
+        \emph{Behaviour} & Constructs a BookingCreateController with the specified services.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{bookingsService}: & the service for managing bookings  \\
+          \texttt{roomService}: & the service for managing rooms  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method resolveConflict\label{edu.kit.hci.soli.controller.BookingCreateController@resolveConflict(org.springframework.ui.Model,jakarta.servlet.http.HttpServletRequest,java.lang.Long)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{String} resolveConflict(\texttt{Model} model, \texttt{HttpServletRequest} request, \texttt{Long} roomId)} \\
+        \hline
+        \emph{Behaviour} & Resolves a booking conflict.    \\
+        \hline
+        \emph{Returns} & the view name  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{model}: & the model to be used in the view  \\
+          \texttt{request}: & the HTTP request  \\
+          \texttt{roomId}: & the ID of the room  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method createBooking\label{edu.kit.hci.soli.controller.BookingCreateController@createBooking(org.springframework.ui.Model,jakarta.servlet.http.HttpServletResponse,jakarta.servlet.http.HttpServletRequest,java.lang.Long,edu.kit.hci.soli.config.security.SoliUserDetails,edu.kit.hci.soli.controller.BookingCreateController.FormData)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{String} createBooking(\texttt{Model} model, \texttt{HttpServletResponse} response, \texttt{HttpServletRequest} request, \texttt{Long} roomId, \texttt{\hyperref[edu.kit.hci.soli.config.security.SoliUserDetails]{\texttt{SoliUserDetails}}} principal, \texttt{\hyperref[edu.kit.hci.soli.controller.BookingCreateController.FormData]{\texttt{FormData}}} formData)} \\
+        \hline
+        \emph{Behaviour} & Creates a new booking.    \\
+        \hline
+        \emph{Returns} & the view name  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{model}: & the model to be used in the view  \\
+          \texttt{response}: & the HTTP response  \\
+          \texttt{request}: & the HTTP request  \\
+          \texttt{roomId}: & the ID of the room  \\
+          \texttt{principal}: & the authenticated user details  \\
+          \texttt{formData}: & the form data for the booking  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method newBooking\label{edu.kit.hci.soli.controller.BookingCreateController@newBooking(org.springframework.ui.Model,jakarta.servlet.http.HttpServletResponse,java.lang.Long,java.time.LocalDateTime,java.time.LocalDateTime,java.lang.Boolean)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{String} newBooking(\texttt{Model} model, \texttt{HttpServletResponse} response, \texttt{Long} roomId, \texttt{LocalDateTime} start, \texttt{LocalDateTime} end, \texttt{Boolean} cooperative)} \\
+        \hline
+        \emph{Behaviour} & Displays the form for creating a new booking.    \\
+        \hline
+        \emph{Returns} & the view name  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{model}: & the model to be used in the view  \\
+          \texttt{response}: & the HTTP response  \\
+          \texttt{roomId}: & the ID of the room  \\
+          \texttt{start}: & the start date and time of the booking  \\
+          \texttt{end}: & the end date and time of the booking  \\
+          \texttt{cooperative}: & whether the booking is cooperative  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Class FormData\label{edu.kit.hci.soli.controller.BookingCreateController.FormData} }
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{static public  class \texttt{\hyperref[edu.kit.hci.soli.controller.BookingCreateController.FormData]{\texttt{FormData}}}} \\
+        \hline
+        \emph{Behaviour} & Data class for event creation form data.  \\
+        \hline
+  
+      \end{tabularx}}\paragraph{Constructor\label{edu.kit.hci.soli.controller.BookingCreateController.FormData@edu.kit.hci.soli.controller.BookingCreateController.FormData()}}
+      \begin{adjustwidth}{1.5em}{0pt}
+        {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.controller.BookingCreateController.FormData]{\texttt{FormData}}}()} \\
+          \hline
+  
+        \end{tabularx}}
+      \end{adjustwidth}\paragraph{Field cooperative\label{edu.kit.hci.soli.controller.BookingCreateController.FormData@cooperative}}
+      \begin{adjustwidth}{1.5em}{0pt}
+        {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.controller.BookingCreateController.FormData]{\texttt{FormData}}} cooperative} \\
+          \hline
+  
+        \end{tabularx}}
+      \end{adjustwidth}\paragraph{Field priority\label{edu.kit.hci.soli.controller.BookingCreateController.FormData@priority}}
+      \begin{adjustwidth}{1.5em}{0pt}
+        {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.controller.BookingCreateController.FormData]{\texttt{FormData}}} priority} \\
+          \hline
+  
+        \end{tabularx}}
+      \end{adjustwidth}\paragraph{Field description\label{edu.kit.hci.soli.controller.BookingCreateController.FormData@description}}
+      \begin{adjustwidth}{1.5em}{0pt}
+        {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.controller.BookingCreateController.FormData]{\texttt{FormData}}} description} \\
+          \hline
+  
+        \end{tabularx}}
+      \end{adjustwidth}\paragraph{Field end\label{edu.kit.hci.soli.controller.BookingCreateController.FormData@end}}
+      \begin{adjustwidth}{1.5em}{0pt}
+        {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.controller.BookingCreateController.FormData]{\texttt{FormData}}} end} \\
+          \hline
+  
+        \end{tabularx}}
+      \end{adjustwidth}\paragraph{Field start\label{edu.kit.hci.soli.controller.BookingCreateController.FormData@start}}
+      \begin{adjustwidth}{1.5em}{0pt}
+        {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.controller.BookingCreateController.FormData]{\texttt{FormData}}} start} \\
+          \hline
+  
+        \end{tabularx}}
+      \end{adjustwidth}
+    \end{adjustwidth}
+  \end{adjustwidth}\subsection{Class BookingViewController\label{edu.kit.hci.soli.controller.BookingViewController} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{public  class \texttt{\hyperref[edu.kit.hci.soli.controller.BookingViewController]{\texttt{BookingViewController}}}} \\
+      \hline
+      \emph{Behaviour} & Controller for handling booking-related requests.  \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Constructor\label{edu.kit.hci.soli.controller.BookingViewController@edu.kit.hci.soli.controller.BookingViewController(edu.kit.hci.soli.service.BookingsService,edu.kit.hci.soli.service.RoomService,edu.kit.hci.soli.service.UserService)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.controller.BookingViewController]{\texttt{BookingViewController}}}(\texttt{\hyperref[edu.kit.hci.soli.service.BookingsService]{\texttt{BookingsService}}} bookingsService, \texttt{\hyperref[edu.kit.hci.soli.service.RoomService]{\texttt{RoomService}}} roomService, \texttt{\hyperref[edu.kit.hci.soli.service.UserService]{\texttt{UserService}}} userService)} \\
+        \hline
+        \emph{Behaviour} & Constructs a BookingViewController with the specified services.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{bookingsService}: & the service for managing bookings  \\
+          \texttt{roomService}: & the service for managing rooms  \\
+          \texttt{userService}: & the service for managing users  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method viewEvent\label{edu.kit.hci.soli.controller.BookingViewController@viewEvent(org.springframework.ui.Model,jakarta.servlet.http.HttpServletResponse,edu.kit.hci.soli.config.security.SoliUserDetails,java.lang.Long,java.lang.Long)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{String} viewEvent(\texttt{Model} model, \texttt{HttpServletResponse} response, \texttt{\hyperref[edu.kit.hci.soli.config.security.SoliUserDetails]{\texttt{SoliUserDetails}}} principal, \texttt{Long} roomId, \texttt{Long} eventId)} \\
+        \hline
+        \emph{Behaviour} & Displays the details of a specific event.    \\
+        \hline
+        \emph{Returns} & the view name  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{model}: & the model to be used in the view  \\
+          \texttt{response}: & the HTTP response  \\
+          \texttt{principal}: & the authenticated user details  \\
+          \texttt{roomId}: & the ID of the room  \\
+          \texttt{eventId}: & the ID of the event  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method roomBookings\label{edu.kit.hci.soli.controller.BookingViewController@roomBookings(org.springframework.ui.Model,jakarta.servlet.http.HttpServletResponse,edu.kit.hci.soli.config.security.SoliUserDetails,java.lang.Long)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{String} roomBookings(\texttt{Model} model, \texttt{HttpServletResponse} response, \texttt{\hyperref[edu.kit.hci.soli.config.security.SoliUserDetails]{\texttt{SoliUserDetails}}} principal, \texttt{Long} roomId)} \\
+        \hline
+        \emph{Behaviour} & Displays the bookings for a specific room.    \\
+        \hline
+        \emph{Returns} & the view name  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{model}: & the model to be used in the view  \\
+          \texttt{response}: & the HTTP response  \\
+          \texttt{principal}: & the authenticated user details  \\
+          \texttt{roomId}: & the ID of the room  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method deleteBookings\label{edu.kit.hci.soli.controller.BookingViewController@deleteBookings(org.springframework.ui.Model,jakarta.servlet.http.HttpServletResponse,edu.kit.hci.soli.config.security.SoliUserDetails,java.lang.Long,java.lang.Long)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{String} deleteBookings(\texttt{Model} model, \texttt{HttpServletResponse} response, \texttt{\hyperref[edu.kit.hci.soli.config.security.SoliUserDetails]{\texttt{SoliUserDetails}}} principal, \texttt{Long} roomId, \texttt{Long} eventId)} \\
+        \hline
+        \emph{Behaviour} & Deletes a booking for a specific room and event.    \\
+        \hline
+        \emph{Returns} & the view name  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{model}: & the model to be used in the view  \\
+          \texttt{response}: & the HTTP response  \\
+          \texttt{principal}: & the authenticated user details  \\
+          \texttt{roomId}: & the ID of the room  \\
+          \texttt{eventId}: & the ID of the event  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}
+  \end{adjustwidth}\subsection{Class CalendarController\label{edu.kit.hci.soli.controller.CalendarController} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{public  class \texttt{\hyperref[edu.kit.hci.soli.controller.CalendarController]{\texttt{CalendarController}}}} \\
+      \hline
+      \emph{Behaviour} & Controller for handling calendar-related requests.  \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Constructor\label{edu.kit.hci.soli.controller.CalendarController@edu.kit.hci.soli.controller.CalendarController(edu.kit.hci.soli.service.RoomService)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.controller.CalendarController]{\texttt{CalendarController}}}(\texttt{\hyperref[edu.kit.hci.soli.service.RoomService]{\texttt{RoomService}}} roomService)} \\
+        \hline
+        \emph{Behaviour} & Constructs a CalendarController with the specified  \texttt{\hyperref[edu.kit.hci.soli.service.RoomService]{\texttt{RoomService}}}.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{roomService}: & the service for managing rooms  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method calendar\label{edu.kit.hci.soli.controller.CalendarController@calendar(org.springframework.ui.Model,jakarta.servlet.http.HttpServletRequest,jakarta.servlet.http.HttpServletResponse,edu.kit.hci.soli.config.security.SoliUserDetails,long)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{String} calendar(\texttt{Model} model, \texttt{HttpServletRequest} request, \texttt{HttpServletResponse} response, \texttt{\hyperref[edu.kit.hci.soli.config.security.SoliUserDetails]{\texttt{SoliUserDetails}}} principal, \texttt{long} roomId)} \\
+        \hline
+        \emph{Behaviour} & Displays the calendar for a specific room.    \\
+        \hline
+        \emph{Returns} & the view name  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{model}: & the model to be used in the view  \\
+          \texttt{request}: & the HTTP request  \\
+          \texttt{response}: & the HTTP response  \\
+          \texttt{principal}: & the authenticated user details  \\
+          \texttt{roomId}: & the ID of the room  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method calendar\label{edu.kit.hci.soli.controller.CalendarController@calendar(org.springframework.ui.Model,jakarta.servlet.http.HttpServletRequest,jakarta.servlet.http.HttpServletResponse,edu.kit.hci.soli.config.security.SoliUserDetails)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{String} calendar(\texttt{Model} model, \texttt{HttpServletRequest} request, \texttt{HttpServletResponse} response, \texttt{\hyperref[edu.kit.hci.soli.config.security.SoliUserDetails]{\texttt{SoliUserDetails}}} principal)} \\
+        \hline
+        \emph{Behaviour} & Displays the calendar for the default room.    \\
+        \hline
+        \emph{Returns} & the view name  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{model}: & the model to be used in the view  \\
+          \texttt{request}: & the HTTP request  \\
+          \texttt{response}: & the HTTP response  \\
+          \texttt{principal}: & the authenticated user details  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}
+  \end{adjustwidth}\subsection{Class ErrorController\label{edu.kit.hci.soli.controller.ErrorController} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{public  class \texttt{\hyperref[edu.kit.hci.soli.controller.ErrorController]{\texttt{ErrorController}} extends \texttt{AbstractErrorController}}} \\
+      \hline
+      \emph{Behaviour} & Controller for handling errors in the application.  \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Constructor\label{edu.kit.hci.soli.controller.ErrorController@edu.kit.hci.soli.controller.ErrorController(org.springframework.boot.web.servlet.error.DefaultErrorAttributes)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.controller.ErrorController]{\texttt{ErrorController}}}(\texttt{DefaultErrorAttributes} errorAttributes)} \\
+        \hline
+        \emph{Behaviour} & Constructs an ErrorController with the specified  DefaultErrorAttributes .    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{errorAttributes}: & the default error attributes  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method handleError\label{edu.kit.hci.soli.controller.ErrorController@handleError(org.springframework.ui.Model,jakarta.servlet.http.HttpServletRequest)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{String} handleError(\texttt{Model} model, \texttt{HttpServletRequest} request)} \\
+        \hline
+        \emph{Behaviour} & Handles errors and returns the appropriate error view.    \\
+        \hline
+        \emph{Returns} & the view name  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{model}: & the model to be used in the view  \\
+          \texttt{request}: & the HTTP request  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}
+  \end{adjustwidth}\subsection{Class EventFeedController\label{edu.kit.hci.soli.controller.EventFeedController} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{public  class \texttt{\hyperref[edu.kit.hci.soli.controller.EventFeedController]{\texttt{EventFeedController}}}} \\
+      \hline
+      \emph{Behaviour} & REST controller for generating the FullCalendar event feed.  \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Constructor\label{edu.kit.hci.soli.controller.EventFeedController@edu.kit.hci.soli.controller.EventFeedController(edu.kit.hci.soli.service.BookingsService,edu.kit.hci.soli.service.RoomService)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.controller.EventFeedController]{\texttt{EventFeedController}}}(\texttt{\hyperref[edu.kit.hci.soli.service.BookingsService]{\texttt{BookingsService}}} bookingsRepository, \texttt{\hyperref[edu.kit.hci.soli.service.RoomService]{\texttt{RoomService}}} roomService)} \\
+        \hline
+        \emph{Behaviour} & Constructs an EventFeedController with the specified  \texttt{\hyperref[edu.kit.hci.soli.service.BookingsService]{\texttt{BookingsService}}}.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{bookingsRepository}: & the service for managing bookings  \\
+          \texttt{roomService}: & the service for managing rooms  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method handleIllegalArgumentException\label{edu.kit.hci.soli.controller.EventFeedController@handleIllegalArgumentException(java.lang.IllegalArgumentException)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{ResponseEntity} handleIllegalArgumentException(\texttt{IllegalArgumentException} e)} \\
+        \hline
+        \emph{Behaviour} & Handles  \texttt{IllegalArgumentException} and returns a bad request response with the exception message.    \\
+        \hline
+        \emph{Returns} & the response entity with the exception message  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{e}: & the IllegalArgumentException  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method getEvents\label{edu.kit.hci.soli.controller.EventFeedController@getEvents(java.time.LocalDateTime,java.time.LocalDateTime,java.lang.Long,edu.kit.hci.soli.config.security.SoliUserDetails)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{List} getEvents(\texttt{LocalDateTime} start, \texttt{LocalDateTime} end, \texttt{Long} roomId, \texttt{\hyperref[edu.kit.hci.soli.config.security.SoliUserDetails]{\texttt{SoliUserDetails}}} principal)} \\
+        \hline
+        \emph{Behaviour} & Retrieves calendar events within the specified time range.    \\
+        \hline
+        \emph{Returns} & the list of calendar events  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{start}: & the start date and time  \\
+          \texttt{end}: & the end date and time  \\
+          \texttt{roomId}: & the id of the room to show  \\
+          \texttt{principal}: & the authenticated user details  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}
+  \end{adjustwidth}\subsection{Class LoginController\label{edu.kit.hci.soli.controller.LoginController} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{public  class \texttt{\hyperref[edu.kit.hci.soli.controller.LoginController]{\texttt{LoginController}}}} \\
+      \hline
+      \emph{Behaviour} & Controller for handling login-related requests.  \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Constructor\label{edu.kit.hci.soli.controller.LoginController@edu.kit.hci.soli.controller.LoginController(edu.kit.hci.soli.service.UserService)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.controller.LoginController]{\texttt{LoginController}}}(\texttt{\hyperref[edu.kit.hci.soli.service.UserService]{\texttt{UserService}}} userService)} \\
+        \hline
+        \emph{Behaviour} & Constructs a LoginController with the specified  \texttt{\hyperref[edu.kit.hci.soli.service.UserService]{\texttt{UserService}}}.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{userService}: & the service for managing users  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method loginGuest\label{edu.kit.hci.soli.controller.LoginController@loginGuest(org.springframework.ui.Model)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{String} loginGuest(\texttt{Model} model)} \\
+        \hline
+        \emph{Behaviour} & Displays the login UI for guests.    \\
+        \hline
+        \emph{Returns} & the view name  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{model}: & the model to be used in the view  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method login\label{edu.kit.hci.soli.controller.LoginController@login(jakarta.servlet.http.HttpServletRequest,org.springframework.ui.Model)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{String} login(\texttt{HttpServletRequest} request, \texttt{Model} model)} \\
+        \hline
+        \emph{Behaviour} & Displays the login UI.    \\
+        \hline
+        \emph{Returns} & the view name  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{request}: & the HTTP request  \\
+          \texttt{model}: & the model to be used in the view  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}
+  \end{adjustwidth}\subsection{Class LoginControllerAdvice\label{edu.kit.hci.soli.controller.LoginControllerAdvice} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{public  class \texttt{\hyperref[edu.kit.hci.soli.controller.LoginControllerAdvice]{\texttt{LoginControllerAdvice}}}} \\
+      \hline
+      \emph{Behaviour} & Controller advice for injecting the login state.  \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Constructor\label{edu.kit.hci.soli.controller.LoginControllerAdvice@edu.kit.hci.soli.controller.LoginControllerAdvice(edu.kit.hci.soli.service.UserService)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.controller.LoginControllerAdvice]{\texttt{LoginControllerAdvice}}}(\texttt{\hyperref[edu.kit.hci.soli.service.UserService]{\texttt{UserService}}} userService)} \\
+        \hline
+        \emph{Behaviour} & Constructs a LoginControllerAdvice with the specified UserService.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{userService}: & the service for managing users  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method getLoginStateModel\label{edu.kit.hci.soli.controller.LoginControllerAdvice@getLoginStateModel(edu.kit.hci.soli.config.security.SoliUserDetails,org.springframework.security.web.csrf.CsrfToken)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.dto.LoginStateModel]{\texttt{LoginStateModel}}} getLoginStateModel(\texttt{\hyperref[edu.kit.hci.soli.config.security.SoliUserDetails]{\texttt{SoliUserDetails}}} principal, \texttt{CsrfToken} csrf)} \\
+        \hline
+        \emph{Behaviour} & Retrieves the login state model based on the authenticated user details.    \\
+        \hline
+        \emph{Returns} & the login state model  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{principal}: & the authenticated user details  \\
+          \texttt{csrf}: & the CSRF token  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method getCsrfToken\label{edu.kit.hci.soli.controller.LoginControllerAdvice@getCsrfToken(jakarta.servlet.http.HttpServletRequest)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{CsrfToken} getCsrfToken(\texttt{HttpServletRequest} request)} \\
+        \hline
+        \emph{Behaviour} & Retrieves the CSRF token from the request.    \\
+        \hline
+        \emph{Returns} & the CSRF token  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{request}: & the HTTP request  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}
+  \end{adjustwidth}\subsection{Class MainController\label{edu.kit.hci.soli.controller.MainController} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{public  class \texttt{\hyperref[edu.kit.hci.soli.controller.MainController]{\texttt{MainController}}}} \\
+      \hline
+      \emph{Behaviour} & Main controller for miscellaneous status requests.  \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Constructor\label{edu.kit.hci.soli.controller.MainController@edu.kit.hci.soli.controller.MainController()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.controller.MainController]{\texttt{MainController}}}()} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method getProfile\label{edu.kit.hci.soli.controller.MainController@getProfile()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{String} getProfile()} \\
+        \hline
+        \emph{Behaviour} & Retrieves the active profile.    \\
+        \hline
+        \emph{Returns} & the active profile  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}
+  \end{adjustwidth}\subsection{Class UsersController\label{edu.kit.hci.soli.controller.UsersController} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{public  class \texttt{\hyperref[edu.kit.hci.soli.controller.UsersController]{\texttt{UsersController}}}} \\
+      \hline
+      \emph{Behaviour} & Controller class for managing user-related operations.  \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Constructor\label{edu.kit.hci.soli.controller.UsersController@edu.kit.hci.soli.controller.UsersController(edu.kit.hci.soli.service.UserService)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.controller.UsersController]{\texttt{UsersController}}}(\texttt{\hyperref[edu.kit.hci.soli.service.UserService]{\texttt{UserService}}} userService)} \\
+        \hline
+        \emph{Behaviour} & Constructs a UsersController with the specified  \texttt{\hyperref[edu.kit.hci.soli.service.UserService]{\texttt{UserService}}}.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{userService}: & the service for managing users  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method getUsers\label{edu.kit.hci.soli.controller.UsersController@getUsers(org.springframework.ui.Model,jakarta.servlet.http.HttpServletResponse,edu.kit.hci.soli.config.security.SoliUserDetails)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{String} getUsers(\texttt{Model} model, \texttt{HttpServletResponse} response, \texttt{\hyperref[edu.kit.hci.soli.config.security.SoliUserDetails]{\texttt{SoliUserDetails}}} principal)} \\
+        \hline
+        \emph{Behaviour} & Retrieves all manageable users and returns the view for the users page.    \\
+        \hline
+        \emph{Returns} & the view name  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{model}: & the model to be used in the view  \\
+          \texttt{response}: & the HTTP response  \\
+          \texttt{principal}: & the authenticated user details  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method getDisabled\label{edu.kit.hci.soli.controller.UsersController@getDisabled(org.springframework.ui.Model)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{String} getDisabled(\texttt{Model} model)} \\
+        \hline
+        \emph{Behaviour} & Returns the view for disabled users.    \\
+        \hline
+        \emph{Returns} & the view name  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{model}: & the model to be used in the view  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method deactivateUser\label{edu.kit.hci.soli.controller.UsersController@deactivateUser(org.springframework.ui.Model,jakarta.servlet.http.HttpServletResponse,edu.kit.hci.soli.config.security.SoliUserDetails,java.lang.Long)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{String} deactivateUser(\texttt{Model} model, \texttt{HttpServletResponse} response, \texttt{\hyperref[edu.kit.hci.soli.config.security.SoliUserDetails]{\texttt{SoliUserDetails}}} principal, \texttt{Long} userId)} \\
+        \hline
+        \emph{Behaviour} & Deactivates a user by their ID.    \\
+        \hline
+        \emph{Returns} & the view name  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{model}: & the model to be used in the view  \\
+          \texttt{response}: & the HTTP response  \\
+          \texttt{principal}: & the authenticated user details  \\
+          \texttt{userId}: & the ID of the user to be deactivated  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}
+  \end{adjustwidth}
+\end{adjustwidth}

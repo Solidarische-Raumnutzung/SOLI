@@ -19,14 +19,17 @@
 
 <div class="absolute top-5 left-5">
     !{var bookingShareType = booking.getShareRoomType();}
-    @if(bookingShareType == ShareRoomType.YES)
-        <i class="fa-solid fa-users"></i>
-    @elseif(bookingShareType == ShareRoomType.NO)
-        <i class="fa-solid fa-users-slash"></i>
-    @else
-        <i class="fa-solid fa-question"></i>
-        <i class="fa-solid fa-users"></i>
-    @endif
+    <label class="label" aria-label="${context.localize("bookings.collaboration." + bookingShareType)}"
+           title="${context.localize("bookings.collaboration." + bookingShareType + ".tooltip")}">
+        @if (bookingShareType == ShareRoomType.YES)
+            <i class="fa-solid fa-users"></i>
+        @elseif (bookingShareType == ShareRoomType.NO)
+            <i class="fa-solid fa-users-slash"></i>
+        @else
+            <i class="fa-solid fa-question"></i>
+            <i class="fa-solid fa-users"></i>
+        @endif
+    </label>
 </div>
 
 @if (!booking.getOpenRequests().isEmpty())
@@ -69,14 +72,14 @@
     <div class="card-actions justify-end">
         @if (allowEditing)
             @template.util.form(csrf = csrf, action = "/" + booking.getRoom().getId() + "/bookings/" + booking.getId(), method = DELETE, content = @`
-                <button type="submit" class="btn btn-ghost">
+                <button type="submit" class="btn btn-ghost" title="${context.localize("bookings.delete.tooltip")}">
                     <i class="fas fa-trash-alt"></i>
                     ${context.localize("bookings.delete")}
                 </button>
             `)
         @endif
         @if (showRequestButton)
-            <a class="btn btn-primary" href="/${booking.getRoom().getId()}/bookings/new?start=${booking.getStartDate().format(DateTimeFormatter.ISO_DATE_TIME)}&end=${booking.getEndDate().toLocalTime().format(DateTimeFormatter.ISO_LOCAL_TIME)}&cooperative=true">${context.localize("bookings.request")}</a>
+            <a class="btn btn-primary" href="/${booking.getRoom().getId()}/bookings/new?start=${booking.getStartDate().format(DateTimeFormatter.ISO_DATE_TIME)}&end=${booking.getEndDate().toLocalTime().format(DateTimeFormatter.ISO_LOCAL_TIME)}&cooperative=true" title="${context.localize("bookings.request.tooltip")}">${context.localize("bookings.request")}</a>
         @endif
     </div>
 @endif

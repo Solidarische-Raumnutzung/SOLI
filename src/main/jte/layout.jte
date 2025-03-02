@@ -30,18 +30,13 @@
 
     <link rel="icon" type="image/x-type" sizes="16x16" href="/favicon.ico">
 
+    <!-- Note that the stable 5.0 release breaks our use of the button design and messes with our layout -->
+    <!-- Since this is purely for styling, we can safely use this beta version instead -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daisyui@5.0.0-beta.1/daisyui.css" />
     <!-- This version of tailwind is incredibly old, but appears to be the latest one that can be used in any (sane) manner. -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"/>
     <link rel="stylesheet" type="text/css" href="/soli.css">
 
-    <style>
-        :root {
-            --soli-priority-lowest:  "${context.localize("bookings.priority.LOWEST")}";
-            --soli-priority-medium:  "${context.localize("bookings.priority.MEDIUM")}";
-            --soli-priority-highest: "${context.localize("bookings.priority.HIGHEST")}";
-        }
-    </style>
     <noscript>
         <style>
             .needs-js {
@@ -80,20 +75,24 @@
                     </div>
                     <div class="navbar-end">
                         @if (layout.getCurrentHighestBooking() != null)
-                            <div class="badge badge-neutral m-3">p-${context.localize("bookings.priority." + layout.getCurrentHighestBooking().getPriority())}</div>
+                            <div class="badge badge-neutral m-3" aria-label="${context.localize("bookings.priority")}" title="${context.localize("bookings.priority.tooltip")}">
+                                p-${context.localize("bookings.priority." + layout.getCurrentHighestBooking().getPriority())}</div>
                         @endif
 
                         !{var currentHighestBooking = layout.getCurrentHighestBooking();}
                         @if (currentHighestBooking != null)
                             !{var bookingShareType = currentHighestBooking.getShareRoomType();}
-                            @if(bookingShareType == ShareRoomType.YES)
-                                <i class="fa-solid fa-users"></i>
-                            @elseif(bookingShareType == ShareRoomType.NO)
-                                <i class="fa-solid fa-users-slash"></i>
-                            @else
-                                <i class="fa-solid fa-question"></i>
-                                <i class="fa-solid fa-users"></i>
-                            @endif
+                            <label class="label" aria-label="${context.localize("bookings.collaboration." + bookingShareType)}"
+                                   title="${context.localize("bookings.collaboration." + bookingShareType + ".tooltip")}">
+                                @if (bookingShareType == ShareRoomType.YES)
+                                    <i class="fa-solid fa-users"></i>
+                                @elseif (bookingShareType == ShareRoomType.NO)
+                                    <i class="fa-solid fa-users-slash"></i>
+                                @else
+                                    <i class="fa-solid fa-question"></i>
+                                    <i class="fa-solid fa-users"></i>
+                                @endif
+                            </label>
                         @endif
                     </div>
                 </div>
@@ -107,12 +106,12 @@
             </div>
             <div class="drawer-side shadow-xl">
                 <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
-                <div class="min-h-screen bg-base-200">
-                    <ul class="menu bg-base-200 text-base-content min-h-80 w-80 p-4">
+                <div class="flex flex-col min-h-screen bg-base-200">
+                    <ul class="menu bg-base-200 text-base-content w-80 p-4 flex-grow">
                         <div class="flex flex-row gap-3">
                             <li>
                                 <div class="basis-1/4">
-                                    <a aria-label="home" class="avatar avatar-placeholder w-20" href="/">
+                                    <a title="${context.localize("index")}" class="avatar avatar-placeholder w-20" href="/">
                                         <img src="/favicon.svg" alt="SOLI">
                                     </a>
                                 </div>
@@ -130,12 +129,12 @@
                                 <div class="relative h-20 w-20">
                                     <div class="absolute inset-x-0 bottom-0 h-16">
                                         @if (layout.getLogin().kind() == LoginStateModel.Kind.VISITOR)
-                                            <a href="/login" aria-label="${context.localize("login.login")}" class="btn btn-outline btn-primary">
+                                            <a href="/login" title="${context.localize("login.login")}" class="btn btn-outline btn-primary">
                                                 <i class="fa-solid fa-right-to-bracket"></i>
                                             </a>
                                         @else
                                             @template.util.form(csrf = layout.getLogin().csrfToken(), action = "/logout", method = POST, content = @`
-                                                <button class="btn btn-outline btn-primary" aria-label="${context.localize("login.logout")}" type="submit">
+                                                <button class="btn btn-outline btn-primary" title="${context.localize("login.logout")}" type="submit">
                                                     <i class="fa-solid fa-right-from-bracket"></i>
                                                 </button>
                                             `)
@@ -144,6 +143,13 @@
                                 </div>
                             </div>
                         </div>
+
+                        @if(layout.getRoom() != null)
+                            <div class="divider"></div>
+                            <li class="pointer-events-none">
+                                <label>${context.localize("layout.current_room", layout.getRoom().getName())}</label>
+                            </li>
+                        @endif
 
                         @if(layout.getLogin().kind() == LoginStateModel.Kind.ADMIN)
                             <div class="divider"></div>
@@ -178,7 +184,7 @@
                         @endif
                     </ul>
 
-                    <footer class="footer sm:footer-horizontal bg-base-300 text-base-content p-10 fixed bottom-0 w-full">
+                    <footer class="footer sm:footer-horizontal bg-base-300 text-base-content p-10 w-full">
                         <nav>
                             <h6 class="footer-title">${context.localize("layout.legal")}</h6>
                             <a href="https://www.gnu.org/licenses/gpl-3.0.html" class="link link-hover">${context.localize("layout.license")}</a>
@@ -187,9 +193,9 @@
                         </nav>
                         <nav>
                             <h6 class="footer-title">${context.localize("layout.about")}</h6>
-                            <a href="https://github.com/Solidarische-Raumnutzung/solidarische-raumnutzung" class="link link-hover">${context.localize("layout.source")}</a>
+                            <a href="https://github.com/Solidarische-Raumnutzung/SOLI" class="link link-hover">${context.localize("layout.source")}</a>
                             <a href="https://hci.iar.kit.edu/" class="link link-hover">HCI</a>
-                            <a href="/impressum" class="link link-hover">${context.localize("layout.publisher")}</a> <%-- TODO add this --%>
+                            <a href="/impressum" class="link link-hover">${context.localize("layout.publisher")}</a>
                         </nav>
                     </footer>
                 </div>

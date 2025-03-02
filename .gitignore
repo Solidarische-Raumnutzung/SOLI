@@ -52,6 +52,7 @@ presentation.run.xml
 presentation.snm
 presentation.toc
 *.pdf
+!/docs/*/logos/*.pdf
 *.log
 *.aux
 *.synctex.gz

@@ -1,0 +1,559 @@
+
+
+\section{Package edu.kit.hci.soli.domain}
+\begin{adjustwidth}{1.5em}{0pt}
+  \subsection{Class Booking\label{edu.kit.hci.soli.domain.Booking} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{public  class \texttt{\hyperref[edu.kit.hci.soli.domain.Booking]{\texttt{Booking}}}} \\
+      \hline
+      \emph{Behaviour} & The datamodel for a Booking as it is stored in the database.  \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Constructor\label{edu.kit.hci.soli.domain.Booking@edu.kit.hci.soli.domain.Booking()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.domain.Booking]{\texttt{Booking}}}()} \\
+        \hline
+        \emph{Behaviour} & Default constructor for Booking.  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Constructor\label{edu.kit.hci.soli.domain.Booking@edu.kit.hci.soli.domain.Booking(java.lang.Long,java.lang.String,java.time.LocalDateTime,java.time.LocalDateTime,edu.kit.hci.soli.domain.ShareRoomType,edu.kit.hci.soli.domain.Room,edu.kit.hci.soli.domain.User,edu.kit.hci.soli.domain.Priority,java.util.Set)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.domain.Booking]{\texttt{Booking}}}(\texttt{Long} id, \texttt{String} description, \texttt{LocalDateTime} startDate, \texttt{LocalDateTime} endDate, \texttt{\hyperref[edu.kit.hci.soli.domain.ShareRoomType]{\texttt{ShareRoomType}}} shareRoomType, \texttt{\hyperref[edu.kit.hci.soli.domain.Room]{\texttt{Room}}} room, \texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}} user, \texttt{\hyperref[edu.kit.hci.soli.domain.Priority]{\texttt{Priority}}} priority, \texttt{Set} outstandingRequests)} \\
+        \hline
+        \emph{Behaviour} & Constructs a new Booking with the specified details.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{id}: &                  the unique identifier for the booking  \\
+          \texttt{description}: &         a description of the booking  \\
+          \texttt{startDate}: &           the start date and time of the booking  \\
+          \texttt{endDate}: &             the end date and time of the booking  \\
+          \texttt{shareRoomType}: &       the kind of room sharing for the booking  \\
+          \texttt{room}: &                the room associated with the booking  \\
+          \texttt{user}: &                the user who made the booking  \\
+          \texttt{priority}: &            the priority level of the booking  \\
+          \texttt{outstandingRequests}: & the set of share requests that must still be resolved  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method hashCode\label{edu.kit.hci.soli.domain.Booking@hashCode()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{int} hashCode()} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method equals\label{edu.kit.hci.soli.domain.Booking@equals(java.lang.Object)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{boolean} equals(\texttt{Object} o)} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method setOutstandingRequests\label{edu.kit.hci.soli.domain.Booking@setOutstandingRequests(java.util.Set)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{void} setOutstandingRequests(\texttt{Set} outstandingRequests)} \\
+        \hline
+        \emph{Behaviour} & Sets the set of share requests that must still be resolved for this booking to be confirmed.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{outstandingRequests}: & the set of share requests that must still be resolved  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method setPriority\label{edu.kit.hci.soli.domain.Booking@setPriority(edu.kit.hci.soli.domain.Priority)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{void} setPriority(\texttt{\hyperref[edu.kit.hci.soli.domain.Priority]{\texttt{Priority}}} priority)} \\
+        \hline
+        \emph{Behaviour} & Sets the priority level of the booking.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{priority}: & the priority level of the booking  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method setUser\label{edu.kit.hci.soli.domain.Booking@setUser(edu.kit.hci.soli.domain.User)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{void} setUser(\texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}} user)} \\
+        \hline
+        \emph{Behaviour} & Sets the user who made the booking.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{user}: & the user who made the booking  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method setRoom\label{edu.kit.hci.soli.domain.Booking@setRoom(edu.kit.hci.soli.domain.Room)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{void} setRoom(\texttt{\hyperref[edu.kit.hci.soli.domain.Room]{\texttt{Room}}} room)} \\
+        \hline
+        \emph{Behaviour} & Sets the room associated with the booking.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{room}: & the room associated with the booking  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method setShareRoomType\label{edu.kit.hci.soli.domain.Booking@setShareRoomType(edu.kit.hci.soli.domain.ShareRoomType)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{void} setShareRoomType(\texttt{\hyperref[edu.kit.hci.soli.domain.ShareRoomType]{\texttt{ShareRoomType}}} shareRoomType)} \\
+        \hline
+        \emph{Behaviour} & Sets the kind of room sharing for the booking.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{shareRoomType}: & the kind of room sharing for the booking  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method setEndDate\label{edu.kit.hci.soli.domain.Booking@setEndDate(java.time.LocalDateTime)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{void} setEndDate(\texttt{LocalDateTime} endDate)} \\
+        \hline
+        \emph{Behaviour} & Sets the end date and time of the booking.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{endDate}: & the end date and time of the booking  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method setStartDate\label{edu.kit.hci.soli.domain.Booking@setStartDate(java.time.LocalDateTime)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{void} setStartDate(\texttt{LocalDateTime} startDate)} \\
+        \hline
+        \emph{Behaviour} & Sets the start date and time of the booking.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{startDate}: & the start date and time of the booking  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method setDescription\label{edu.kit.hci.soli.domain.Booking@setDescription(java.lang.String)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{void} setDescription(\texttt{String} description)} \\
+        \hline
+        \emph{Behaviour} & Sets the description of the booking.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{description}: & the description of the booking  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method setId\label{edu.kit.hci.soli.domain.Booking@setId(java.lang.Long)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{void} setId(\texttt{Long} id)} \\
+        \hline
+        \emph{Behaviour} & Sets the unique identifier for the booking.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{id}: & the unique identifier for the booking  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method getOutstandingRequests\label{edu.kit.hci.soli.domain.Booking@getOutstandingRequests()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{Set} getOutstandingRequests()} \\
+        \hline
+        \emph{Behaviour} & Gets the set of share requests that must still be resolved for this booking to be confirmed.    \\
+        \hline
+        \emph{Returns} & the set of share requests that must still be resolved  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method getPriority\label{edu.kit.hci.soli.domain.Booking@getPriority()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.domain.Priority]{\texttt{Priority}}} getPriority()} \\
+        \hline
+        \emph{Behaviour} & Gets the priority level of the booking.    \\
+        \hline
+        \emph{Returns} & the priority level of the booking  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method getUser\label{edu.kit.hci.soli.domain.Booking@getUser()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}} getUser()} \\
+        \hline
+        \emph{Behaviour} & Gets the user who made the booking.    \\
+        \hline
+        \emph{Returns} & the user who made the booking  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method getRoom\label{edu.kit.hci.soli.domain.Booking@getRoom()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.domain.Room]{\texttt{Room}}} getRoom()} \\
+        \hline
+        \emph{Behaviour} & Gets the room associated with the booking.    \\
+        \hline
+        \emph{Returns} & the room associated with the booking  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method getShareRoomType\label{edu.kit.hci.soli.domain.Booking@getShareRoomType()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.domain.ShareRoomType]{\texttt{ShareRoomType}}} getShareRoomType()} \\
+        \hline
+        \emph{Behaviour} & Gets the kind of room sharing for the booking.    \\
+        \hline
+        \emph{Returns} & the kind of room sharing for the booking  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method getEndDate\label{edu.kit.hci.soli.domain.Booking@getEndDate()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{LocalDateTime} getEndDate()} \\
+        \hline
+        \emph{Behaviour} & Gets the end date and time of the booking.    \\
+        \hline
+        \emph{Returns} & the end date and time of the booking  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method getStartDate\label{edu.kit.hci.soli.domain.Booking@getStartDate()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{LocalDateTime} getStartDate()} \\
+        \hline
+        \emph{Behaviour} & Gets the start date and time of the booking.    \\
+        \hline
+        \emph{Returns} & the start date and time of the booking  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method getDescription\label{edu.kit.hci.soli.domain.Booking@getDescription()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{String} getDescription()} \\
+        \hline
+        \emph{Behaviour} & Gets the description of the booking.    \\
+        \hline
+        \emph{Returns} & the description of the booking  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method getId\label{edu.kit.hci.soli.domain.Booking@getId()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{Long} getId()} \\
+        \hline
+        \emph{Behaviour} & Gets the unique identifier for the booking.    \\
+        \hline
+        \emph{Returns} & the unique identifier for the booking  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}
+  \end{adjustwidth}\subsection{Enum Priority\label{edu.kit.hci.soli.domain.Priority} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{final public  enum \texttt{\hyperref[edu.kit.hci.soli.domain.Priority]{\texttt{Priority}}}} \\
+      \hline
+      \emph{Behaviour} & Enumeration representing the priority levels of a booking. Higher levels indicate higher priority.  \\
+      \hline
+  
+    \end{tabularx}}
+  \end{adjustwidth}\subsection{Class Room\label{edu.kit.hci.soli.domain.Room} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{public  class \texttt{\hyperref[edu.kit.hci.soli.domain.Room]{\texttt{Room}}}} \\
+      \hline
+      \emph{Behaviour} & The datamodel for a room as it is stored in the database  \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Constructor\label{edu.kit.hci.soli.domain.Room@edu.kit.hci.soli.domain.Room()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.domain.Room]{\texttt{Room}}}()} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method hashCode\label{edu.kit.hci.soli.domain.Room@hashCode()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{int} hashCode()} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method equals\label{edu.kit.hci.soli.domain.Room@equals(java.lang.Object)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{boolean} equals(\texttt{Object} o)} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method setId\label{edu.kit.hci.soli.domain.Room@setId(java.lang.Long)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{void} setId(\texttt{Long} id)} \\
+        \hline
+        \emph{Behaviour} & Sets the unique identifier for the room.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{id}: & the unique identifier for the room  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method getId\label{edu.kit.hci.soli.domain.Room@getId()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{Long} getId()} \\
+        \hline
+        \emph{Behaviour} & Gets the unique identifier for the room.    \\
+        \hline
+        \emph{Returns} & the unique identifier for the room  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}
+  \end{adjustwidth}\subsection{Enum ShareRoomType\label{edu.kit.hci.soli.domain.ShareRoomType} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{final public  enum \texttt{\hyperref[edu.kit.hci.soli.domain.ShareRoomType]{\texttt{ShareRoomType}}}} \\
+      \hline
+      \emph{Behaviour} & Enumeration representing the types of room sharing options.  \\
+      \hline
+  
+    \end{tabularx}}
+  \end{adjustwidth}\subsection{Class User\label{edu.kit.hci.soli.domain.User} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{public  class \texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}}} \\
+      \hline
+      \emph{Behaviour} & The datamodel for a User as it is stored in the database.  \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Constructor\label{edu.kit.hci.soli.domain.User@edu.kit.hci.soli.domain.User()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}}()} \\
+        \hline
+        \emph{Behaviour} & Default constructor for User.  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Constructor\label{edu.kit.hci.soli.domain.User@edu.kit.hci.soli.domain.User(java.lang.Long,java.lang.String,java.lang.String,java.lang.String,boolean,java.util.Locale)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}}(\texttt{Long} id, \texttt{String} username, \texttt{String} email, \texttt{String} userId, \texttt{boolean} isDisabled, \texttt{Locale} locale)} \\
+        \hline
+        \emph{Behaviour} & Constructs a new User with the specified details.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{id}: &         the unique identifier for the user  \\
+          \texttt{username}: &   the username of the user  \\
+          \texttt{email}: &      the email address of the user  \\
+          \texttt{userId}: &     the unique user ID  \\
+          \texttt{isDisabled}: & whether the user is disabled  \\
+          \texttt{locale}: &     the locale of the user  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method hashCode\label{edu.kit.hci.soli.domain.User@hashCode()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{int} hashCode()} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method equals\label{edu.kit.hci.soli.domain.User@equals(java.lang.Object)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{boolean} equals(\texttt{Object} o)} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method setLocale\label{edu.kit.hci.soli.domain.User@setLocale(java.util.Locale)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{void} setLocale(\texttt{Locale} locale)} \\
+        \hline
+        \emph{Behaviour} & Sets the locale of the user. This is used to send mails in the user's preferred language.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{locale}: & the locale of the user  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method setDisabled\label{edu.kit.hci.soli.domain.User@setDisabled(boolean)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{void} setDisabled(\texttt{boolean} isDisabled)} \\
+        \hline
+        \emph{Behaviour} & Sets whether the user is disabled.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{isDisabled}: & true if the user is disabled, false otherwise  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method setUserId\label{edu.kit.hci.soli.domain.User@setUserId(java.lang.String)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{void} setUserId(\texttt{String} userId)} \\
+        \hline
+        \emph{Behaviour} & Sets the unique user ID.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{userId}: & the unique user ID  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method setEmail\label{edu.kit.hci.soli.domain.User@setEmail(java.lang.String)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{void} setEmail(\texttt{String} email)} \\
+        \hline
+        \emph{Behaviour} & Sets the email address of the user.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{email}: & the email address of the user  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method setUsername\label{edu.kit.hci.soli.domain.User@setUsername(java.lang.String)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{void} setUsername(\texttt{String} username)} \\
+        \hline
+        \emph{Behaviour} & Sets the username of the user.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{username}: & the username of the user  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method setId\label{edu.kit.hci.soli.domain.User@setId(java.lang.Long)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{void} setId(\texttt{Long} id)} \\
+        \hline
+        \emph{Behaviour} & Sets the unique identifier for the user.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{id}: & the unique identifier for the user  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method getLocale\label{edu.kit.hci.soli.domain.User@getLocale()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{Locale} getLocale()} \\
+        \hline
+        \emph{Behaviour} & Gets the locale of the user.    \\
+        \hline
+        \emph{Returns} & the locale of the user  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method isDisabled\label{edu.kit.hci.soli.domain.User@isDisabled()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{boolean} isDisabled()} \\
+        \hline
+        \emph{Behaviour} & Checks if the user is disabled.    \\
+        \hline
+        \emph{Returns} & true if the user is disabled, false otherwise  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method getUserId\label{edu.kit.hci.soli.domain.User@getUserId()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{String} getUserId()} \\
+        \hline
+        \emph{Behaviour} & Gets the unique user ID.    \\
+        \hline
+        \emph{Returns} & the unique user ID  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method getEmail\label{edu.kit.hci.soli.domain.User@getEmail()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{String} getEmail()} \\
+        \hline
+        \emph{Behaviour} & Gets the email address of the user.    \\
+        \hline
+        \emph{Returns} & the email address of the user  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method getUsername\label{edu.kit.hci.soli.domain.User@getUsername()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{String} getUsername()} \\
+        \hline
+        \emph{Behaviour} & Gets the username of the user.    \\
+        \hline
+        \emph{Returns} & the username of the user  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method getId\label{edu.kit.hci.soli.domain.User@getId()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{Long} getId()} \\
+        \hline
+        \emph{Behaviour} & Gets the unique identifier for the user.    \\
+        \hline
+        \emph{Returns} & the unique identifier for the user  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}
+  \end{adjustwidth}
+\end{adjustwidth}

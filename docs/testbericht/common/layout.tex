@@ -1,0 +1,131 @@
+%Hier sind alle Einstellungen enthalten, die sich auf das Seiten- und
+%Dokumentenlayout beziehen
+
+\documentclass[
+  11pt,                   % Schriftgröße
+  DIV12,
+  german,                 % für Umlaute, Silbentrennung etc.
+  oneside,                % einseitiges Dokument
+  titlepage,              % es wird eine Titelseite verwendet
+  parskip=half,           % Abstand zwischen Absätzen (halbe Zeile)
+  headings=normal,        % Größe der Überschriften verkleinern
+  captions=tableheading,  % Beschriftung von Tabellen unterhalb ausgeben
+  final                   % Status des Dokuments (final/draft)
+]{scrreprt}               %
+
+
+\input{common/packages}      % enthält eingebundene Packete
+
+%------Seitenränder-------------------------------------------------------------
+\geometry{verbose,                     % zeigt die eingestellten Parameter beim
+                                       % Latexlauf an
+      paper=a4paper,                   % Papierformat
+      top=25mm,                        % Rand oben
+      left=25mm,                       % Rand links
+      right=25mm,                      % Rand rechts
+      bottom=45mm,                     % Rand unten
+      pdftex                           % schreibt das Papierformat in die
+                                       % Ausgabe damit Ausgabeprogramm
+                                       % Papiergröße erkennt
+  }
+
+%Seitenlayout
+\onehalfspace        % 1,5-facher Abstand
+
+%------Kopf- und Fußzeilen -----------------------------------------------------
+\pagestyle{scrheadings}
+
+%------Kopf- und Fußzeile auch auf Kapitelanfangsseiten ------------------------
+\renewcommand*{\chapterpagestyle}{scrheadings}
+
+%------Schriftform der Kopfzeile -----------------------------------------------
+\renewcommand{\headfont}{\normalfont}
+
+%----Spezielle Befehle
+\newcommand{\lfk}[1]{$\langle LF#1\rangle$}
+
+%----Farben
+\definecolor{tubsRed}{cmyk}{0.1,1.0,0.8,0.0}
+\definecolor{tuRed}{cmyk}{1.0,0.0,0.6,0.0}
+
+%------Kopfzeile----------------------------------------------------------------
+\setheadsepline{1pt}[\color{tuRed}]
+\setlength{\headheight}{21mm}        % Höhe der Kopfzeile
+\ihead{\large{\textsc{\praktikumTitel}}\\    % Text in der linken Box
+       \small{\projektTitel}}
+\chead{}                            % Text in der mittleren Box
+
+%----Fusszeile
+\setfootsepline{1pt}[\color{tuRed}]
+\cfoot{}                            % Text in mittlerer Box
+\ofoot{\pagemark}                    % Seitenzahl in rechter Box
+
+
+
+%------Labels mit eigenem Text für \ref ----------------------------------------
+\makeatletter
+\def\namedlabel#1#2{\begingroup
+#2%
+\def\@currentlabel{#2}%
+\phantomsection\label{#1}\endgroup
+}
+\makeatother
+
+
+%------Neue Environments -------------------------------------------------------
+
+\newcommand{\refsetcounter}[2]{\setcounter{#1}{#2}\addtocounter{#1}{-1}\refstepcounter{#1}}
+
+%%Funktion im Pflichtenheft
+%\newcounter{functioncount}
+%\newenvironment{function}[2]{\refsetcounter{functioncount}{#1}\large\textbf{\sffamily{#2 }}\namedlabel{F#1}{$\langle F#1\rangle$}\normalsize\begin{description}\setlength{\itemsep}{-5pt}}{\end{description}}
+%
+%%Daten im Pflichtenheft
+%\newcounter{datacount}
+%\newenvironment{data}[2]{\refsetcounter{datacount}{#1}\textbf{#2} \namedlabel{D#1}{$\langle D#1\rangle$}\\}{}
+%
+%Kriterien im Pflichtenheft
+\newcounter{mustcount}
+\newcommand{\must}[2]{\refsetcounter{mustcount}{#1}\namedlabel{MK#1}{$\langle MK#1\rangle$}~#2\\}
+
+\newcommand{\mustchange}[2]{\ref{MK#1}~#2 \\}
+
+\newcounter{wishcount}
+\newcommand{\wish}[2]{\refsetcounter{wishcount}{#1}\namedlabel{WK#1}{$\langle WK#1\rangle$}~#2\\}
+
+\newcommand{\wishchange}[2]{\ref{WK#1}~#2 \\}
+
+
+%
+%\newcounter{wontcount}
+%\newcommand{\wont}[2]{\refsetcounter{wontcount}{#1}\namedlabel{RN#1}{$\langle AK#1\rangle$} #2\\}
+%
+%\newcounter{notfunctional}
+%\newcommand{\notfunctional}[2]{\refsetcounter{notfunctional}{#1}\namedlabel{NF#1}{$\langle NF#1\rangle$} #2\\}
+%
+%%Qualitätsanforderungen im Pflichtenheft
+%\newcommand{\qualityReq}[2]{\refsetcounter{datacount}{#1}\namedlabel{Q#1}{$\langle Q#1\rangle$} #2\\}
+
+% Benutzeroberflächen im Pflichtenheft
+\newcounter{uicount}
+\newenvironment{ui}[2]{\refsetcounter{uicount}{#1}\textbf{#2} \namedlabel{UI#1}{$\langle UI#1\rangle$}\\}{}
+
+% Klassen
+\newcounter{classcount}
+\newenvironment{class}[2]{\refsetcounter{classcount}{#1}\textbf{#2}\namedlabel{CL#1}{$\langle CL#1\rangle$}\begin{description}\setlength{\itemsep}{-5pt}}{\end{description}}
+
+% Entitäten
+\newcounter{entitycount}
+\newenvironment{entity}[2]{\refsetcounter{entitycount}{#1}\textbf{#2} \namedlabel{E#1}{$\langle E#1\rangle$}\\}{}
+
+% Component
+\newcounter{componentcount}
+\newenvironment{component}[2]{\refsetcounter{componentcount}{#1}\textbf{Komponente \namedlabel{C#1}{$\langle C#1\rangle$}: #2}\\}{}
+
+% Interface
+\newcounter{interfacecount}
+\newenvironment{interface}[2]{\refsetcounter{interfacecount}{#1}\textbf{Schnittstelle \namedlabel{I#1}{$\langle I#1\rangle$}: #2}\\}{}
+
+% Testfall
+\newcounter{scenariocount}
+\newenvironment{scenario}[2]{\refsetcounter{scenariocount}{#1}\textbf{Szenario: #2}\namedlabel{S#1}{$\langle S#1\rangle$}\normalsize\begin{description}\setlength{\itemsep}{-5pt}}{\end{description}\hspace{7.5em}}

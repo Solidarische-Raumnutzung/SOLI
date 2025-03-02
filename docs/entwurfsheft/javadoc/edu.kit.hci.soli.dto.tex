@@ -1,0 +1,393 @@
+
+
+\section{Package edu.kit.hci.soli.dto}
+\begin{adjustwidth}{1.5em}{0pt}
+  \subsection{Interface BookingAttemptResult\label{edu.kit.hci.soli.dto.BookingAttemptResult} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{abstract sealed public  interface \texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult]{\texttt{BookingAttemptResult}}}} \\
+      \hline
+      \emph{Behaviour} & Algebraic data type representing the result of a booking attempt.  \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Interface PossibleCooperation\label{edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation} }
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{static abstract sealed public  interface \texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation]{\texttt{PossibleCooperation}} implements \texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult]{\texttt{BookingAttemptResult}}}}} \\
+        \hline
+        \emph{Behaviour} & Algebraic data type representing a failed booking attempt that may be resolved by cooperation.  \\
+        \hline
+  
+      \end{tabularx}}\paragraph{Method contact\label{edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation@contact()}}
+      \begin{adjustwidth}{1.5em}{0pt}
+        {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \emph{Signature} & \texttt{abstract public \texttt{List} contact()} \\
+          \hline
+          \emph{Behaviour} & Gets the list of bookings that require the permission for this cooperation. If this is not empty, the successful result of affirming this cooperation would be of type  \texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult.Staged]{\texttt{Staged}}}.    \\
+          \hline
+          \emph{Returns} & the list of bookings to contact  \\
+          \hline
+  
+        \end{tabularx}}
+      \end{adjustwidth}\paragraph{Method cooperate\label{edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation@cooperate()}}
+      \begin{adjustwidth}{1.5em}{0pt}
+        {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \emph{Signature} & \texttt{abstract public \texttt{List} cooperate()} \\
+          \hline
+          \emph{Behaviour} & Gets the list of bookings that would happen concurrently to this booking.    \\
+          \hline
+          \emph{Returns} & the list of bookings to cooperate with  \\
+          \hline
+  
+        \end{tabularx}}
+      \end{adjustwidth}\paragraph{Method override\label{edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation@override()}}
+      \begin{adjustwidth}{1.5em}{0pt}
+        {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \emph{Signature} & \texttt{abstract public \texttt{List} override()} \\
+          \hline
+          \emph{Behaviour} & Gets the list of bookings that would have to be overwritten for this cooperation.    \\
+          \hline
+          \emph{Returns} & the list of bookings to override  \\
+          \hline
+  
+        \end{tabularx}}
+      \end{adjustwidth}\paragraph{Record Deferred\label{edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation.Deferred} }
+      \begin{adjustwidth}{1.5em}{0pt}
+        {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \emph{Signature} & \texttt{static final public  record \texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation.Deferred]{\texttt{Deferred}} implements \texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation]{\texttt{PossibleCooperation}}}}} \\
+          \hline
+          \emph{Behaviour} & Represents a deferred possible cooperation in a booking attempt. The successful result of affirming this cooperation is of type  \texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult.Staged]{\texttt{Staged}}} (and, as such, will require confirmation by others).  \\
+          \hline
+  
+        \end{tabularx}}\subparagraph{Constructor\label{edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation.Deferred@edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation.Deferred(java.util.List,java.util.List,java.util.List)}}
+        \begin{adjustwidth}{1.5em}{0pt}
+          {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+            \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation.Deferred]{\texttt{Deferred}}}(\texttt{List} override, \texttt{List} contact, \texttt{List} cooperate)} \\
+            \hline
+  
+          \end{tabularx}}
+        \end{adjustwidth}\subparagraph{Method override\label{edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation.Deferred@override()}}
+        \begin{adjustwidth}{1.5em}{0pt}
+          {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+            \emph{Signature} & \texttt{public \texttt{List} override()} \\
+            \hline
+            \emph{Behaviour} & Gets the list of bookings that would have to be overwritten for this cooperation.    \\
+            \hline
+            \emph{Returns} & the list of bookings to override  \\
+            \hline
+            \emph{Overrides} & \texttt{\texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation]{\texttt{PossibleCooperation}}}.\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult$PossibleCooperation@override()]{override}\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult$PossibleCooperation@override()]{(}\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult$PossibleCooperation@override()]{)}} \\
+            \hline
+  
+          \end{tabularx}}
+        \end{adjustwidth}\subparagraph{Method contact\label{edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation.Deferred@contact()}}
+        \begin{adjustwidth}{1.5em}{0pt}
+          {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+            \emph{Signature} & \texttt{public \texttt{List} contact()} \\
+            \hline
+            \emph{Behaviour} & Gets the list of bookings that require the permission for this cooperation. If this is not empty, the successful result of affirming this cooperation would be of type  \texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult.Staged]{\texttt{Staged}}}.    \\
+            \hline
+            \emph{Returns} & the list of bookings to contact  \\
+            \hline
+            \emph{Overrides} & \texttt{\texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation]{\texttt{PossibleCooperation}}}.\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult$PossibleCooperation@contact()]{contact}\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult$PossibleCooperation@contact()]{(}\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult$PossibleCooperation@contact()]{)}} \\
+            \hline
+  
+          \end{tabularx}}
+        \end{adjustwidth}\subparagraph{Method cooperate\label{edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation.Deferred@cooperate()}}
+        \begin{adjustwidth}{1.5em}{0pt}
+          {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+            \emph{Signature} & \texttt{public \texttt{List} cooperate()} \\
+            \hline
+            \emph{Behaviour} & Gets the list of bookings that would happen concurrently to this booking.    \\
+            \hline
+            \emph{Returns} & the list of bookings to cooperate with  \\
+            \hline
+            \emph{Overrides} & \texttt{\texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation]{\texttt{PossibleCooperation}}}.\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult$PossibleCooperation@cooperate()]{cooperate}\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult$PossibleCooperation@cooperate()]{(}\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult$PossibleCooperation@cooperate()]{)}} \\
+            \hline
+  
+          \end{tabularx}}
+        \end{adjustwidth}
+      \end{adjustwidth}\paragraph{Record Immediate\label{edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation.Immediate} }
+      \begin{adjustwidth}{1.5em}{0pt}
+        {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \emph{Signature} & \texttt{static final public  record \texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation.Immediate]{\texttt{Immediate}} implements \texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation]{\texttt{PossibleCooperation}}}}} \\
+          \hline
+          \emph{Behaviour} & Represents an immediate possible cooperation in a booking attempt. The successful result of affirming this cooperation is an immediate  \texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult.Success]{\texttt{Success}}}.  \\
+          \hline
+  
+        \end{tabularx}}\subparagraph{Constructor\label{edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation.Immediate@edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation.Immediate(java.util.List,java.util.List)}}
+        \begin{adjustwidth}{1.5em}{0pt}
+          {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+            \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation.Immediate]{\texttt{Immediate}}}(\texttt{List} override, \texttt{List} cooperate)} \\
+            \hline
+  
+          \end{tabularx}}
+        \end{adjustwidth}\subparagraph{Method contact\label{edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation.Immediate@contact()}}
+        \begin{adjustwidth}{1.5em}{0pt}
+          {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+            \emph{Signature} & \texttt{public \texttt{List} contact()} \\
+            \hline
+            \emph{Behaviour} & Gets the list of bookings that require the permission for this cooperation. If this is not empty, the successful result of affirming this cooperation would be of type  \texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult.Staged]{\texttt{Staged}}}.    \\
+            \hline
+            \emph{Returns} & the list of bookings to contact  \\
+            \hline
+            \emph{Overrides} & \texttt{\texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation]{\texttt{PossibleCooperation}}}.\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult$PossibleCooperation@contact()]{contact}\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult$PossibleCooperation@contact()]{(}\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult$PossibleCooperation@contact()]{)}} \\
+            \hline
+  
+          \end{tabularx}}
+        \end{adjustwidth}\subparagraph{Method override\label{edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation.Immediate@override()}}
+        \begin{adjustwidth}{1.5em}{0pt}
+          {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+            \emph{Signature} & \texttt{public \texttt{List} override()} \\
+            \hline
+            \emph{Behaviour} & Gets the list of bookings that would have to be overwritten for this cooperation.    \\
+            \hline
+            \emph{Returns} & the list of bookings to override  \\
+            \hline
+            \emph{Overrides} & \texttt{\texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation]{\texttt{PossibleCooperation}}}.\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult$PossibleCooperation@override()]{override}\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult$PossibleCooperation@override()]{(}\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult$PossibleCooperation@override()]{)}} \\
+            \hline
+  
+          \end{tabularx}}
+        \end{adjustwidth}\subparagraph{Method cooperate\label{edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation.Immediate@cooperate()}}
+        \begin{adjustwidth}{1.5em}{0pt}
+          {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+            \emph{Signature} & \texttt{public \texttt{List} cooperate()} \\
+            \hline
+            \emph{Behaviour} & Gets the list of bookings that would happen concurrently to this booking.    \\
+            \hline
+            \emph{Returns} & the list of bookings to cooperate with  \\
+            \hline
+            \emph{Overrides} & \texttt{\texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult.PossibleCooperation]{\texttt{PossibleCooperation}}}.\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult$PossibleCooperation@cooperate()]{cooperate}\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult$PossibleCooperation@cooperate()]{(}\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult$PossibleCooperation@cooperate()]{)}} \\
+            \hline
+  
+          \end{tabularx}}
+        \end{adjustwidth}
+      \end{adjustwidth}
+    \end{adjustwidth}\subsubsection{Record Failure\label{edu.kit.hci.soli.dto.BookingAttemptResult.Failure} }
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{static final public  record \texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult.Failure]{\texttt{Failure}} implements \texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult]{\texttt{BookingAttemptResult}}}}} \\
+        \hline
+        \emph{Behaviour} & Represents a booking attempt that has failed because of an unresolveable conflict with a booking of higher or equal priority.  \\
+        \hline
+  
+      \end{tabularx}}\paragraph{Constructor\label{edu.kit.hci.soli.dto.BookingAttemptResult.Failure@edu.kit.hci.soli.dto.BookingAttemptResult.Failure(java.util.List)}}
+      \begin{adjustwidth}{1.5em}{0pt}
+        {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult.Failure]{\texttt{Failure}}}(\texttt{List} conflict)} \\
+          \hline
+  
+        \end{tabularx}}
+      \end{adjustwidth}\paragraph{Method conflict\label{edu.kit.hci.soli.dto.BookingAttemptResult.Failure@conflict()}}
+      \begin{adjustwidth}{1.5em}{0pt}
+        {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \emph{Signature} & \texttt{public \texttt{List} conflict()} \\
+          \hline
+  
+        \end{tabularx}}
+      \end{adjustwidth}
+    \end{adjustwidth}\subsubsection{Record Staged\label{edu.kit.hci.soli.dto.BookingAttemptResult.Staged} }
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{static final public  record \texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult.Staged]{\texttt{Staged}} implements \texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult]{\texttt{BookingAttemptResult}}}}} \\
+        \hline
+        \emph{Behaviour} & Represents a booking attempt that was successful but requires confirmation by one or more users.  \\
+        \hline
+  
+      \end{tabularx}}\paragraph{Constructor\label{edu.kit.hci.soli.dto.BookingAttemptResult.Staged@edu.kit.hci.soli.dto.BookingAttemptResult.Staged(edu.kit.hci.soli.domain.Booking)}}
+      \begin{adjustwidth}{1.5em}{0pt}
+        {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult.Staged]{\texttt{Staged}}}(\texttt{\hyperref[edu.kit.hci.soli.domain.Booking]{\texttt{Booking}}} booking)} \\
+          \hline
+  
+        \end{tabularx}}
+      \end{adjustwidth}\paragraph{Method booking\label{edu.kit.hci.soli.dto.BookingAttemptResult.Staged@booking()}}
+      \begin{adjustwidth}{1.5em}{0pt}
+        {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.domain.Booking]{\texttt{Booking}}} booking()} \\
+          \hline
+  
+        \end{tabularx}}
+      \end{adjustwidth}
+    \end{adjustwidth}\subsubsection{Record Success\label{edu.kit.hci.soli.dto.BookingAttemptResult.Success} }
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{static final public  record \texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult.Success]{\texttt{Success}} implements \texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult]{\texttt{BookingAttemptResult}}}}} \\
+        \hline
+        \emph{Behaviour} & Represents a successful booking attempt.  \\
+        \hline
+  
+      \end{tabularx}}\paragraph{Constructor\label{edu.kit.hci.soli.dto.BookingAttemptResult.Success@edu.kit.hci.soli.dto.BookingAttemptResult.Success(edu.kit.hci.soli.domain.Booking)}}
+      \begin{adjustwidth}{1.5em}{0pt}
+        {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult.Success]{\texttt{Success}}}(\texttt{\hyperref[edu.kit.hci.soli.domain.Booking]{\texttt{Booking}}} booking)} \\
+          \hline
+  
+        \end{tabularx}}
+      \end{adjustwidth}\paragraph{Method booking\label{edu.kit.hci.soli.dto.BookingAttemptResult.Success@booking()}}
+      \begin{adjustwidth}{1.5em}{0pt}
+        {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.domain.Booking]{\texttt{Booking}}} booking()} \\
+          \hline
+  
+        \end{tabularx}}
+      \end{adjustwidth}
+    \end{adjustwidth}
+  \end{adjustwidth}\subsection{Enum BookingDeleteReason\label{edu.kit.hci.soli.dto.BookingDeleteReason} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{final public  enum \texttt{\hyperref[edu.kit.hci.soli.dto.BookingDeleteReason]{\texttt{BookingDeleteReason}}}} \\
+      \hline
+      \emph{Behaviour} & Enumeration representing the reasons for deleting a booking.  \\
+      \hline
+  
+    \end{tabularx}}
+  \end{adjustwidth}\subsection{Record CalendarEvent\label{edu.kit.hci.soli.dto.CalendarEvent} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{final public  record \texttt{\hyperref[edu.kit.hci.soli.dto.CalendarEvent]{\texttt{CalendarEvent}}}} \\
+      \hline
+      \emph{Behaviour} & Record representing an event as specified by FullCalendar.    \\
+      \hline
+      \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \texttt{url}: & the URL associated with the event  \\
+        \texttt{title}: & the title of the event  \\
+        \texttt{start}: & the start date and time of the event  \\
+        \texttt{end}: & the end date and time of the event  \\
+        \texttt{classNames}: & the list of CSS classes to use for the generated HTML element of this event  \\
+  
+      \end{tabularx}} \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Constructor\label{edu.kit.hci.soli.dto.CalendarEvent@edu.kit.hci.soli.dto.CalendarEvent(java.lang.String,java.lang.String,java.time.LocalDateTime,java.time.LocalDateTime,java.util.List)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.dto.CalendarEvent]{\texttt{CalendarEvent}}}(\texttt{String} url, \texttt{String} title, \texttt{LocalDateTime} start, \texttt{LocalDateTime} end, \texttt{List} classNames)} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method url\label{edu.kit.hci.soli.dto.CalendarEvent@url()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{String} url()} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method title\label{edu.kit.hci.soli.dto.CalendarEvent@title()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{String} title()} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method start\label{edu.kit.hci.soli.dto.CalendarEvent@start()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{LocalDateTime} start()} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method end\label{edu.kit.hci.soli.dto.CalendarEvent@end()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{LocalDateTime} end()} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method classNames\label{edu.kit.hci.soli.dto.CalendarEvent@classNames()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{List} classNames()} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}
+  \end{adjustwidth}\subsection{Enum KnownError\label{edu.kit.hci.soli.dto.KnownError} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{final public  enum \texttt{\hyperref[edu.kit.hci.soli.dto.KnownError]{\texttt{KnownError}}}} \\
+      \hline
+      \emph{Behaviour} & Enumeration representing known errors with their corresponding titles and messages.  \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Field message\label{edu.kit.hci.soli.dto.KnownError@message}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{final public \texttt{\hyperref[edu.kit.hci.soli.dto.KnownError]{\texttt{KnownError}}} message} \\
+        \hline
+        \emph{Behaviour} & The detailed error message.  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Field title\label{edu.kit.hci.soli.dto.KnownError@title}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{final public \texttt{\hyperref[edu.kit.hci.soli.dto.KnownError]{\texttt{KnownError}}} title} \\
+        \hline
+        \emph{Behaviour} & The title of the error message.  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}
+  \end{adjustwidth}\subsection{Record LoginStateModel\label{edu.kit.hci.soli.dto.LoginStateModel} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{final public  record \texttt{\hyperref[edu.kit.hci.soli.dto.LoginStateModel]{\texttt{LoginStateModel}}}} \\
+      \hline
+      \emph{Behaviour} & Record representing the login state model.    \\
+      \hline
+      \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \texttt{name}: & the name of the user  \\
+        \texttt{kind}: & the kind of login  \\
+        \texttt{csrfToken}: & the CSRF token associated with the login  \\
+        \texttt{user}: & the user associated with the login, can be null  \\
+  
+      \end{tabularx}} \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Constructor\label{edu.kit.hci.soli.dto.LoginStateModel@edu.kit.hci.soli.dto.LoginStateModel(java.lang.String,edu.kit.hci.soli.dto.LoginStateModel.Kind,org.springframework.security.web.csrf.CsrfToken,edu.kit.hci.soli.domain.User)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.dto.LoginStateModel]{\texttt{LoginStateModel}}}(\texttt{String} name, \texttt{\hyperref[edu.kit.hci.soli.dto.LoginStateModel.Kind]{\texttt{Kind}}} kind, \texttt{CsrfToken} csrfToken, \texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}} user)} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method name\label{edu.kit.hci.soli.dto.LoginStateModel@name()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{String} name()} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method kind\label{edu.kit.hci.soli.dto.LoginStateModel@kind()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.dto.LoginStateModel.Kind]{\texttt{Kind}}} kind()} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method csrfToken\label{edu.kit.hci.soli.dto.LoginStateModel@csrfToken()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{CsrfToken} csrfToken()} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method user\label{edu.kit.hci.soli.dto.LoginStateModel@user()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}} user()} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Enum Kind\label{edu.kit.hci.soli.dto.LoginStateModel.Kind} }
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{static final public  enum \texttt{\hyperref[edu.kit.hci.soli.dto.LoginStateModel.Kind]{\texttt{Kind}}}} \\
+        \hline
+        \emph{Behaviour} & Enumeration representing the kind of login.  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}
+  \end{adjustwidth}
+\end{adjustwidth}

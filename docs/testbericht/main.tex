@@ -1,0 +1,37 @@
+% !TeX root = main.tex
+%Dies ist die Hauptseite des Dokumentes. Es werden u. a. alle Kapitel,
+%Einstellung im Header eingebunden.  Veränderungen müssen in folgenden Dateien
+%vorgenommen werden:
+      %- config.tex
+      %- einzelne Kapitel (evtl. erweitern)
+
+\input{common/layout}           % Diese Datei enthält alle
+                                           % Layouteinstellungen
+\newcommand{\dokumentTitel}{Testbericht}
+\input{common/config}
+
+\makeglossaries
+
+%------Beginn des Gesamtdokumentes----------------------------------------------
+\begin{document}
+
+%------Eingebundene Seiten, Verzeichnisse bzw. Kapitel--------------------------
+\include{common/titelseite}                       % Titelseite
+
+\include{chapters/99_glossar}
+
+\tableofcontents                           % Inhaltsverzeichnis wird automatisch
+                                           % generiert
+\listoffigures
+\newpage
+\listoftodos[Notes]
+
+\include{chapters/01_einleitung}
+\include{chapters/02_szenarien}
+\include{chapters/03_werkzeuge}
+\include{chapters/04_bugs}
+
+\printglossaries
+
+%------Ende des Dokumentes------------------------------------------------------
+\end{document}

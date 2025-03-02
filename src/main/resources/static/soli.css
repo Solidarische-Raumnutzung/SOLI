@@ -85,6 +85,13 @@
     z-index: 20;
 }
 
+/* Do not allocate place for invisible validator hints */
+.validator {
+    & ~ .validator-hint {
+        display: none;
+    }
+}
+
 /* Subtract the height of the navbar from the size of the screen to avoid a secondary scrollbar in the calendar */
 .soli-content-height {
     height: calc(100% - 4rem);

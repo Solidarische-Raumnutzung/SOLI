@@ -138,13 +138,19 @@ public class RoomsController {
      */
     @DeleteMapping("/admin/rooms/{roomId:\\d+}")
     public String deleteRoom(Model model, HttpServletResponse response,
-                             @PathVariable long roomId) {
+                             @PathVariable long roomId,
+                             @ModelAttribute("layout") LayoutParams layout) {
         Optional<Room> room = roomService.getOptional(roomId);
         if (room.isEmpty()) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             model.addAttribute("error", KnownError.NOT_FOUND);
             return "error/known";
         }
+
+        if (layout.getRoom() != null && layout.getRoom().getId() == roomId) {
+            layout.setRoom(null);
+        }
+
         roomService.delete(room.get());
         return "redirect:/admin/rooms";
     }

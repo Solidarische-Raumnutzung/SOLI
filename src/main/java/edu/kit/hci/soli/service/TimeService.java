@@ -34,4 +34,13 @@ public interface TimeService {
      * @return the current time
      */
     LocalDateTime now();
+
+    /**
+     * Normalizes a given {@link LocalDateTime} to the nearest 15-minute interval.
+     * The seconds and nanoseconds are set to zero.
+     *
+     * @param time the time to be normalized
+     * @return the normalized {@link LocalDateTime}
+     */
+    LocalDateTime normalize(LocalDateTime time);
 }

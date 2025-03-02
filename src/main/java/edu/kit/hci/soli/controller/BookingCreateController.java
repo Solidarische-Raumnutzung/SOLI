@@ -140,14 +140,13 @@ public class BookingCreateController {
 
         // Validate start and end times
         TimeTuple openingHours = room.get().getOpeningHours().get(formData.getStart().getDayOfWeek());
-        LocalDateTime start = formData.getStart();
-        LocalDateTime end = formData.getEnd().atDate(start.toLocalDate());
-        if (start.isAfter(end)
+        LocalDateTime start = timeService.normalize(formData.getStart());
+        LocalDateTime end = timeService.normalize(formData.getEnd().atDate(start.toLocalDate()));
+        if (start.equals(end) && !end.toLocalTime().equals(formData.getEnd())) end = end.plusMinutes(15);
+        if (!end.isAfter(start)
                 || start.isBefore(timeService.minimumTime(room.get()))
                 || end.isAfter(start.plusHours(4)) // Keep these in sync with index.jte!
                 || end.isAfter(timeService.maximumTime(room.get()))
-                || start.getMinute() % 15 != 0
-                || end.getMinute() % 15 != 0
                 || start.getDayOfWeek() != end.getDayOfWeek()
                 || start.getDayOfWeek() == DayOfWeek.SATURDAY
                 || start.getDayOfWeek() == DayOfWeek.SUNDAY

@@ -51,7 +51,11 @@
                         <td>${user.getUsername()}</td>
                         <td>${user.getEmail()}</td>
                         <td>${user.getUserId()}</td>
-                        <td>${user.isDisabled()}</td>
+                        @if(user.isDisabled())
+                            <td>${context.localize("generic.true")}</td>
+                        @else
+                            <td>${context.localize("generic.false")}</td>
+                        @endif
                         <td>
                             @if (user.isDisabled())
                                 @template.util.form(csrf = csrf, action = "/admin/users/" + user.getId() + "/reactivate", method = PUT, content = @`

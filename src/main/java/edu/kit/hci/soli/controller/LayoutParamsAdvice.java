@@ -85,7 +85,7 @@ public class LayoutParamsAdvice {
                 login, currentRoom,
                 room -> {
                     request.getSession().setAttribute("room", room);
-                    return getUpdate(currentRoom, login.user());
+                    return getUpdate(room, login.user());
                 });
     }
 

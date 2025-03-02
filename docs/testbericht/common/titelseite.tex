@@ -1,0 +1,48 @@
+% Dies ist die Titelseite.
+% Die Ausgabe darf 1 Seite nicht überschreiten, also ggf. Abstände anpassen
+% Die Angabe in [...] gibt den Abstand nach der entsprechenden Zeile an.
+
+
+%----Stil dieser Seite----------------------------------------------------------
+\thispagestyle{plain}      % Kopfzeile bleibt leer
+
+%----Beginn der Titelseite------------------------------------------------------
+\begin{titlepage}
+
+\vspace*{-3.8cm}
+\hspace*{-2cm}\begin{minipage}{1.25\textwidth}
+\includegraphics[width=5.3cm]{common/kit_logo}\setlength{\unitlength}{1mm}\begin{picture}(00,00)(-10,0)\color{tuRed}\put(000,004){\line(1,0){140}}\end{picture}%\hfill
+\parbox[b]{0.68\textwidth}{\hfill\includegraphics[width=8cm,height=2.4cm,keepaspectratio]{\institutsLogo}\\~}
+\end{minipage}
+
+
+~\\[5ex]
+
+%----zentrierte Ausrichtung über die gesamte Seite----------------------------
+\begin{center}
+
+%----Titel des Praktikum (\praktikumTitel in newComments zu verändern)--------
+{\relsize{4}{\textbf{\textsc{\praktikumTitel}}}}\\[5ex]
+
+%----Titel des Teilprojektes (\projektTitel in newComments verändern)---------
+{\relsize{3}{\textbf{\textsc{\projektTitel}}}}\\[5ex]
+
+Praxis der Softwareentwicklung (PSE)\\
+\semester\\[6ex]
+
+{\relsize{3}{\textbf{\dokumentTitel}}}\\[5ex]
+
+%----Daten des Auftraggebers
+Karlsruher Institut für Technologie (KIT)\\
+\institut[2ex]
+\textbf{Betreuer: \betreuer}\\[5ex]
+
+\textbf{Projektteilnehmer:}\\
+
+\input{common/teilnehmer} % enthält Tabelle der Praktikumsteilnehmer
+
+\vfill
+Karlsruhe, \today
+
+\end{center}
+\end{titlepage}

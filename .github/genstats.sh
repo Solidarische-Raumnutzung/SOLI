@@ -52,5 +52,5 @@ EOF
 
 
 # This is specific to SOLI, remove it if you use this elsewhere
-mv commits_per_hour.png implementationsbericht/figures/hours.png
-mv commits_per_week.png implementationsbericht/figures/weeks.png
+mv commits_per_hour.png docs/implementationsbericht/figures/hours.png
+mv commits_per_week.png docs/implementationsbericht/figures/weeks.png

@@ -1,0 +1,78 @@
+%------Ändern von Schriftschnitten - (Muss ganz am Anfang stehen !) ------------
+\usepackage{fix-cm}
+
+
+%------Umlaute -----------------------------------------------------------------
+%   Umlaute/Sonderzeichen wie äüöß können direkt im Quelltext verwenden werden.
+%    Erlaubt automatische Trennung von Worten mit Umlauten.
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+%------Anpassung der Landessprache----------------------------------------------
+\usepackage[ngerman]{babel}
+
+%------Einfache Definition der Zeilenabstände und Seitenränder------------------
+\usepackage{geometry}
+\usepackage{setspace}
+
+%------Schriftgrößenanpassung von einzelnen Textpassagen------------------------
+\usepackage{relsize}
+
+%------Trennlinien in Kopf- und Fusszeile
+\usepackage[headsepline, footsepline, ilines]{scrlayer-scrpage}
+
+%------Grafiken und Farben -----------------------------------------------------
+\usepackage{graphicx}
+
+%------Packet zum Sperren, Unterstreichen und Hervorheben von Texten------------
+\usepackage{soul}
+
+%------ergänzende Schriftart----------------------------------------------------
+\usepackage{helvet}
+
+%------Lange Tabellen-----------------------------------------------------------
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{lscape}
+\usepackage{tabularx}
+
+%------DocTeX-------------------------------------------------------------------
+\usepackage{changepage}
+\usepackage{scalerel}
+\newcolumntype{R}{>{\raggedright\arraybackslash}X}%
+
+%------PDF-Optionen-------------------------------------------------------------
+\usepackage[
+  bookmarks,
+  bookmarksopen=true,
+  colorlinks=true,
+  linkcolor=black,        % einfache interne Verknüpfungen
+  anchorcolor=black,      % Ankertext
+  citecolor=black,        % Verweise auf Literaturverzeichniseinträge im Text
+  filecolor=black,        % Verknüpfungen, die lokale Dateien öffnen
+  menucolor=black,        % Acrobat-Menüpunkte
+  urlcolor=black,         % Farbe für URL-Links
+  backref,                % Zurücktext nach jedem Bibliografie-Eintrag als
+                          % Liste von Überschriftsnummern
+  pagebackref,            % Zurücktext nach jedem Bibliografie-Eintrag als
+                          % Liste von Seitenzahlen
+  plainpages=false,       % zur korrekten Erstellung der Bookmarks
+  pdfpagelabels,          % zur korrekten Erstellung der Bookmarks
+  hypertexnames=false,
+  colorlinks=true,   % zur korrekten Erstellung der Bookmarks
+  linktocpage             % Seitenzahlen anstatt Text im Inhaltsverzeichnis verlinken
+  ]{hyperref}
+  \hypersetup{
+    colorlinks=true, %set true if you want colored links
+    linktoc=all,     %set to all if you want both sections and subsections linked
+  }
+  \usepackage{verbatim}
+  \usepackage{lipsum}                     % Dummytext
+  \usepackage{xargs}                      % Use more than one optional parameter in a new commands
+  \usepackage[pdftex,dvipsnames]{xcolor}  % Coloured text etc.
+
+  \usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+
+%------Glossar------------------------------------------------------------------
+\usepackage[translate=babel,toc]{glossaries}

@@ -9,6 +9,7 @@ import edu.kit.hci.soli.repository.RoomRepository;
 import edu.kit.hci.soli.service.BookingsService;
 import edu.kit.hci.soli.service.RoomService;
 import edu.kit.hci.soli.service.TimeService;
+import edu.kit.hci.soli.test.Either;
 import edu.kit.hci.soli.test.TestService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -45,6 +46,10 @@ public class BookingCreateControllerTest {
     @Autowired private BookingCreateController bookingsController;
     @Autowired private TimeService timeService;
     @Autowired private RoomRepository roomRepository;
+    @Autowired
+    private BookingsService bookingsService;
+    @Autowired
+    private RoomService roomService;
 
     @BeforeAll
     public static void clean(@Autowired TestService testService) {
@@ -56,16 +61,18 @@ public class BookingCreateControllerTest {
         testService.reset();
     }
 
-    private @Nullable KnownError lsmCreateBooking(CreateEventForm formData, User user, long room) {
+    private Either<KnownError, Booking> lsmCreateBooking(CreateEventForm formData, User user, long room) {
         ExtendedModelMap model = new ExtendedModelMap();
         MockHttpServletResponse response = new MockHttpServletResponse();
         MockHttpServletRequest request = new MockHttpServletRequest();
         String result = bookingsController.createBooking(model, response, request, room, testService.paramsFor(user, request), () -> user, formData);
         if (result.equals("error/known")) {
-            return (KnownError) model.get("error");
+            return new Either.Left<>((KnownError) model.get("error"));
         }
         assertEquals("redirect:/" + room, result);
-        return null;
+        List<Booking> bookings = bookingsService.getBookingsByUser(user, roomService.getOptional(room).orElseThrow(), 0, 10).toList();
+        assertEquals(1, bookings.size());
+        return new Either.Right<>(bookings.getFirst());
     }
 
     @Test
@@ -77,7 +84,7 @@ public class BookingCreateControllerTest {
                 Priority.HIGHEST,
                 ShareRoomType.NO
         );
-        assertEquals(KnownError.NOT_FOUND, lsmCreateBooking(formData, testService.user, -1));
+        assertEquals(KnownError.NOT_FOUND, lsmCreateBooking(formData, testService.user, -1).assertLeft());
     }
 
     @Test
@@ -89,7 +96,7 @@ public class BookingCreateControllerTest {
                 Priority.HIGHEST,
                 ShareRoomType.NO
         );
-        assertEquals(KnownError.MISSING_PARAMETER, lsmCreateBooking(formData, testService.user, testService.room.getId()));
+        assertEquals(KnownError.MISSING_PARAMETER, lsmCreateBooking(formData, testService.user, testService.room.getId()).assertLeft());
     }
 
     @Test
@@ -101,7 +108,7 @@ public class BookingCreateControllerTest {
                 Priority.HIGHEST,
                 ShareRoomType.NO
         );
-        assertEquals(KnownError.INVALID_TIME, lsmCreateBooking(formData, testService.user, testService.room.getId()));
+        assertEquals(KnownError.INVALID_TIME, lsmCreateBooking(formData, testService.user, testService.room.getId()).assertLeft());
     }
 
     @Test
@@ -113,7 +120,7 @@ public class BookingCreateControllerTest {
                 Priority.HIGHEST,
                 ShareRoomType.NO
         );
-        assertEquals(KnownError.MISSING_PARAMETER, lsmCreateBooking(formData, testService.user, testService.room.getId()));
+        assertEquals(KnownError.MISSING_PARAMETER, lsmCreateBooking(formData, testService.user, testService.room.getId()).assertLeft());
     }
 
     @Test
@@ -125,7 +132,7 @@ public class BookingCreateControllerTest {
                 null,
                 ShareRoomType.NO
         );
-        assertEquals(KnownError.MISSING_PARAMETER, lsmCreateBooking(formData, testService.user, testService.room.getId()));
+        assertEquals(KnownError.MISSING_PARAMETER, lsmCreateBooking(formData, testService.user, testService.room.getId()).assertLeft());
     }
 
     @Test
@@ -137,7 +144,7 @@ public class BookingCreateControllerTest {
                 Priority.HIGHEST,
                 null
         );
-        assertEquals(KnownError.MISSING_PARAMETER, lsmCreateBooking(formData, testService.user, testService.room.getId()));
+        assertEquals(KnownError.MISSING_PARAMETER, lsmCreateBooking(formData, testService.user, testService.room.getId()).assertLeft());
     }
 
     @Test
@@ -149,7 +156,7 @@ public class BookingCreateControllerTest {
                 Priority.HIGHEST,
                 ShareRoomType.NO
         );
-        assertEquals(KnownError.INVALID_TIME, lsmCreateBooking(formData, testService.user, testService.room.getId()));
+        assertEquals(KnownError.INVALID_TIME, lsmCreateBooking(formData, testService.user, testService.room.getId()).assertLeft());
     }
 
     @Test
@@ -161,7 +168,7 @@ public class BookingCreateControllerTest {
                 Priority.HIGHEST,
                 ShareRoomType.NO
         );
-        assertEquals(KnownError.INVALID_TIME, lsmCreateBooking(formData, testService.user, testService.room.getId()));
+        assertEquals(KnownError.INVALID_TIME, lsmCreateBooking(formData, testService.user, testService.room.getId()).assertLeft());
     }
 
     @Test
@@ -173,7 +180,7 @@ public class BookingCreateControllerTest {
                 Priority.HIGHEST,
                 ShareRoomType.NO
         );
-        assertEquals(KnownError.INVALID_TIME, lsmCreateBooking(formData, testService.user, testService.room.getId()));
+        assertEquals(KnownError.INVALID_TIME, lsmCreateBooking(formData, testService.user, testService.room.getId()).assertLeft());
     }
 
     @Test
@@ -185,7 +192,7 @@ public class BookingCreateControllerTest {
                 Priority.HIGHEST,
                 ShareRoomType.NO
         );
-        assertEquals(KnownError.INVALID_TIME, lsmCreateBooking(formData, testService.user, testService.room.getId()));
+        assertEquals(KnownError.INVALID_TIME, lsmCreateBooking(formData, testService.user, testService.room.getId()).assertLeft());
     }
 
     @Test
@@ -197,31 +204,34 @@ public class BookingCreateControllerTest {
                 Priority.HIGHEST,
                 ShareRoomType.NO
         );
-        assertEquals(KnownError.INVALID_TIME, lsmCreateBooking(formData, testService.user, testService.room.getId()));
+        assertEquals(KnownError.INVALID_TIME, lsmCreateBooking(formData, testService.user, testService.room.getId()).assertLeft());
     }
 
     @Test
     void testStartNotMultipleOf15Minutes_ReturnsInvalidTimeError() {
+        LocalDateTime min = timeService.minimumTime(testService.room);
         CreateEventForm formData = new CreateEventForm(
-                timeService.minimumTime(testService.room).plusMinutes(7),
-                timeService.minimumTime(testService.room).plusHours(1).toLocalTime(),
+                min.plusMinutes(7),
+                min.plusHours(1).toLocalTime(),
                 null,
                 Priority.HIGHEST,
                 ShareRoomType.NO
         );
-        assertEquals(KnownError.INVALID_TIME, lsmCreateBooking(formData, testService.user, testService.room.getId()));
+        assertEquals(min, lsmCreateBooking(formData, testService.user, testService.room.getId()).assertRight().getStartDate());
+
     }
 
     @Test
     void testEndNotMultipleOf15Minutes_ReturnsInvalidTimeError() {
+        LocalDateTime min = timeService.minimumTime(testService.room);
         CreateEventForm formData = new CreateEventForm(
-                timeService.minimumTime(testService.room).plusMinutes(30),
-                timeService.minimumTime(testService.room).plusHours(1).plusMinutes(7).toLocalTime(),
+                min.plusMinutes(30),
+                min.plusHours(1).plusMinutes(7).toLocalTime(),
                 null,
                 Priority.HIGHEST,
                 ShareRoomType.NO
         );
-        assertEquals(KnownError.INVALID_TIME, lsmCreateBooking(formData, testService.user, testService.room.getId()));
+        assertEquals(min.plusHours(1), lsmCreateBooking(formData, testService.user, testService.room.getId()).assertRight().getEndDate());
     }
 
     @Test
@@ -233,7 +243,7 @@ public class BookingCreateControllerTest {
                 Priority.HIGHEST,
                 ShareRoomType.NO
         );
-        assertEquals(KnownError.INVALID_TIME, lsmCreateBooking(formData, testService.user, testService.room.getId()));
+        assertEquals(KnownError.INVALID_TIME, lsmCreateBooking(formData, testService.user, testService.room.getId()).assertLeft());
     }
 
     @Test
@@ -245,7 +255,7 @@ public class BookingCreateControllerTest {
                 Priority.HIGHEST,
                 ShareRoomType.NO
         );
-        assertEquals(KnownError.INVALID_TIME, lsmCreateBooking(formData, testService.user, testService.room.getId()));
+        assertEquals(KnownError.INVALID_TIME, lsmCreateBooking(formData, testService.user, testService.room.getId()).assertLeft());
     }
 
     @Test
@@ -257,7 +267,7 @@ public class BookingCreateControllerTest {
                 Priority.HIGHEST,
                 ShareRoomType.NO
         );
-        assertEquals(KnownError.INVALID_TIME, lsmCreateBooking(formData, testService.user, testService.room.getId()));
+        assertEquals(KnownError.INVALID_TIME, lsmCreateBooking(formData, testService.user, testService.room.getId()).assertLeft());
     }
 
     @Test
@@ -271,7 +281,7 @@ public class BookingCreateControllerTest {
                 Priority.HIGHEST,
                 ShareRoomType.NO
         );
-        assertEquals(KnownError.INVALID_TIME, lsmCreateBooking(formData, testService.user, room.getId()));
+        assertEquals(KnownError.INVALID_TIME, lsmCreateBooking(formData, testService.user, room.getId()).assertLeft());
     }
 
     @Test
@@ -286,7 +296,7 @@ public class BookingCreateControllerTest {
                 Priority.HIGHEST,
                 ShareRoomType.NO
         );
-        assertEquals(KnownError.INVALID_TIME, lsmCreateBooking(formData, testService.user, room.getId()));
+        assertEquals(KnownError.INVALID_TIME, lsmCreateBooking(formData, testService.user, room.getId()).assertLeft());
     }
 
     @Test
@@ -298,7 +308,7 @@ public class BookingCreateControllerTest {
                 Priority.HIGHEST,
                 ShareRoomType.NO
         );
-        assertNull(lsmCreateBooking(formData, testService.user, testService.room.getId()));
+        lsmCreateBooking(formData, testService.user, testService.room.getId()).assertRight();
     }
 
     @Test

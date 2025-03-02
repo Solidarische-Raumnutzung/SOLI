@@ -1,0 +1,109 @@
+
+
+\section{Package edu.kit.hci.soli.repository}
+\begin{adjustwidth}{1.5em}{0pt}
+  \subsection{Interface BookingsRepository\label{edu.kit.hci.soli.repository.BookingsRepository} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{abstract public  interface \texttt{\hyperref[edu.kit.hci.soli.repository.BookingsRepository]{\texttt{BookingsRepository}} implements \texttt{JpaRepository}}} \\
+      \hline
+      \emph{Behaviour} & Repository for managing  \texttt{\hyperref[edu.kit.hci.soli.domain.Booking]{\texttt{Booking}}} entities. Extends  JpaRepository  to provide CRUD operations.  \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Method deleteAllByUser\label{edu.kit.hci.soli.repository.BookingsRepository@deleteAllByUser(edu.kit.hci.soli.domain.User)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{abstract public \texttt{void} deleteAllByUser(\texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}} user)} \\
+        \hline
+        \emph{Behaviour} & Deletes all bookings for the specified user.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{user}: & the user whose bookings are to be deleted  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method findByUserAndRoom\label{edu.kit.hci.soli.repository.BookingsRepository@findByUserAndRoom(edu.kit.hci.soli.domain.Room,edu.kit.hci.soli.domain.User)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{abstract public \texttt{List} findByUserAndRoom(\texttt{\hyperref[edu.kit.hci.soli.domain.Room]{\texttt{Room}}} room, \texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}} user)} \\
+        \hline
+        \emph{Behaviour} & Finds bookings by user and room.    \\
+        \hline
+        \emph{Returns} & a list of bookings for the specified user and room  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{room}: & the room associated with the bookings  \\
+          \texttt{user}: & the user associated with the bookings  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method findOverlappingBookings\label{edu.kit.hci.soli.repository.BookingsRepository@findOverlappingBookings(edu.kit.hci.soli.domain.Room,java.time.LocalDateTime,java.time.LocalDateTime)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{abstract public \texttt{Stream} findOverlappingBookings(\texttt{\hyperref[edu.kit.hci.soli.domain.Room]{\texttt{Room}}} room, \texttt{LocalDateTime} start, \texttt{LocalDateTime} end)} \\
+        \hline
+        \emph{Behaviour} & Finds bookings that overlap with the specified time range.    \\
+        \hline
+        \emph{Returns} & a stream of bookings that overlap with the specified time range  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{room}: & the room in which to search  \\
+          \texttt{start}: & the start of the time range  \\
+          \texttt{end}: & the end of the time range  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}
+  \end{adjustwidth}\subsection{Interface RoomRepository\label{edu.kit.hci.soli.repository.RoomRepository} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{abstract public  interface \texttt{\hyperref[edu.kit.hci.soli.repository.RoomRepository]{\texttt{RoomRepository}} implements \texttt{JpaRepository}}} \\
+      \hline
+      \emph{Behaviour} & Repository for managing  \texttt{\hyperref[edu.kit.hci.soli.domain.Room]{\texttt{Room}}} entities. Extends  JpaRepository  to provide CRUD operations.  \\
+      \hline
+  
+    \end{tabularx}}
+  \end{adjustwidth}\subsection{Interface UserRepository\label{edu.kit.hci.soli.repository.UserRepository} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{abstract public  interface \texttt{\hyperref[edu.kit.hci.soli.repository.UserRepository]{\texttt{UserRepository}} implements \texttt{JpaRepository}}} \\
+      \hline
+      \emph{Behaviour} & Repository interface for managing  \texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}} entities. Extends  JpaRepository  to provide CRUD operations.  \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Method findByUserId\label{edu.kit.hci.soli.repository.UserRepository@findByUserId(java.lang.String)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{abstract public \texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}} findByUserId(\texttt{String} userId)} \\
+        \hline
+        \emph{Behaviour} & Finds a user by their (external) user ID.    \\
+        \hline
+        \emph{Returns} & the user with the specified user ID  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{userId}: & the user ID of the user  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method findAllWithoutAdmin\label{edu.kit.hci.soli.repository.UserRepository@findAllWithoutAdmin()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{abstract public \texttt{List} findAllWithoutAdmin()} \\
+        \hline
+        \emph{Behaviour} & Finds all users except the admin user.    \\
+        \hline
+        \emph{Returns} & a list of users excluding the admin user  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}
+  \end{adjustwidth}
+\end{adjustwidth}

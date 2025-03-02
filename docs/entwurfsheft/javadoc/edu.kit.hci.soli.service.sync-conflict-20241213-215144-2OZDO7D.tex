@@ -1,0 +1,538 @@
+
+
+\section{Package edu.kit.hci.soli.service}
+\begin{adjustwidth}{1.5em}{0pt}
+  \subsection{Class BookingsService\label{edu.kit.hci.soli.service.BookingsService} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{public  class \texttt{\hyperref[edu.kit.hci.soli.service.BookingsService]{\texttt{BookingsService}}}} \\
+      \hline
+      \emph{Behaviour} & Service class for managing  \texttt{\hyperref[edu.kit.hci.soli.domain.Booking]{\texttt{Booking}}} entities. Provides methods to register and retreive booking details.  \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Constructor\label{edu.kit.hci.soli.service.BookingsService@edu.kit.hci.soli.service.BookingsService(edu.kit.hci.soli.repository.BookingsRepository,edu.kit.hci.soli.service.EmailService,org.springframework.boot.autoconfigure.mail.MailProperties)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.service.BookingsService]{\texttt{BookingsService}}}(\texttt{\hyperref[edu.kit.hci.soli.repository.BookingsRepository]{\texttt{BookingsRepository}}} bookingsRepository, \texttt{\hyperref[edu.kit.hci.soli.service.EmailService]{\texttt{EmailService}}} emailService, \texttt{MailProperties} mailProperties)} \\
+        \hline
+        \emph{Behaviour} & Constructs a BookingsService with the specified  \texttt{\hyperref[edu.kit.hci.soli.repository.BookingsRepository]{\texttt{BookingsRepository}}}.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{bookingsRepository}: & the repository for managing Booking entities  \\
+          \texttt{emailService}: & the service for sending emails  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method maximumTime\label{edu.kit.hci.soli.service.BookingsService@maximumTime()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{LocalDateTime} maximumTime()} \\
+        \hline
+        \emph{Behaviour} & Retrieves the maximum ending time for a booking, which is 14 days from now.    \\
+        \hline
+        \emph{Returns} & the maximum time for a booking  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method minimumTime\label{edu.kit.hci.soli.service.BookingsService@minimumTime()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{LocalDateTime} minimumTime()} \\
+        \hline
+        \emph{Behaviour} & Retrieves the minimum starting time for a booking.    \\
+        \hline
+        \emph{Returns} & the minimum time for a booking  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method currentSlot\label{edu.kit.hci.soli.service.BookingsService@currentSlot()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{LocalDateTime} currentSlot()} \\
+        \hline
+        \emph{Behaviour} & Retrieves the current time slot.    \\
+        \hline
+        \emph{Returns} & the current time slot  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method getCalendarEvents\label{edu.kit.hci.soli.service.BookingsService@getCalendarEvents(edu.kit.hci.soli.domain.Room,java.time.LocalDateTime,java.time.LocalDateTime,edu.kit.hci.soli.domain.User)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{List} getCalendarEvents(\texttt{\hyperref[edu.kit.hci.soli.domain.Room]{\texttt{Room}}} room, \texttt{LocalDateTime} start, \texttt{LocalDateTime} end, \texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}} user)} \\
+        \hline
+        \emph{Behaviour} & Retrieves calendar events within a specified time range for a user.    \\
+        \hline
+        \emph{Returns} & a list of calendar events within the specified time range  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{start}: & the start of the time range  \\
+          \texttt{end}: & the end of the time range  \\
+          \texttt{user}: & the user associated with the events (nullable)  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method getBookingsByUser\label{edu.kit.hci.soli.service.BookingsService@getBookingsByUser(edu.kit.hci.soli.domain.User,edu.kit.hci.soli.domain.Room)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{List} getBookingsByUser(\texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}} user, \texttt{\hyperref[edu.kit.hci.soli.domain.Room]{\texttt{Room}}} room)} \\
+        \hline
+        \emph{Behaviour} & Retrieves bookings for a specified user and room.    \\
+        \hline
+        \emph{Returns} & a list of bookings for the specified user and room  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{user}: & the user associated with the bookings  \\
+          \texttt{room}: & the room associated with the bookings  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method confirmRequest\label{edu.kit.hci.soli.service.BookingsService@confirmRequest(edu.kit.hci.soli.domain.Booking,edu.kit.hci.soli.domain.User)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{boolean} confirmRequest(\texttt{\hyperref[edu.kit.hci.soli.domain.Booking]{\texttt{Booking}}} stagedBooking, \texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}} user)} \\
+        \hline
+        \emph{Behaviour} & Confirms a request created as the result of an affirmation of a deferred booking. This is the action taken by a user that has an existing booking marked with  ShareRoomType.ON_REQUEST  and confirms that a different user may book the room.    \\
+        \hline
+        \emph{Returns} & true if the user was in the list of outstanding requests and was removed  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{stagedBooking}: & the booking to be confirmed  \\
+          \texttt{user}: & the user who confirms the booking  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method delete\label{edu.kit.hci.soli.service.BookingsService@delete(edu.kit.hci.soli.domain.Booking,edu.kit.hci.soli.dto.BookingDeleteReason)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{void} delete(\texttt{\hyperref[edu.kit.hci.soli.domain.Booking]{\texttt{Booking}}} booking, \texttt{\hyperref[edu.kit.hci.soli.dto.BookingDeleteReason]{\texttt{BookingDeleteReason}}} reason)} \\
+        \hline
+        \emph{Behaviour} & Deletes a booking for a specified reason.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{booking}: & the booking to be deleted  \\
+          \texttt{reason}: & the reason for deletion  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method getBookingById\label{edu.kit.hci.soli.service.BookingsService@getBookingById(java.lang.Long)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.domain.Booking]{\texttt{Booking}}} getBookingById(\texttt{Long} id)} \\
+        \hline
+        \emph{Behaviour} & Retrieves a booking by its ID.    \\
+        \hline
+        \emph{Returns} & the booking with the specified ID, or null if not found  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{id}: & the ID of the booking  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method affirm\label{edu.kit.hci.soli.service.BookingsService@affirm(edu.kit.hci.soli.domain.Booking,edu.kit.hci.soli.dto.BookingAttemptResult\$PossibleCooperation)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult]{\texttt{BookingAttemptResult}}} affirm(\texttt{\hyperref[edu.kit.hci.soli.domain.Booking]{\texttt{Booking}}} booking, \texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult\$PossibleCooperation]{\texttt{PossibleCooperation}}} result)} \\
+        \hline
+        \emph{Behaviour} & Affirms that a possible booking is to be made. This is equivalent to the user confirming the results of an attempt to book. If something has changed in the meantime, a new affirmation may be requested via a returned PossibleCooperation. If some conflicts require contact, a Staged result is returned.    \\
+        \hline
+        \emph{Returns} & the result of the affirmation  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{booking}: & the booking to be affirmed  \\
+          \texttt{result}: & the result of the booking attempt  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method deleteAllBookingsForUser\label{edu.kit.hci.soli.service.BookingsService@deleteAllBookingsForUser(edu.kit.hci.soli.domain.User)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{void} deleteAllBookingsForUser(\texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}} user)} \\
+        \hline
+        \emph{Behaviour} & Deletes all bookings for a specified user.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{user}: & the user whose bookings are to be deleted  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method attemptToBook\label{edu.kit.hci.soli.service.BookingsService@attemptToBook(edu.kit.hci.soli.domain.Booking)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.dto.BookingAttemptResult]{\texttt{BookingAttemptResult}}} attemptToBook(\texttt{\hyperref[edu.kit.hci.soli.domain.Booking]{\texttt{Booking}}} booking)} \\
+        \hline
+        \emph{Behaviour} & Attempts to book a room. If successful, the booking is saved and Success is returned. If there are unresolvable conflicts, Failure is returned. If the booking is possible but has effects the user should be informed about, PossibleCooperation is returned.    \\
+        \hline
+        \emph{Returns} & the result of the booking attempt  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{booking}: & the booking to be attempted  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}
+  \end{adjustwidth}\subsection{Interface EmailService\label{edu.kit.hci.soli.service.EmailService} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{abstract public  interface \texttt{\hyperref[edu.kit.hci.soli.service.EmailService]{\texttt{EmailService}}}} \\
+      \hline
+      \emph{Behaviour} & Service for sending emails  \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Method sendMail\label{edu.kit.hci.soli.service.EmailService@sendMail(edu.kit.hci.soli.domain.User,java.lang.String,java.lang.String,java.util.Map)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{abstract public \texttt{void} sendMail(\texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}} to, \texttt{String} subject, \texttt{String} template, \texttt{Map} model)} \\
+        \hline
+        \emph{Behaviour} & Sends an email to the specified user.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{to}: & the user to send the email to  \\
+          \texttt{subject}: & the translation key of the subject  \\
+          \texttt{template}: & the template to use  \\
+          \texttt{model}: & the model to use for the template  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}
+  \end{adjustwidth}\subsection{Class LiveEmailService\label{edu.kit.hci.soli.service.LiveEmailService} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{public  class \texttt{\hyperref[edu.kit.hci.soli.service.LiveEmailService]{\texttt{LiveEmailService}} implements \texttt{\hyperref[edu.kit.hci.soli.service.EmailService]{\texttt{EmailService}}}}} \\
+      \hline
+      \emph{Behaviour} & Service for sending emails  \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Constructor\label{edu.kit.hci.soli.service.LiveEmailService@edu.kit.hci.soli.service.LiveEmailService(org.springframework.mail.javamail.JavaMailSender,gg.jte.TemplateEngine,org.springframework.context.MessageSource)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.service.LiveEmailService]{\texttt{LiveEmailService}}}(\texttt{JavaMailSender} mailSender, \texttt{TemplateEngine} templateEngine, \texttt{MessageSource} messageSource)} \\
+        \hline
+        \emph{Behaviour} & Constructs an EmailService with the specified services.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{mailSender}: & the mail sender to use  \\
+          \texttt{templateEngine}: & the template engine to use  \\
+          \texttt{messageSource}: & the message source to use  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method sendMail\label{edu.kit.hci.soli.service.LiveEmailService@sendMail(edu.kit.hci.soli.domain.User,java.lang.String,java.lang.String,java.util.Map)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{void} sendMail(\texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}} to, \texttt{String} subject, \texttt{String} template, \texttt{Map} model)} \\
+        \hline
+        \emph{Behaviour} & Sends an email to the specified user.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{to}: & the user to send the email to  \\
+          \texttt{subject}: & the translation key of the subject  \\
+          \texttt{template}: & the template to use  \\
+          \texttt{model}: & the model to use for the template  \\
+  
+        \end{tabularx}} \\
+        \hline
+        \emph{Overrides} & \texttt{\texttt{\hyperref[edu.kit.hci.soli.service.EmailService]{\texttt{EmailService}}}.\hyperref[edu.kit.hci.soli.service.EmailService@sendMail(edu.kit.hci.soli.domain.User,java.lang.String,java.lang.String,java.util.Map)]{sendMail}\hyperref[edu.kit.hci.soli.service.EmailService@sendMail(edu.kit.hci.soli.domain.User,java.lang.String,java.lang.String,java.util.Map)]{(}\texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}}, \texttt{String}, \texttt{String}, \texttt{Map}\hyperref[edu.kit.hci.soli.service.EmailService@sendMail(edu.kit.hci.soli.domain.User,java.lang.String,java.lang.String,java.util.Map)]{)}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}
+  \end{adjustwidth}\subsection{Class RoomService\label{edu.kit.hci.soli.service.RoomService} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{public  class \texttt{\hyperref[edu.kit.hci.soli.service.RoomService]{\texttt{RoomService}}}} \\
+      \hline
+      \emph{Behaviour} & Service class for managing  \texttt{\hyperref[edu.kit.hci.soli.domain.Room]{\texttt{Room}}} entities. Provides methods to change and retrieve room details.  \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Constructor\label{edu.kit.hci.soli.service.RoomService@edu.kit.hci.soli.service.RoomService(edu.kit.hci.soli.repository.RoomRepository)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.service.RoomService]{\texttt{RoomService}}}(\texttt{\hyperref[edu.kit.hci.soli.repository.RoomRepository]{\texttt{RoomRepository}}} roomRepository)} \\
+        \hline
+        \emph{Behaviour} & Constructs a RoomService with the specified  \texttt{\hyperref[edu.kit.hci.soli.repository.RoomRepository]{\texttt{RoomRepository}}}.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{roomRepository}: & the repository for managing Room entities  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method getOptional\label{edu.kit.hci.soli.service.RoomService@getOptional(long)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{Optional} getOptional(\texttt{long} id)} \\
+        \hline
+        \emph{Behaviour} & Retrieves a room by its ID.    \\
+        \hline
+        \emph{Returns} & the room with the specified ID or  \texttt{\texttt{Optional}.empty()} \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{id}: & the ID of the room  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method get\label{edu.kit.hci.soli.service.RoomService@get(long)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.domain.Room]{\texttt{Room}}} get(\texttt{long} id)} \\
+        \hline
+        \emph{Behaviour} & Retrieves a room by its ID.    \\
+        \hline
+        \emph{Returns} & the room with the specified ID  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{id}: & the ID of the room  \\
+  
+        \end{tabularx}} \\
+        \hline
+        \emph{Throws} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{\texttt{NoSuchElementException}}: & if the room is not found  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method get\label{edu.kit.hci.soli.service.RoomService@get()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.domain.Room]{\texttt{Room}}} get()} \\
+        \hline
+        \emph{Behaviour} & Retrieves the room with the hardcoded ID of 1.    \\
+        \hline
+        \emph{Returns} & the room with ID 1  \\
+        \hline
+        \emph{Throws} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{\texttt{NoSuchElementException}}: & if the room is not found  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method existsById\label{edu.kit.hci.soli.service.RoomService@existsById(java.lang.Long)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{boolean} existsById(\texttt{Long} id)} \\
+        \hline
+        \emph{Behaviour} & Checks if a room exists by its ID.    \\
+        \hline
+        \emph{Returns} & true if the room exists, false otherwise  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{id}: & the ID of the room  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}
+  \end{adjustwidth}\subsection{Class UserService\label{edu.kit.hci.soli.service.UserService} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{public  class \texttt{\hyperref[edu.kit.hci.soli.service.UserService]{\texttt{UserService}}}} \\
+      \hline
+      \emph{Behaviour} & Service class for managing  \texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}} entities. Provides methods for user creation, retrieval, and management.  \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Constructor\label{edu.kit.hci.soli.service.UserService@edu.kit.hci.soli.service.UserService(edu.kit.hci.soli.repository.UserRepository,edu.kit.hci.soli.service.BookingsService)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.service.UserService]{\texttt{UserService}}}(\texttt{\hyperref[edu.kit.hci.soli.repository.UserRepository]{\texttt{UserRepository}}} userRepository, \texttt{\hyperref[edu.kit.hci.soli.service.BookingsService]{\texttt{BookingsService}}} bookingsService)} \\
+        \hline
+        \emph{Behaviour} & Constructs a UserService with the specified  \texttt{\hyperref[edu.kit.hci.soli.repository.UserRepository]{\texttt{UserRepository}}} and  \texttt{\hyperref[edu.kit.hci.soli.service.BookingsService]{\texttt{BookingsService}}}.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{userRepository}: & the repository for managing User entities  \\
+          \texttt{bookingsService}: & the service for managing bookings  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method isGuest\label{edu.kit.hci.soli.service.UserService@isGuest(edu.kit.hci.soli.domain.User)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{boolean} isGuest(\texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}} user)} \\
+        \hline
+        \emph{Behaviour} & Checks if a user is a guest.    \\
+        \hline
+        \emph{Returns} & true if the user is a guest, false otherwise  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{user}: & the user to be checked  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method isGuestEnabled\label{edu.kit.hci.soli.service.UserService@isGuestEnabled()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{boolean} isGuestEnabled()} \\
+        \hline
+        \emph{Behaviour} & Checks if guest users are enabled.    \\
+        \hline
+        \emph{Returns} & true if guest users are enabled, false otherwise  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method resolveGuestUser\label{edu.kit.hci.soli.service.UserService@resolveGuestUser(java.lang.String)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}} resolveGuestUser(\texttt{String} email)} \\
+        \hline
+        \emph{Behaviour} & Resolves a guest user by their email. If the guest user does not exist, creates a new one.    \\
+        \hline
+        \emph{Returns} & the resolved guest user  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{email}: & the email of the guest user  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method isAdmin\label{edu.kit.hci.soli.service.UserService@isAdmin(edu.kit.hci.soli.domain.User)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{boolean} isAdmin(\texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}} user)} \\
+        \hline
+        \emph{Behaviour} & Checks if a user is an admin.    \\
+        \hline
+        \emph{Returns} & true if the user is an admin, false otherwise  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{user}: & the user to be checked  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method resolveAdminUser\label{edu.kit.hci.soli.service.UserService@resolveAdminUser()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}} resolveAdminUser()} \\
+        \hline
+        \emph{Behaviour} & Resolves the admin user. If the admin user does not exist, create it.    \\
+        \hline
+        \emph{Returns} & the resolved admin user  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method resolveOidcUser\label{edu.kit.hci.soli.service.UserService@resolveOidcUser(org.springframework.security.oauth2.core.oidc.user.OidcUser)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}} resolveOidcUser(\texttt{OidcUser} oidcUser)} \\
+        \hline
+        \emph{Behaviour} & Resolves an  OidcUser  to a  \texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}} entity. If the user does not exist, creates a new one.    \\
+        \hline
+        \emph{Returns} & the resolved user  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{oidcUser}: & the OIDC user to be resolved  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method getById\label{edu.kit.hci.soli.service.UserService@getById(java.lang.Long)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}} getById(\texttt{Long} userId)} \\
+        \hline
+        \emph{Behaviour} & Retrieves a user by their ID.    \\
+        \hline
+        \emph{Returns} & the user with the specified ID, or null if not found  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{userId}: & the ID of the user  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method getManageableUsers\label{edu.kit.hci.soli.service.UserService@getManageableUsers()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{List} getManageableUsers()} \\
+        \hline
+        \emph{Behaviour} & Retrieves all users that can be managed.    \\
+        \hline
+        \emph{Returns} & a list of manageable users  \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method toggleUserEnabled\label{edu.kit.hci.soli.service.UserService@toggleUserEnabled(edu.kit.hci.soli.domain.User)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{void} toggleUserEnabled(\texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}} user)} \\
+        \hline
+        \emph{Behaviour} & Disables or re-enables a user. If disabling, deletes all bookings for the user.    \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{user}: & the user to be disabled or re-enabled  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method create\label{edu.kit.hci.soli.service.UserService@create(edu.kit.hci.soli.domain.User)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}} create(\texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}} user)} \\
+        \hline
+        \emph{Behaviour} & Creates a new user.    \\
+        \hline
+        \emph{Returns} & the created user  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{user}: & the user to be created  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method findByUserId\label{edu.kit.hci.soli.service.UserService@findByUserId(java.lang.String)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.domain.User]{\texttt{User}}} findByUserId(\texttt{String} userId)} \\
+        \hline
+        \emph{Behaviour} & Finds a user by their (external) user ID.    \\
+        \hline
+        \emph{Returns} & the user with the specified user ID, or null if not found  \\
+        \hline
+        \emph{Parameters} & {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+          \texttt{userId}: & the user ID of the user  \\
+  
+        \end{tabularx}} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}
+  \end{adjustwidth}
+\end{adjustwidth}

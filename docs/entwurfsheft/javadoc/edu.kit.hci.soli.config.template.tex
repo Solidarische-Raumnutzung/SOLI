@@ -1,0 +1,153 @@
+
+
+\section{Package edu.kit.hci.soli.config.template}
+\begin{adjustwidth}{1.5em}{0pt}
+  \subsection{Class JteConfiguration\label{edu.kit.hci.soli.config.template.JteConfiguration} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{public  class \texttt{\hyperref[edu.kit.hci.soli.config.template.JteConfiguration]{\texttt{JteConfiguration}}}} \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Constructor\label{edu.kit.hci.soli.config.template.JteConfiguration@edu.kit.hci.soli.config.template.JteConfiguration()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.config.template.JteConfiguration]{\texttt{JteConfiguration}}}()} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method templateEngine\label{edu.kit.hci.soli.config.template.JteConfiguration@templateEngine()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{TemplateEngine} templateEngine()} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method jteViewResolve\label{edu.kit.hci.soli.config.template.JteConfiguration@jteViewResolve(TemplateEngine)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{ViewResolver} jteViewResolve(\texttt{TemplateEngine} templateEngine)} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}
+  \end{adjustwidth}\subsection{Class JteContext\label{edu.kit.hci.soli.config.template.JteContext} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{public  class \texttt{\hyperref[edu.kit.hci.soli.config.template.JteContext]{\texttt{JteContext}} implements \texttt{LocalizationSupport}}} \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Constructor\label{edu.kit.hci.soli.config.template.JteContext@edu.kit.hci.soli.config.template.JteContext(org.springframework.context.MessageSource,java.util.Locale)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.config.template.JteContext]{\texttt{JteContext}}}(\texttt{MessageSource} messageSource, \texttt{Locale} locale)} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method empty\label{edu.kit.hci.soli.config.template.JteContext@empty()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{Content} empty()} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method localize\label{edu.kit.hci.soli.config.template.JteContext@localize(java.lang.String,java.lang.Object[])}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{Content} localize(\texttt{String} key, \texttt{Object[]} params)} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method lookup\label{edu.kit.hci.soli.config.template.JteContext@lookup(java.lang.String)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{String} lookup(\texttt{String} key)} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}
+  \end{adjustwidth}\subsection{Class JteView\label{edu.kit.hci.soli.config.template.JteView} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{public  class \texttt{\hyperref[edu.kit.hci.soli.config.template.JteView]{\texttt{JteView}} extends \texttt{AbstractTemplateView}}} \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Constructor\label{edu.kit.hci.soli.config.template.JteView@edu.kit.hci.soli.config.template.JteView(gg.jte.TemplateEngine)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.config.template.JteView]{\texttt{JteView}}}(\texttt{TemplateEngine} templateEngine)} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method renderMergedTemplateModel\label{edu.kit.hci.soli.config.template.JteView@renderMergedTemplateModel(java.util.Map,jakarta.servlet.http.HttpServletRequest,jakarta.servlet.http.HttpServletResponse)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{protected \texttt{void} renderMergedTemplateModel(\texttt{Map} model, \texttt{HttpServletRequest} request, \texttt{HttpServletResponse} response)} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method checkResource\label{edu.kit.hci.soli.config.template.JteView@checkResource(java.util.Locale)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{boolean} checkResource(\texttt{Locale} locale)} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}
+  \end{adjustwidth}\subsection{Class JteViewResolver\label{edu.kit.hci.soli.config.template.JteViewResolver} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{public  class \texttt{\hyperref[edu.kit.hci.soli.config.template.JteViewResolver]{\texttt{JteViewResolver}} extends \texttt{AbstractTemplateViewResolver}}} \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Constructor\label{edu.kit.hci.soli.config.template.JteViewResolver@edu.kit.hci.soli.config.template.JteViewResolver(gg.jte.TemplateEngine)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.config.template.JteViewResolver]{\texttt{JteViewResolver}}}(\texttt{TemplateEngine} templateEngine)} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method requiredViewClass\label{edu.kit.hci.soli.config.template.JteViewResolver@requiredViewClass()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{protected \texttt{Class} requiredViewClass()} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method instantiateView\label{edu.kit.hci.soli.config.template.JteViewResolver@instantiateView()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{protected \texttt{AbstractUrlBasedView} instantiateView()} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}
+  \end{adjustwidth}\subsection{Record PageSpec\label{edu.kit.hci.soli.config.template.PageSpec} }
+  \begin{adjustwidth}{1.5em}{0pt}
+    {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+      \emph{Signature} & \texttt{final public  record \texttt{\hyperref[edu.kit.hci.soli.config.template.PageSpec]{\texttt{PageSpec}}}} \\
+      \hline
+  
+    \end{tabularx}}\subsubsection{Constructor\label{edu.kit.hci.soli.config.template.PageSpec@edu.kit.hci.soli.config.template.PageSpec(java.lang.String,java.lang.String)}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{\hyperref[edu.kit.hci.soli.config.template.PageSpec]{\texttt{PageSpec}}}(\texttt{String} title, \texttt{String} description)} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method title\label{edu.kit.hci.soli.config.template.PageSpec@title()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{String} title()} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}\subsubsection{Method description\label{edu.kit.hci.soli.config.template.PageSpec@description()}}
+    \begin{adjustwidth}{1.5em}{0pt}
+      {\begin{tabularx}{1.0\linewidth}{@{}l R@{}}
+        \emph{Signature} & \texttt{public \texttt{String} description()} \\
+        \hline
+  
+      \end{tabularx}}
+    \end{adjustwidth}
+  \end{adjustwidth}
+\end{adjustwidth}
