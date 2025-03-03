@@ -27,10 +27,10 @@ public class JteContext implements LocalizationSupport {
         this.hostname = hostname;
         this.locale = locale;
         this.symbols = new DateFormatSymbols(locale == null ? Locale.getDefault() : locale);
-        this.dateTimeFormatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)
+        this.dateTimeFormatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT)
                 .withLocale(locale)
                 .withZone(timeZone.toZoneId());
-        this.timeFormatter = DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM)
+        this.timeFormatter = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT)
                 .withLocale(locale)
                 .withZone(timeZone.toZoneId());
         this.timeZone = timeZone;
