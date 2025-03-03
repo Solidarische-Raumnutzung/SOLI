@@ -17,7 +17,7 @@
         <div class="max-w-md">
             <h1 class="text-2xl font-bold mb-2">${context.localize("bookings.conflict.resolution")}</h1>
 
-            <ul class="list bg-base-100 rounded-box shadow-md text-left">
+            <ul class="list bg-base-100 rounded-box shadow-md text-left p-8 mb-3">
                 <li class="mb-4">${context.localize("bookings.conflict.recommend")}</li>
 
                 @if (!bookingResult.contact().isEmpty())

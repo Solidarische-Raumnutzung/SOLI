@@ -56,6 +56,8 @@
         <i class="fa-solid fa-pen"></i>
     </label>
     <input type="checkbox" id="soli-edit-toggle" class="hidden" />
+@else
+    <label class="label">${context.localize("bookings.description.none")}</label>
 @endif
 @if (allowEditing)
     @template.util.form(csrf = csrf, cssClass = "soli-edit-content relative w-full", action = "/" + booking.getRoom().getId() + "/bookings/" + booking.getId(), method = PATCH, content = @`
