@@ -94,4 +94,15 @@ public class MainController extends AbstractErrorController {
                 Canonical: %s.well-known/security.txt
                 """.formatted(soliConfiguration.getHostname());
     }
+
+    /**
+     * Returns the view for the publisher information (impressum).
+     *
+     * @return the view name
+     */
+    @RequestMapping("/publisher")
+    public String getPublisher() {
+        return "publisher";
+    }
+
 }

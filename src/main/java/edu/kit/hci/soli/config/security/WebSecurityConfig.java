@@ -38,6 +38,7 @@ public class WebSecurityConfig {
                                 "/favicon.ico", "/favicon.svg", "/favicon_180x180.png", "/favicon_512x512.png", "/mask-icon.svg",
                                 "/manifest.json",
                                 "/robots.txt",
+                                "/publisher",
                                 "/.well-known/security.txt"
                         ).permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
