@@ -21,12 +21,14 @@ public class TimeServiceTest {
 
     @Test
     public void testRelative() {
-        LocalDateTime currentSlotNormalized = timeService.currentSlot().plusDays(switch (timeService.currentSlot().getDayOfWeek()) {
+        int weekdayOffset = switch (timeService.currentSlot().getDayOfWeek()) {
             case SATURDAY -> 2;
             case SUNDAY -> 1;
             default -> 0;
-        });
-        assertFalse(currentSlotNormalized.isAfter(timeService.minimumTime(testService.room)));
+        };
+        LocalDateTime currentSlotNormalized = timeService.currentSlot().plusDays(weekdayOffset);
+        if (weekdayOffset == 0) assertFalse(currentSlotNormalized.isAfter(timeService.minimumTime(testService.room)));
+        else assertTrue(currentSlotNormalized.isAfter(timeService.minimumTime(testService.room)));
         assertTrue(currentSlotNormalized.isBefore(timeService.maximumTime(testService.room)));
         assertTrue(currentSlotNormalized.plusMinutes(16).isAfter(timeService.minimumTime(testService.room)));
     }

@@ -8,84 +8,103 @@ Genauer wurden insgesamt \todo{Zahl} Issues behoben. (Issues sind hierbei Fehler
 Von diesen waren vor der Qualitätssicherung bereits 68 Fehler behoben, welche hier nicht aufgeführt sind.
 Die folgenden Abschnitte beschreiben die gefundenen Fehler und die durchgeführten Korrekturen.
 
+\newcommandx{\symptom}[1]{\textbf{Fehlersymptom:} #1\\}
+\newcommandx{\reason}[1]{\textbf{Fehlergrund:} #1\\}
+\newcommandx{\solution}[1]{\textbf{Behebung:} #1\\}
+
 \section{NPE beim Erstellen eines Raums ohne Beschreibung}
-\textbf{Fehlersymptom:} Beim Erstellen eines Raums ohne Beschreibung tritt ein NullPointerException (NPE) auf.
-\textbf{Fehlergrund:} Die Beschreibung des Raums wird nicht auf null überprüft, bevor sie verwendet wird.
-\textbf{Behebung:} Eine Überprüfung auf null bevor die Beschreibung verwendet wird wurde hinzugefügt. Im Fall eines Fehlers wird eine alternative Zeichenkette als Standardwert gesetzt.
+\symptom{Beim Erstellen eines Raums ohne Beschreibung tritt ein NullPointerException (NPE) auf.}
+\reason{Die Beschreibung des Raums wird nicht auf null überprüft, bevor sie verwendet wird.}
+\solution{Eine Überprüfung auf null bevor die Beschreibung verwendet wird wurde hinzugefügt. Im Fall eines Fehlers wird eine alternative Zeichenkette als Standardwert gesetzt.}
 
 \section{Correct Z-Order for drawer on mobile}
-\textbf{Fehlersymptom:} Der Drawer auf mobilen Geräten wird unter dem Kalender angezeigt.
-\textbf{Fehlergrund:} Die Z-Reihenfolge der Elemente wurde nicht korrekt festgelegt.
-\textbf{Behebung:} Die Z-Reihenfolge der Elemente wurde korrekt festgelegt, sodass der Drawer über dem Kalender liegt.
+\symptom{Der Drawer auf mobilen Geräten wird unter dem Kalender angezeigt.}
+\reason{Die Z-Reihenfolge der Elemente wurde nicht korrekt festgelegt.}
+\solution{Die Z-Reihenfolge der Elemente wurde korrekt festgelegt, sodass der Drawer über dem Kalender liegt.}
 
 \section{Use Hamburger menu on mobile}
-\textbf{Fehlersymptom:} Der Drawer auf mobilen Geräten wird nicht durch ein Hamburger-Menü geöffnet.
-\textbf{Fehlergrund:} Das Hamburger-Menü wurde nicht implementiert.
-\textbf{Behebung:} Ein Hamburger-Menü wurde hinzugefügt, um den Drawer auf mobilen Geräten zu öffnen.
+\symptom{Der Drawer auf mobilen Geräten wird nicht durch ein Hamburger-Menü geöffnet.}
+\reason{Das Hamburger-Menü wurde nicht implementiert.}
+\solution{Ein Hamburger-Menü wurde hinzugefügt, um den Drawer auf mobilen Geräten zu öffnen.}
 
 \section{New icon for ShareRoomType.REQUEST}
-\textbf{Fehlersymptom:} Das Icon für den Raumtyp ShareRoomType.REQUEST ist nicht eindeutig.
-\textbf{Fehlergrund:} Das Icon für ShareRoomType.REQUEST wurde schlecht gewählt.
-\textbf{Behebung:} Ein neues Icon für ShareRoomType.REQUEST, das den Raumtyp besser repräsentiert, wurde hinzugefügt.
+\symptom{Das Icon für den Raumtyp ShareRoomType.REQUEST ist nicht eindeutig.}
+\reason{Das Icon für ShareRoomType.REQUEST wurde schlecht gewählt.}
+\solution{Ein neues Icon für ShareRoomType.REQUEST, das den Raumtyp besser repräsentiert, wurde hinzugefügt.}
 
 \section{book at least 15 minutes into the future}
-\textbf{Fehlersymptom:} Es ist möglich, einen Raum in der Vergangenheit zu buchen.
-\textbf{Fehlergrund:} Es wurde keine Überprüfung hinzugefügt, um sicherzustellen, dass der Raum mindestens 15 Minuten in der Zukunft gebucht wird.
-\textbf{Behebung:} Eine Überprüfung um sicherzustellen, dass der Raum mindestens 15 Minuten in der Zukunft gebucht wird, wurde hinzugefügt.
+\symptom{Es ist möglich, einen Raum in der Vergangenheit zu buchen.}
+\reason{Es wurde keine Überprüfung hinzugefügt, um sicherzustellen, dass der Raum mindestens 15 Minuten in der Zukunft gebucht wird.}
+\solution{Eine Überprüfung um sicherzustellen, dass der Raum mindestens 15 Minuten in der Zukunft gebucht wird, wurde hinzugefügt.}
 
 \section{Email benachrichtigung fehlen bei Akzeptierung oder Löschung durch Deaktivierung der Gastfunktion}
-\textbf{Fehlersymptom:} Es werden keine E-Mails versendet, wenn ein Raum akzeptiert oder gelöscht wird, weil die Gastfunktion deaktiviert wurde.
-\textbf{Fehlergrund:} Das Versenden von E-Mails in diesen Fällen wurde nicht implementiert.
-\textbf{Behebung:} Das Versenden von E-Mails in diesen Fällen wurde implementiert.
+\symptom{Es werden keine E-Mails versendet, wenn ein Raum akzeptiert oder gelöscht wird, weil die Gastfunktion deaktiviert wurde.}
+\reason{Das Versenden von E-Mails in diesen Fällen wurde nicht implementiert.}
+\solution{Das Versenden von E-Mails in diesen Fällen wurde implementiert.}
 
 \section{FullCalendar ist auf kleinen Bildschirmen schwer zu bedienen}
-\textbf{Fehlersymptom:} Der FullCalendar ist auf kleinen Bildschirmen schwer zu bedienen, da die Schaltflächen zu klein sind.
-\textbf{Fehlergrund:} Die Monatsansicht wurde als Standardansicht festgelegt, was auf kleinen Bildschirmen nicht gut funktioniert.
-\textbf{Behebung:} Die Tagesansicht wurde bei kleinen Bildschirmen als Standardansicht gestgelegt, um die Bedienung auf kleinen Bildschirmen zu erleichtern
+\symptom{Der FullCalendar ist auf kleinen Bildschirmen schwer zu bedienen, da die Schaltflächen zu klein sind.}
+\reason{Die Monatsansicht wurde als Standardansicht festgelegt, was auf kleinen Bildschirmen nicht gut funktioniert.}
+\solution{Die Tagesansicht wurde bei kleinen Bildschirmen als Standardansicht gestgelegt, um die Bedienung auf kleinen Bildschirmen zu erleichtern}
 
 \section{Die Konfliktlösungs-UI nutzt rohen Text}
-\textbf{Fehlersymptom:} Die Konfliktlösungs-UI zeigt rohen Text an, anstatt eine benutzerfreundliche Oberfläche zu verwenden.
-\textbf{Fehlergrund:} Eine benutzerfreundliche Oberfläche wurde nicht implementiert.
-\textbf{Behebung:} Eine benutzerfreundliche Oberfläche für die Konfliktlösung auf Basis der List-Komponente wurde implementiert
+\symptom{Die Konfliktlösungs-UI zeigt rohen Text an, anstatt eine benutzerfreundliche Oberfläche zu verwenden.}
+\reason{Eine benutzerfreundliche Oberfläche wurde nicht implementiert.}
+\solution{Eine benutzerfreundliche Oberfläche für die Konfliktlösung auf Basis der List-Komponente wurde implementiert}
 
 \section{Buchungen mit offenen Anfragen werden nicht markiert}
-\textbf{Fehlersymptom:} Buchungen mit offenen Anfragen werden nicht als solche markiert.
-\textbf{Fehlergrund:} Die Markierung von Buchungen mit offenen Anfragen wurde nicht implementiert.
-\textbf{Behebung:} Die Markierung von Buchungen mit offenen Anfragen wurde implementiert.
+\symptom{Buchungen mit offenen Anfragen werden nicht als solche markiert.}
+\reason{Die Markierung von Buchungen mit offenen Anfragen wurde nicht implementiert.}
+\solution{Die Markierung von Buchungen mit offenen Anfragen wurde implementiert.}
 
 \section{Correct sharing icon position in calendar}
-\textbf{Fehlersymptom:} Die vertikale Position des Sharing-Icons im Kalender ist nicht korrekt.
-\textbf{Fehlergrund:} Die vertikale Position des Sharing-Icons wurde nicht korrekt festgelegt.
-\textbf{Behebung:} Die vertikale Position des Sharing-Icons wurde korrekt festgelegt.
+\symptom{Die vertikale Position des Sharing-Icons im Kalender ist nicht korrekt.}
+\reason{Die vertikale Position des Sharing-Icons wurde nicht korrekt festgelegt.}
+\solution{Die vertikale Position des Sharing-Icons wurde korrekt festgelegt.}
 
 \section{Room still selected after deletion}
-\textbf{Fehlersymptom:} Ein Raum ist immer noch ausgewählt, nachdem er gelöscht wurde. Dies führt zu Fehlern, wenn versucht wird, mit dem gelöschten Raum zu interagieren.
-\textbf{Fehlergrund:} Die Auswahl des Raums wurde nicht aufgehoben, nachdem der Raum gelöscht wurde.
-\textbf{Behebung:} Die Auswahl des Raums wird aufgehoben, nachdem der Raum gelöscht wurde.
+\symptom{Ein Raum ist immer noch ausgewählt, nachdem er gelöscht wurde. Dies führt zu Fehlern, wenn versucht wird, mit dem gelöschten Raum zu interagieren.}
+\reason{Die Auswahl des Raums wurde nicht aufgehoben, nachdem der Raum gelöscht wurde.}
+\solution{Die Auswahl des Raums wird aufgehoben, nachdem der Raum gelöscht wurde.}
 
 \section{Doppelung Aria-Labels zu Tooltips und normaler Text}
-\textbf{Fehlersymptom:} Der Ihalt der Aria-Labels war gleich zu dem der Tooltips oder sogar dem normalen Text.
-\textbf{Fehlergrund:} Die Logik der Textreader wurde falsch verstanden.
-\textbf{Behebung:} Die Aria-Labels und Tooltips wurden angepasst, sodass der Inhalt nicht mehr doppelt vorliegt.
+\symptom{Der Ihalt der Aria-Labels war gleich zu dem der Tooltips oder sogar dem normalen Text.}
+\reason{Die Logik der Textreader wurde falsch verstanden.}
+\solution{Die Aria-Labels und Tooltips wurden angepasst, sodass der Inhalt nicht mehr doppelt vorliegt.}
 
 \section{Tooltips für Raumteilungssymbole}
-\textbf{Fehlersymptom: } Die Terminansicht konnte nicht geladen werden.
-\textbf{Fehlergrund: } Die Terminansicht wurde nicht korrekt geladen, da die Tooltips für die Raumteilungssymbole nicht korrekt gesetzt wurden.
-\textbf{Behebung: } Die Tooltips für die Raumteilungssymbole wurden korrekt gesetzt, sodass die Terminansicht geladen werden kann.
+\symptom{Die Terminansicht konnte nicht geladen werden.}
+\reason{Die Terminansicht wurde nicht korrekt geladen, da die Tooltips für die Raumteilungssymbole nicht korrekt gesetzt wurden.}
+\solution{Die Tooltips für die Raumteilungssymbole wurden korrekt gesetzt, sodass die Terminansicht geladen werden kann.}
 
 \section{Buchungsende wird in UI nicht gegen Start validiert}
-\textbf{Fehlersymptom:} In der Benutzeroberfläche wird ein Enddatum vor dem Startdatum nicht sofort als Fehler angezeigt.
-\textbf{Fehlergrund:} Die Validierung des Enddatums gegen das Startdatum wurde erst nach dem Absenden des Formulars durchgeführt.
-\textbf{Behebung:} Die Validierung des Enddatums gegen das Startdatum wird sofort durchgeführt.
+\symptom{In der Benutzeroberfläche wird ein Enddatum vor dem Startdatum nicht sofort als Fehler angezeigt.}
+\reason{Die Validierung des Enddatums gegen das Startdatum wurde erst nach dem Absenden des Formulars durchgeführt.}
+\solution{Die Validierung des Enddatums gegen das Startdatum wird sofort durchgeführt.}
 
 \section{Bannerzustand wird nicht korrekt aktualisiert}
-\textbf{Fehlersymptom:} Der Zustand des Banners wird nicht korrekt aktualisiert, wenn der Raum gewechselt wird.
-\textbf{Fehlergrund:} Die Berechnung des neuen Zustandes nutzte den alten Raum.
-\textbf{Behebung:} Die Berechnung des neuen Zustandes nutzt den neuen Raum.
+\symptom{Der Zustand des Banners wird nicht korrekt aktualisiert, wenn der Raum gewechselt wird.}
+\reason{Die Berechnung des neuen Zustandes nutzte den alten Raum.}
+\solution{Die Berechnung des neuen Zustandes nutzt den neuen Raum.}
 
 \section{Round bookings}
-\textbf{Fehlersymptom:} Buchungen, die nicht im Client gerundet wurden, führen zu einer Fehlermeldung.
-\textbf{Fehlergrund:} Buchungen, die nicht im Client gerundet wurden, führen zu einer Fehlermeldung.
-\textbf{Behebung:} Buchungen werden zusätzlich im Server gerundet, um Fehlermeldungen zu vermeiden.
+\symptom{Buchungen, die nicht im Client gerundet wurden, führen zu einer Fehlermeldung.}
+\reason{Buchungen, die nicht im Client gerundet wurden, führen zu einer Fehlermeldung.}
+\solution{Buchungen werden zusätzlich im Server gerundet, um Fehlermeldungen zu vermeiden.}
+
+\section{Korrekte darstellung der Priorität-badges}
+\symptom{Die Priorität-Badges werden nicht korrekt dargestellt und nicht übersetzt.}
+\reason{Die Text-attribute der Badge wurde überschrieben.}
+\solution{Die Text-attribute der Badge wird nicht mehr überschrieben.}
+
+\section{Pagination: \textit{Seite X von Y} hat hover effekt}
+\symptom{Bei einer Gliederung einer Liste auf mehrere Seiten wird der Text \textit{Seite X von Y} als Button dargestellt und wird somit hervorgehoben wenn die Maus sich darüber befindet.}
+\reason{Falsche \gls{CSS} Klassen wurden verwendet.}
+\solution{Füge richtige Css Klassen hinzu.}
+
+\section{Footer überdeckt Sidebar auf kleineren Bildschirmen}
+\symptom{Der Footer überdeckt die Sidebar auf kleineren Bildschirmen.}
+\reason{Der Footer wurde fix positioniert, was zur Folge hatte, dass seine Höhe nicht berücksichtigt wurde.}
+\solution{Die Sidebar wurde mittels Flexbox so angepasst, dass der Footer keine besondere Positionierung benötigt.}
 
 \todo{Jeden gefundenen Bug dokumentieren}

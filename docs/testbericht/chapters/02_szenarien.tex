@@ -2,4 +2,113 @@
 
 \chapter{Szenarien}
 \label{ch:scenarios}
-\todo{Komplette Testszenarien aus dem Pflichtenheft durchgehen}
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{ l|X }
+        \textbf{Nr.} & \textbf{Testfälle Beschreibung} \\ \hline\hline
+        ⟨T10⟩ & Landeseite besuchen \\
+        ⟨T20⟩ & Login \\
+        ⟨T30⟩ & Abmelden \\
+        ⟨T40⟩ & Reservieren \\
+        ⟨T50⟩ & Löschen von Terminen durch Administratoren \\
+        ⟨T60⟩ & Deaktivieren eines Kontos \\
+        ⟨T70⟩ & Benachrichtigung bei freiem Raum \\
+        ⟨T80⟩ & Anzeige des Raumstatus \\
+        ⟨T90⟩ & Stornierung einer Reservierung \\
+        ⟨T100⟩ & Login mit Adminkonto \\
+        ⟨T110⟩ & Deaktivierung von Gastkonten \\
+        ⟨T120⟩ & Öffnungszeiten einstellen \\
+        ⟨T130⟩ & Terminkonfliktauflösung \\
+    \end{tabularx}
+    \caption{Überblick der Testfälle.}
+    \label{tab:test_table}
+\end{table}
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{ l|X|l }
+        \textbf{Nr.} & \textbf{Testszenarien Beschreibung} & \textbf{Ergebnis} \\ \hline\hline
+        \ref{S10} & Besuch der Landeseite und Anmeldung/Abmeldung & Positiv\\
+        \ref{S20} & Reservierung eines Raums und Stornierung & Positiv\\
+        \ref{S30} & Terminverwaltung durch das Adminkonto & Positiv\\
+        \ref{S40} & Kontoverwaltung durch das Adminkonto & Positiv\\
+        \ref{S50} & Terminkonflikt auflösung & Positiv\\
+    \end{tabularx}
+    \caption{Überblick der Testszenarien.}
+    \label{tab:scenario_table}
+\end{table}
+
+\newpage
+
+\section{Testfallszenarien}\label{sec:testfallszenarien}
+\begin{scenario}{10}{Besuch der Landeseite und Anmeldung/Abmeldung}
+    \item[Ziel:] Sicherstellen, dass Nutzende die Landeseite aufrufen und sich erfolgreich anmelden bzw.\ abmelden können.
+    \begin{enumerate}
+        \item Der Nutzende besucht die Landeseite ⟨T10⟩.
+        \item Der Nutzende loggt sich ein ⟨T20⟩.
+        \item Der Nutzende meldet sich ab ⟨T30⟩.
+    \end{enumerate}
+    \item[Ergebnis:] Positiv.
+    Die An- und Abmeldung funktioniert für KIT Konten, Gastkonten sowie Admin Konten.
+\end{scenario}
+
+\begin{scenario}{20}{Reservierung eines Raums und Stornierung}
+    \item[Ziel:] Überprüfen, ob Nutzende erfolgreich Termine reservieren können.
+    \begin{enumerate}
+        \item Der Nutzende besucht die Landeseite ⟨T10⟩.
+        \item Der Nutzende meldet sich an ⟨T20⟩.
+        \item Der Nutzende wählt einen verfügbaren Raum aus und reserviert diesen ⟨T40⟩.
+        \item Buchen ausserhalb der Öffnungszeiten sollte hierbei fehlschlagen.
+        \item Überprüfen, ob der Raumstatus korrekt angezeigt wird und sich ggf.\ geändert hat ⟨T80⟩.
+        \item Der Nutzende storniert die Reservierung ⟨T90⟩.
+        \item Andere Nutzende, welchen sich diesen Termin vorgemerkt hatten, werden benachrichtigt, dass der Raum nun Frei ist ⟨T70⟩.
+    \end{enumerate}
+    \item[Ergebnis:] Positiv.
+    Die Reservierung von Räumen funktioniert, sowie die Stornierung von Reservierungen.
+    Dabei werden Nutzende darauf hingewiesen, dass sie den Raum nicht buchen können, wenn sich die Buchung außerhalb der Öffnungszeiten befindet.
+\end{scenario}
+
+\begin{scenario}{30}{Terminverwaltung durch das Adminkonto}
+    \item[Ziel:] Testen der administrativen Funktionalitäten zum Löschen von Terminen.
+    \begin{enumerate}
+        \item Ein Admin besucht die Landeseite ⟨T10⟩.
+        \item Der Admin meldet sich an ⟨T100⟩.
+        \item Der Admin löscht bestehende Termine ⟨T50⟩.
+        \item Der Admin meldet sich ab ⟨T30⟩.
+    \end{enumerate}
+    \item[Ergebnis:] Positiv.
+    Admins können sich anmelden und genauso wie reguläre Konten Termine erstellen als auch löschen.
+\end{scenario}
+
+\pagebreak
+
+\begin{scenario}{40}{Kontoverwaltung durch das Adminkonto}
+    \item[Ziel:] Testen der administrativen Funktionalitäten zum Deaktivieren von Gastkonten und einstellen der Öffnungszeiten.
+    \begin{enumerate}
+        \item Ein Admin besucht die Landeseite ⟨T10⟩.
+        \item Der Admin meldet sich an ⟨T100⟩.
+        \item Der Admin deaktiviert die Anmeldung von Gastkonten ⟨T110⟩.
+        \item Der Admin ändert die Öffnungszeiten für einen bestimmten Wochentag ⟨T120⟩.
+        \item Der Admin öffnet die Ansicht \textit{Kontoliste} und deaktiviert ein Konto ⟨T60⟩.
+        \item Der Admin meldet sich ab ⟨T30⟩.
+        \item Das Anmelden mit einem Gastkonto sollte jetzt fehlschlagen ⟨T20⟩.
+        \item Das Anmelden mit dem deaktiviertem Konto sollte ebenfalls fehlschlagen ⟨T20⟩.
+        \item Die Ansicht \textit{Kalender} sollte die neuen Öffnungszeiten darstellen.
+    \end{enumerate}
+    \item[Ergebnis:] Positiv.
+    Admins können Konten deaktivieren und die Öffnungszeiten ändern, sowie die Gastkonto funktionalität insgesamt ausschalten.
+\end{scenario}
+
+\begin{scenario}{50}{Terminkonflikt auflösung}
+    \item[Ziel:] Überprüfen, ob ein Terminkonflikt richtig aufgelöst wird.
+    \begin{enumerate}
+        \item Konto 1 meldet sich an ⟨T20⟩.
+        \item Konto 1 erstellt einen Termin, und gibt die zu testende Priorität, Raumteilungsoption und Zeitperiode ein ⟨T20⟩.
+        \item Konto 1 meldet sich ab und Konto 2 meldet sich an.
+        \item Konto 2 erstellt einen Termin, welcher den anderen überlappt.
+        \item Es wird überprüft, ob die erwartete Konfliktauflösung stattgefunden hat und ggf.\ die dafür benötigten E-Mails versendet wurden ⟨T130⟩.
+    \end{enumerate}
+    \item[Ergebnis:] Positiv.
+    Terminkonflikte werden erkannt und die Nutzenden per E-Mail benachrichtigt.
+\end{scenario}

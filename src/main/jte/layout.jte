@@ -30,6 +30,8 @@
 
     <link rel="icon" type="image/x-type" sizes="16x16" href="/favicon.ico">
 
+    <!-- Note that the stable 5.0 release breaks our use of the button design and messes with our layout -->
+    <!-- Since this is purely for styling, we can safely use this beta version instead -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daisyui@5.0.0-beta.1/daisyui.css" />
     <!-- This version of tailwind is incredibly old, but appears to be the latest one that can be used in any (sane) manner. -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"/>
@@ -104,8 +106,8 @@
             </div>
             <div class="drawer-side shadow-xl">
                 <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
-                <div class="min-h-screen bg-base-200">
-                    <ul class="menu bg-base-200 text-base-content min-h-80 w-80 p-4">
+                <div class="flex flex-col min-h-screen bg-base-200">
+                    <ul class="menu bg-base-200 text-base-content w-80 p-4 flex-grow">
                         <div class="flex flex-row gap-3">
                             <li>
                                 <div class="basis-1/4">
@@ -142,6 +144,13 @@
                             </div>
                         </div>
 
+                        @if(layout.getRoom() != null)
+                            <div class="divider"></div>
+                            <li class="pointer-events-none">
+                                <label>${context.localize("layout.current_room", layout.getRoom().getName())}</label>
+                            </li>
+                        @endif
+
                         @if(layout.getLogin().kind() == LoginStateModel.Kind.ADMIN)
                             <div class="divider"></div>
 
@@ -175,7 +184,7 @@
                         @endif
                     </ul>
 
-                    <footer class="footer sm:footer-horizontal bg-base-300 text-base-content p-10 fixed bottom-0 w-full">
+                    <footer class="footer sm:footer-horizontal bg-base-300 text-base-content p-10 w-full">
                         <nav>
                             <h6 class="footer-title">${context.localize("layout.legal")}</h6>
                             <a href="https://www.gnu.org/licenses/gpl-3.0.html" class="link link-hover">${context.localize("layout.license")}</a>
@@ -184,7 +193,7 @@
                         </nav>
                         <nav>
                             <h6 class="footer-title">${context.localize("layout.about")}</h6>
-                            <a href="https://github.com/Solidarische-Raumnutzung/solidarische-raumnutzung" class="link link-hover">Source</a>
+                            <a href="https://github.com/Solidarische-Raumnutzung/SOLI" class="link link-hover">${context.localize("layout.source")}</a>
                             <a href="https://hci.iar.kit.edu/" class="link link-hover">HCI</a>
                             <a href="" class="link link-hover">${context.localize("layout.publisher")}</a> <%-- TODO add this --%>
                         </nav>
