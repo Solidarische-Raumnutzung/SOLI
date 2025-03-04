@@ -6,7 +6,7 @@ plugins {
     java
     id("org.springframework.boot") version "3.4.3"
     id("io.spring.dependency-management") version "1.1.7"
-    id("org.flywaydb.flyway") version "11.3.3"
+    id("org.flywaydb.flyway") version "11.3.4"
     id("gg.jte.gradle") version "3.1.16"
     jacoco
 }
@@ -49,8 +49,8 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     runtimeOnly("org.postgresql:postgresql")
-    implementation("org.flywaydb:flyway-core:11.3.3") // TODO: remove explicit version when the Spring Boot version is updated
-    implementation("org.flywaydb:flyway-database-postgresql:11.3.3")
+    implementation("org.flywaydb:flyway-core:11.3.4") // TODO: remove explicit version when the Spring Boot version is updated
+    implementation("org.flywaydb:flyway-database-postgresql:11.3.4")
 
     implementation("org.springframework.boot:spring-boot-starter-mail")
 
