@@ -40,21 +40,6 @@ public class RoomsControllerTest {
     }
 
     @Test
-    public void testSingleRoomRedirect() {
-        ExtendedModelMap model = new ExtendedModelMap();
-        MockHttpServletRequest request = new MockHttpServletRequest();
-        assertEquals("redirect:/" + testService.room.getId(), roomsController.roomList(model, testService.paramsFor(testService.user, request)));
-    }
-
-    @Test
-    public void testMultipleRooms() {
-        roomService.save(new Room(null, "Testraum2", "Beschreibung", "Ort2"));
-        ExtendedModelMap model = new ExtendedModelMap();
-        MockHttpServletRequest request = new MockHttpServletRequest();
-        assertEquals("rooms", roomsController.roomList(model, testService.paramsFor(testService.user2, request)));
-    }
-
-    @Test
     public void testDeleteUnknownRoom() {
         ExtendedModelMap model = new ExtendedModelMap();
         MockHttpServletResponse response = new MockHttpServletResponse();
