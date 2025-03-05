@@ -1,4 +1,4 @@
-# solidarische raumnutzung
+# Solidarische Raumnutzung
 - [Pflichtenheft](https://solidarische-raumnutzung.github.io/SOLI/pflichtenheft.pdf)
 - [Entwurfsheft](https://solidarische-raumnutzung.github.io/SOLI/entwurfsheft.pdf)
 - [Implementationsbericht](https://solidarische-raumnutzung.github.io/SOLI/implementationsbericht.pdf)
