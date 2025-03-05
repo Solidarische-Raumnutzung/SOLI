@@ -1,7 +1,9 @@
 package edu.kit.hci.soli.controller;
 
 import edu.kit.hci.soli.config.SoliConfiguration;
+import edu.kit.hci.soli.domain.Room;
 import edu.kit.hci.soli.dto.KnownError;
+import edu.kit.hci.soli.service.RoomService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
 import java.util.Map;
 
 import static org.springframework.boot.web.error.ErrorAttributeOptions.Include.*;
@@ -26,6 +29,7 @@ import static org.springframework.boot.web.error.ErrorAttributeOptions.Include.P
 @Slf4j
 public class MainController extends AbstractErrorController {
     private final SoliConfiguration soliConfiguration;
+    private final RoomService roomService;
 
     /**
      * Constructs a MainController with the specified {@link DefaultErrorAttributes}.
@@ -33,9 +37,10 @@ public class MainController extends AbstractErrorController {
      * @param errorAttributes   the default error attributes
      * @param soliConfiguration the configuration of the application
      */
-    public MainController(DefaultErrorAttributes errorAttributes, SoliConfiguration soliConfiguration) {
+    public MainController(DefaultErrorAttributes errorAttributes, SoliConfiguration soliConfiguration, RoomService roomService) {
         super(errorAttributes);
         this.soliConfiguration = soliConfiguration;
+        this.roomService = roomService;
     }
 
     /**
@@ -98,10 +103,13 @@ public class MainController extends AbstractErrorController {
     /**
      * Returns the view for the publisher information (impressum).
      *
+     * @param model the model to be used in the view
      * @return the view name
      */
     @RequestMapping("/publisher")
-    public String getPublisher() {
+    public String getPublisher(Model model) {
+        List<Room> rooms = roomService.getAll();
+        model.addAttribute("rooms", rooms);
         return "publisher";
     }
 
