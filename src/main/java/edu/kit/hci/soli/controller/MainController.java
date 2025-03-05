@@ -112,5 +112,4 @@ public class MainController extends AbstractErrorController {
         model.addAttribute("rooms", rooms);
         return "publisher";
     }
-
 }
