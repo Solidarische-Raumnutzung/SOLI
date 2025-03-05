@@ -31,6 +31,7 @@ public class LayoutParamsAdvice {
      * @param userService     the service for managing users
      * @param bookingsService the service for managing bookings
      * @param timeService     the service for managing time
+     * @param roomService     the service for managing rooms
      */
     public LayoutParamsAdvice(UserService userService, BookingsService bookingsService, TimeService timeService, RoomService roomService) {
         this.userService = userService;

@@ -35,6 +35,7 @@ public class MainController extends AbstractErrorController {
      *
      * @param errorAttributes   the default error attributes
      * @param soliConfiguration the configuration of the application
+     * @param roomService       the service for managing rooms
      */
     public MainController(DefaultErrorAttributes errorAttributes, SoliConfiguration soliConfiguration, RoomService roomService) {
         super(errorAttributes);
