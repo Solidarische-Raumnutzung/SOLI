@@ -105,5 +105,4 @@ public class MainControllerTest {
                 Canonical: """));
         assertTrue(result.endsWith(".well-known/security.txt\n"));
     }
-
 }
