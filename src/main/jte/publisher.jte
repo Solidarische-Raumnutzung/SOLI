@@ -13,12 +13,15 @@
 @template.layout(page = context.page("layout.publisher"), context = context, layout = layout, content = @`
     <div class="container">
         <h1 class="text-4xl font-bold">${context.localize("layout.publisher")}</h1>
-        <p>${context.localize("projectDescription")}</p>
+        <p>${context.localize("publisher.description")}</p>
 
         <br>
 
-        <p>${context.localize("layout.publisherInfo")}</p>
-        <a class="link link-primary " href="https://hci.iar.kit.edu/deutsch/index.php">HCI</a>
+        <p>
+            ${context.localize("publisher.contact")}
+            <a class="link link-primary" href="mailto:soli@iar.kit.edu">soli@iar.kit.edu</a>
+        </p>
+        <a class="link link-primary" href="https://hci.iar.kit.edu/deutsch/index.php">HCI (Human-Computer Interaction and Accessibility)</a>
 
         <br><br>
 
