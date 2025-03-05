@@ -1,5 +1,7 @@
 package edu.kit.hci.soli.config.template;
 
+import edu.kit.hci.soli.domain.User;
+import edu.kit.hci.soli.dto.LoginStateModel;
 import gg.jte.Content;
 import gg.jte.support.LocalizationSupport;
 import lombok.Getter;
@@ -11,6 +13,7 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.TimeZone;
 
 public class JteContext implements LocalizationSupport {
@@ -84,5 +87,22 @@ public class JteContext implements LocalizationSupport {
 
     public PageSpec page(@PropertyKey(resourceBundle = "messages") String key) {
         return new PageSpec(lookup(key), "SOLI");
+    }
+
+    public String getUserName(LoginStateModel login) {
+        switch (login.kind()) {
+            case VISITOR -> {return this.lookup("user.visitor");}
+            case GUEST -> {return this.lookup("user.guest");}
+            case ADMIN -> {return this.lookup("user.admin");}
+            default -> {return login.name();}
+        }
+    }
+
+    public String getUserName(User user) {
+        if (Objects.equals(user.getUsername(), "Guest")) {
+            return this.lookup("user.guest");
+        } else {
+            return user.getUsername();
+        }
     }
 }
