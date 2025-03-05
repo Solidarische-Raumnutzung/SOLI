@@ -12,5 +12,7 @@
 @param boolean edit = false
 
 @template.layout(page = context.page("rooms"), layout = layout, context = context, content = @`
-    @template.util.room_list(context = context, layout = layout, csrf = csrf, rooms = rooms, edit = edit)
+    <div class="mx-auto">
+        @template.util.room_list(context = context, layout = layout, csrf = csrf, rooms = rooms, edit = edit)
+    </div>
 `)

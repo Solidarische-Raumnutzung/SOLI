@@ -146,7 +146,11 @@
 
                         @if(layout.getRoom() != null)
                             <div class="divider"></div>
-                            <li><a href="/"><i class="fa-solid fa-folder-tree"></i> ${context.localize("layout.current_room", layout.getRoom().getName())}</a></li>
+                            @if (layout.isMultipleRooms())
+                                <li><a href="/"><i class="fa-solid fa-folder-tree"></i> ${context.localize("layout.current_room", layout.getRoom().getName())}</a></li>
+                            @else
+                                <li class="pointer-events-none"><label><i class="fa-solid fa-circle-info"></i> ${context.localize("layout.current_room", layout.getRoom().getName())}</label></li>
+                            @endif
                         @endif
 
                         @if(layout.getLogin().kind() == LoginStateModel.Kind.ADMIN)

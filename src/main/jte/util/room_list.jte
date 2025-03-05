@@ -11,7 +11,7 @@
 @param List<Room> rooms
 @param boolean edit = false
 
-<ul class="list bg-base-100 rounded-box shadow-md mx-auto min-w-80">
+<ul class="list bg-base-100 rounded-box shadow-md min-w-80">
     @for (Room room : rooms)
         <li class="list-row max-w-4xl">
             <div class="list-col-grow">

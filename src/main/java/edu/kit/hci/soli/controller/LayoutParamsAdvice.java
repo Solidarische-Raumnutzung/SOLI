@@ -5,9 +5,7 @@ import edu.kit.hci.soli.domain.Room;
 import edu.kit.hci.soli.domain.User;
 import edu.kit.hci.soli.dto.LayoutParams;
 import edu.kit.hci.soli.dto.LoginStateModel;
-import edu.kit.hci.soli.service.BookingsService;
-import edu.kit.hci.soli.service.TimeService;
-import edu.kit.hci.soli.service.UserService;
+import edu.kit.hci.soli.service.*;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.Nullable;
@@ -25,6 +23,7 @@ public class LayoutParamsAdvice {
     private final UserService userService;
     private final BookingsService bookingsService;
     private final TimeService timeService;
+    private final RoomService roomService;
 
     /**
      * Constructs a LoginControllerAdvice with the specified UserService.
@@ -33,10 +32,11 @@ public class LayoutParamsAdvice {
      * @param bookingsService the service for managing bookings
      * @param timeService     the service for managing time
      */
-    public LayoutParamsAdvice(UserService userService, BookingsService bookingsService, TimeService timeService) {
+    public LayoutParamsAdvice(UserService userService, BookingsService bookingsService, TimeService timeService, RoomService roomService) {
         this.userService = userService;
         this.bookingsService = bookingsService;
         this.timeService = timeService;
+        this.roomService = roomService;
     }
 
     /**
@@ -86,7 +86,7 @@ public class LayoutParamsAdvice {
                 room -> {
                     request.getSession().setAttribute("room", room);
                     return getUpdate(room, login.user());
-                });
+                }, roomService.count() > 1);
     }
 
     private LayoutParams.ParamsUpdate getUpdate(@Nullable Room room, User user) {
