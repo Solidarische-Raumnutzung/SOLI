@@ -11,22 +11,18 @@
 @param List<Room> rooms
 
 @template.layout(page = context.page("layout.publisher"), context = context, layout = layout, content = @`
-    <style>
-        h1 {
-            font-size: 2.5em; /* Make the h1 much larger */
-            font-weight: bold;
-        }
-        p {
-            font-size: 1em;
-        }
-    </style>
-
     <div class="container">
-        <h1>Impressum</h1>
+        <h1 class="text-4xl font-bold">${context.localize("layout.publisher")}</h1>
+        <p>${context.localize("projectDescription")}</p>
+
+        <br>
+
         <p>${context.localize("layout.publisherInfo")}</p>
-        <p>Description of project</p>
-        <p>Link to hci webpage</p>
-        <h1>Räume</h1>
+        <a class="link link-primary " href="https://hci.iar.kit.edu/deutsch/index.php">HCI</a>
+
+        <br><br>
+
+        <h1 class="text-4xl font-bold">${context.localize("rooms")}</h1>
         @template.util.room_list(context = context, layout = layout, csrf = csrf, rooms = rooms)
     </div>
 `)
