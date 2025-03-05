@@ -75,8 +75,7 @@
             </ul>
 
             <div class="modal-action">
-                !{String cancel = "/" + attemptedBooking.getRoom().getId().toString();}
-                <a class="btn" href="${cancel}">${context.localize("generic.cancel")}</a>
+                <a class="btn" href="/${attemptedBooking.getRoom().getId()}">${context.localize("generic.cancel")}</a>
                 @template.util.form(csrf = csrf, action = "/" + attemptedBooking.getRoom().getId() + "/bookings/new/conflict", method = POST, content = @`
                     <button class="btn btn-primary" type="submit" title="${context.localize("bookings.conflict.solve.tooltip")}">${context.localize("bookings.conflict.solve")}</button>
                 `)
