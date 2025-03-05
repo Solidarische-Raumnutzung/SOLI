@@ -32,7 +32,14 @@ public class DisabledUsersFilter extends OncePerRequestFilter {
             return;
         }
 
+        // Make sure we are not running into a recursion
         if (request.getRequestURI().equals("/disabled")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
+        // Add an exception for style related stuff
+        if (request.getRequestURI().equals("/favicon.svg") || request.getRequestURI().equals("/soli.css")) {
             filterChain.doFilter(request, response);
             return;
         }

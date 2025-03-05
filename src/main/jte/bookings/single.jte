@@ -35,8 +35,7 @@
 @if (!booking.getOpenRequests().isEmpty())
     <p>${context.localize("bookings.outstanding", booking.getOpenRequests().size())}</p>
 @endif
-<p>${context.localize("bookings.start.value", context.format(booking.getStartDate()))}</p>
-<p>${context.localize("bookings.end.value", context.format(booking.getEndDate()))}</p>
+<p>${context.format(booking.getStartDate())} - ${context.format(booking.getEndDate().toLocalTime())}</p>
 
 @if (!booking.getDescription().isBlank())
     <label class="label">${context.localize("bookings.description")}</label>
@@ -56,6 +55,8 @@
         <i class="fa-solid fa-pen"></i>
     </label>
     <input type="checkbox" id="soli-edit-toggle" class="hidden" />
+@else
+    <label class="label">${context.localize("bookings.description.none")}</label>
 @endif
 @if (allowEditing)
     @template.util.form(csrf = csrf, cssClass = "soli-edit-content relative w-full", action = "/" + booking.getRoom().getId() + "/bookings/" + booking.getId(), method = PATCH, content = @`

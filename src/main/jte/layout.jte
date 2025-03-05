@@ -146,9 +146,7 @@
 
                         @if(layout.getRoom() != null)
                             <div class="divider"></div>
-                            <li class="pointer-events-none">
-                                <label>${context.localize("layout.current_room", layout.getRoom().getName())}</label>
-                            </li>
+                            <li><a href="/"><i class="fa-solid fa-folder-tree"></i> ${context.localize("layout.current_room", layout.getRoom().getName())}</a></li>
                         @endif
 
                         @if(layout.getLogin().kind() == LoginStateModel.Kind.ADMIN)

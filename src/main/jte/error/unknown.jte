@@ -8,7 +8,7 @@
 @param String error = null
 
 @template.layout(page = context.page("error"), context = context, layout = layout, content = @`
-    <div class="hero-content text-center">
+    <div class="hero-content text-center mx-auto">
         <div class="max-w-md">
             <h1 class="text-5xl font-bold">${context.localize("error.unknown.title")}</h1>
             <p class="py-6">${context.localize("error.unknown.message")}</p>

@@ -17,11 +17,12 @@
         <div class="max-w-md">
             <h1 class="text-2xl font-bold mb-2">${context.localize("bookings.conflict.resolution")}</h1>
 
-            <ul class="list bg-base-100 rounded-box shadow-md text-left">
-                <li class="mb-4">${context.localize("bookings.conflict.recommend")}</li>
+            <ul class="list bg-base-100 rounded-box shadow-md text-left p-8 mb-3">
+                <li>${context.localize("bookings.conflict.recommend")}</li>
 
                 @if (!bookingResult.contact().isEmpty())
-                    <h2>${context.localize("bookings.conflict.contact")}</h2>
+                    <h2 class="mt-4">${context.localize("bookings.conflict.contact")}</h2>
+                    <p class="text-gray-500 text-sm">${context.localize("bookings.conflict.contact.message")}</p>
                     @for (Booking booking : bookingResult.contact())
                         <li class="list-row">
                             <div class="text-xs uppercase font-semibold opacity-60 list-col-grow">
@@ -38,7 +39,7 @@
                 @endif
 
                 @if (!bookingResult.override().isEmpty())
-                    <h2>${context.localize("bookings.conflict.delete")}</h2>
+                    <h2 class="mt-4">${context.localize("bookings.conflict.delete")}</h2>
                     <p class="text-gray-500 text-sm">${context.localize("bookings.conflict.delete.message")}</p>
                     @for (Booking booking : bookingResult.override())
                         <li class="list-row">
@@ -56,7 +57,7 @@
                 @endif
 
                 @if (!bookingResult.cooperate().isEmpty())
-                    <h2>${context.localize("bookings.conflict.cooperate")}</h2>
+                    <h2 class="mt-4">${context.localize("bookings.conflict.cooperate")}</h2>
                     <p class="text-gray-500 text-sm">${context.localize("bookings.conflict.cooperate.message")}</p>
                     @for (Booking booking : bookingResult.cooperate())
                         <li class="list-row">
@@ -73,9 +74,13 @@
                     @endfor
                 @endif
             </ul>
-            @template.util.form(csrf = csrf, action = "/" + attemptedBooking.getRoom().getId() + "/bookings/new/conflict", method = POST, content = @`
-                <button class="btn btn-primary" type="submit" title="${context.localize("bookings.conflict.solve.tooltip")}">${context.localize("bookings.conflict.solve")}</button>
-            `)
+
+            <div class="modal-action">
+                <a class="btn" href="/${attemptedBooking.getRoom().getId()}">${context.localize("generic.cancel")}</a>
+                @template.util.form(csrf = csrf, action = "/" + attemptedBooking.getRoom().getId() + "/bookings/new/conflict", method = POST, content = @`
+                    <button class="btn btn-primary" type="submit" title="${context.localize("bookings.conflict.solve.tooltip")}">${context.localize("bookings.conflict.solve")}</button>
+                `)
+            </div>
         </div>
     </div>
 `)
