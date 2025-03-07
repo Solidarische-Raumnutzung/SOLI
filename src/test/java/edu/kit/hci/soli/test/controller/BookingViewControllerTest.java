@@ -19,6 +19,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.ui.Model;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -118,6 +121,17 @@ public class BookingViewControllerTest {
     }
 
     @Test
+    public void testViewEvent_RoomNotFound() throws Exception {
+        when(roomService.getOptional(1L)).thenReturn(Optional.empty());
+
+        String view = bookingViewController.viewEvent(model, response, principal, 1L, 1L, layoutParams);
+
+        verify(response).setStatus(HttpServletResponse.SC_NOT_FOUND);
+        verify(model).addAttribute("error", KnownError.NOT_FOUND);
+        assertEquals("error/known", view);
+    }
+
+    @Test
     public void testViewEvent_BookingNotFound() throws Exception {
         Room room = new Room();
         when(roomService.getOptional(1L)).thenReturn(Optional.of(room));
@@ -196,6 +210,27 @@ public class BookingViewControllerTest {
     }
 
     @Test
+    public void testEditEvent_TooLongDescription() throws Exception {
+        Room room = new Room();
+        Booking booking = new Booking();
+        booking.setRoom(room);
+        when(roomService.getOptional(1L)).thenReturn(Optional.of(room));
+        when(bookingsService.getBookingById(1L)).thenReturn(booking);
+        User admin = new User();
+        admin.setId(1L);
+        when(userService.resolveAdminUser()).thenReturn(admin);
+        User user = new User();
+        user.setId(2L);
+        booking.setUser(user);
+        when(principal.getUser()).thenReturn(user);
+
+        String view = bookingViewController.editBooking(model, response, principal, 1L, 1L, layoutParams, new EditBookingDescriptionForm("A".repeat(1030)));
+
+        verify(model).addAttribute("error", KnownError.MISSING_PARAMETER);
+        assertEquals("error/known", view);
+    }
+
+    @Test
     public void testEditBooking_Success() throws Exception {
         Room room = new Room();
         Booking booking = new Booking();
@@ -216,5 +251,51 @@ public class BookingViewControllerTest {
         verify(model).addAttribute("booking", booking);
         verify(bookingsService).updateDescription(booking, "new Description");
         assertEquals("bookings/single_page", view);
+    }
+
+    @Test
+    public void testBookingICalendar_RoomNotFound() throws Exception {
+        when(roomService.getOptional(1L)).thenReturn(Optional.empty());
+
+        String view = bookingViewController.bookingICalendar(model, response, principal, 1L, 1L);
+
+        verify(response).setStatus(HttpServletResponse.SC_NOT_FOUND);
+        verify(model).addAttribute("error", KnownError.NOT_FOUND);
+        assertEquals("error/known", view);
+    }
+
+    @Test
+    public void testBookingICalendar_BookingNotFound() throws Exception {
+        Room room = new Room();
+        when(roomService.getOptional(1L)).thenReturn(Optional.of(room));
+        when(bookingsService.getBookingById(1L)).thenReturn(null);
+
+        String view = bookingViewController.bookingICalendar(model, response, principal, 1L, 1L);
+
+        verify(model).addAttribute("error", KnownError.NOT_FOUND);
+        assertEquals("error/known", view);
+    }
+
+    @Test
+    public void testBookingICalendar_Success() throws Exception {
+        Room room = new Room();
+        Booking booking = new Booking();
+        booking.setRoom(room);
+        booking.setStartDate(LocalDateTime.now());
+        booking.setEndDate(LocalDateTime.now().plusHours(1));
+        User user = new User();
+        user.setId(2L);
+        booking.setUser(user);
+        when(principal.getUser()).thenReturn(user);
+        when(roomService.getOptional(1L)).thenReturn(Optional.of(room));
+        when(bookingsService.getBookingById(1L)).thenReturn(booking);
+        when(bookingsService.getICalendar(booking, user.getLocale())).thenReturn("iCalendar");
+        StringWriter sw = new StringWriter();
+        when(response.getWriter()).thenReturn(new PrintWriter(sw));
+
+        String view = bookingViewController.bookingICalendar(model, response, principal, 1L, 1L);
+
+        assertEquals(null, view);
+        assertEquals("iCalendar", sw.toString());
     }
 }
