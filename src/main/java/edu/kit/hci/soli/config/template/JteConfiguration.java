@@ -2,6 +2,7 @@ package edu.kit.hci.soli.config.template;
 
 import edu.kit.hci.soli.SoliApplication;
 import edu.kit.hci.soli.config.SoliConfiguration;
+import edu.kit.hci.soli.service.UserService;
 import gg.jte.ContentType;
 import gg.jte.TemplateEngine;
 import gg.jte.resolve.DirectoryCodeResolver;
@@ -15,8 +16,8 @@ import java.nio.file.Paths;
 @Configuration
 public class JteConfiguration {
     @Bean
-    public ViewResolver jteViewResolve(TemplateEngine templateEngine, SoliConfiguration soliConfiguration) {
-        return new JteViewResolver(templateEngine, soliConfiguration);
+    public ViewResolver jteViewResolve(TemplateEngine templateEngine, SoliConfiguration soliConfiguration, UserService userService) {
+        return new JteViewResolver(templateEngine, soliConfiguration, userService);
     }
 
     @Bean

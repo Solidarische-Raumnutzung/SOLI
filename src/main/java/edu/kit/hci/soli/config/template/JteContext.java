@@ -6,6 +6,7 @@ import edu.kit.hci.soli.service.UserService;
 import gg.jte.Content;
 import gg.jte.support.LocalizationSupport;
 import lombok.Getter;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.PropertyKey;
 import org.springframework.context.MessageSource;
 
@@ -24,9 +25,9 @@ public class JteContext implements LocalizationSupport {
     @Getter private final TimeZone timeZone;
     private final DateTimeFormatter dateTimeFormatter;
     private final DateTimeFormatter timeFormatter;
-    private final UserService userService;
+    private final @Nullable UserService userService;
 
-    public JteContext(MessageSource messageSource, String hostname, Locale locale, TimeZone timeZone, UserService userService) {
+    public JteContext(MessageSource messageSource, String hostname, Locale locale, TimeZone timeZone, @Nullable UserService userService) {
         this.messageSource = messageSource;
         this.hostname = hostname;
         this.locale = locale;
@@ -48,19 +49,20 @@ public class JteContext implements LocalizationSupport {
 
     @Override
     public Content localize(String key) {
-        String result = messageSource.getMessage(key, null, locale);
-        return output -> output.writeUserContent(result);
+        return asContent(messageSource.getMessage(key, null, locale));
     }
 
     @Override
     public Content localize(String key, Object... params) {
-        String result = messageSource.getMessage(key, params, locale);
-        return output -> output.writeUserContent(result);
+        return asContent(messageSource.getMessage(key, params, locale));
     }
 
     public Content localizeOrDefault(String key, String defaultValue, Object... params) {
-        String result = messageSource.getMessage(key, params, defaultValue, locale);
-        return output -> output.writeUserContent(result);
+        return asContent(messageSource.getMessage(key, params, defaultValue, locale));
+    }
+
+    private Content asContent(String value) {
+        return output -> output.writeUserContent(value);
     }
 
     public Content empty() {
@@ -91,25 +93,21 @@ public class JteContext implements LocalizationSupport {
         return new PageSpec(lookup(key), "SOLI");
     }
 
-    public Content format(LoginStateModel login) {
-        switch (login.kind()) {
-            case VISITOR -> {return this.localize("user.visitor");}
-            case GUEST -> {return this.localize("user.guest");}
-            case ADMIN -> {return this.localize("user.admin");}
-            default -> {
-                return null; //login.name(); TODO fix pls
-            }
-        }
+    public String format(LoginStateModel login) {
+        return switch (login.kind()) {
+            case VISITOR -> lookup("user.visitor");
+            case GUEST -> lookup("user.guest");
+            case ADMIN -> lookup("user.admin");
+            default -> format(login.user());
+        };
     }
 
-    public Content format(User user) {
-        if (userService.isGuest(user)) {
-            return this.localize("user.guest");
-        } else if (userService.isAdmin(user)) {
-            return this.localize("user.admin");
-        } else {
-            //return user.getUsername();
-            return null;
+    public String format(User user) {
+        if (user == null) return lookup("user"); // We don't know the user
+        if (userService != null) {
+            if (userService.isGuest(user)) return lookup("user.guest");
+            else if (userService.isAdmin(user)) return lookup("user.admin");
         }
+        return user.getUsername();
     }
 }
