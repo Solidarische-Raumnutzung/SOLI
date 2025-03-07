@@ -96,7 +96,9 @@ public class JteContext implements LocalizationSupport {
             case VISITOR -> {return this.localize("user.visitor");}
             case GUEST -> {return this.localize("user.guest");}
             case ADMIN -> {return this.localize("user.admin");}
-            default -> {return login.name();}
+            default -> {
+                return null; //login.name(); TODO fix pls
+            }
         }
     }
 
@@ -106,7 +108,8 @@ public class JteContext implements LocalizationSupport {
         } else if (userService.isAdmin(user)) {
             return this.localize("user.admin");
         } else {
-            return user.getUsername();
+            //return user.getUsername();
+            return null;
         }
     }
 }
