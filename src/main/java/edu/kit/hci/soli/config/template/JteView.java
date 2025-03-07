@@ -1,6 +1,7 @@
 package edu.kit.hci.soli.config.template;
 
 import edu.kit.hci.soli.config.SoliConfiguration;
+import edu.kit.hci.soli.service.UserService;
 import gg.jte.TemplateEngine;
 import gg.jte.output.Utf8ByteOutput;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,10 +17,12 @@ import java.util.Map;
 public class JteView extends AbstractTemplateView {
     private final TemplateEngine templateEngine;
     private final SoliConfiguration soliConfiguration;
+    private final UserService userService;
 
-    public JteView(TemplateEngine templateEngine, SoliConfiguration soliConfiguration) {
+    public JteView(TemplateEngine templateEngine, SoliConfiguration soliConfiguration, UserService userService) {
         this.templateEngine = templateEngine;
         this.soliConfiguration = soliConfiguration;
+        this.userService = userService;
     }
 
     @Override
@@ -32,7 +35,7 @@ public class JteView extends AbstractTemplateView {
         String url = this.getUrl();
 
         RequestContext context = new RequestContext(request, response, getServletContext(), model);
-        model.put("context", new JteContext(context.getMessageSource(), soliConfiguration.getHostname(), context.getLocale(), soliConfiguration.getTimeZone()));
+        model.put("context", new JteContext(context.getMessageSource(), soliConfiguration.getHostname(), context.getLocale(), soliConfiguration.getTimeZone(), userService));
 
         Utf8ByteOutput output = new Utf8ByteOutput();
         templateEngine.render(url, model, new JteSoliTemplateOutput(output));

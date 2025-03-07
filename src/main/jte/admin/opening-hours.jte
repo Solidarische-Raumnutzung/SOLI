@@ -27,7 +27,7 @@
                         <tr>
                             <td>${context.format(day)}</td>
                             <td><input type="time" class="input validator w-full"
-                                       aria-label="${context.localize("administration.opening_hours.start", context.format(day))}"
+                                       aria-label="${context.localize("administration.opening_hours.start", day)}"
                                        name="${name}Start"
                                        value="${tuple.getStart().toString()}"
                                        min="00:00"
@@ -38,7 +38,7 @@
                                 ><div class="validator-hint">${context.localize("administration.opening_hours.start_time.hint")}</div>
                             </td>
                             <td><input type="time" class="input validator w-full"
-                                       aria-label="${context.localize("administration.opening_hours.end", context.format(day))}"
+                                       aria-label="${context.localize("administration.opening_hours.end", day)}"
                                        name="${name}End"
                                        value="${tuple.getEnd().toString()}"
                                        min="00:00"

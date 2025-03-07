@@ -1,8 +1,13 @@
 package edu.kit.hci.soli.config.template;
 
+import edu.kit.hci.soli.domain.User;
+import edu.kit.hci.soli.dto.LoginStateModel;
+import edu.kit.hci.soli.service.UserService;
 import gg.jte.Content;
+import gg.jte.output.StringOutput;
 import gg.jte.support.LocalizationSupport;
 import lombok.Getter;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.PropertyKey;
 import org.springframework.context.MessageSource;
 
@@ -21,8 +26,9 @@ public class JteContext implements LocalizationSupport {
     @Getter private final TimeZone timeZone;
     private final DateTimeFormatter dateTimeFormatter;
     private final DateTimeFormatter timeFormatter;
+    private final @Nullable UserService userService;
 
-    public JteContext(MessageSource messageSource, String hostname, Locale locale, TimeZone timeZone) {
+    public JteContext(MessageSource messageSource, String hostname, Locale locale, TimeZone timeZone, @Nullable UserService userService) {
         this.messageSource = messageSource;
         this.hostname = hostname;
         this.locale = locale;
@@ -34,6 +40,7 @@ public class JteContext implements LocalizationSupport {
                 .withLocale(locale)
                 .withZone(timeZone.toZoneId());
         this.timeZone = timeZone;
+        this.userService = userService;
     }
 
     @Override
@@ -43,19 +50,44 @@ public class JteContext implements LocalizationSupport {
 
     @Override
     public Content localize(String key) {
-        String result = messageSource.getMessage(key, null, locale);
-        return output -> output.writeUserContent(result);
+        return asContent(messageSource.getMessage(key, null, locale));
     }
 
     @Override
     public Content localize(String key, Object... params) {
-        String result = messageSource.getMessage(key, params, locale);
-        return output -> output.writeUserContent(result);
+        return asContent(messageSource.getMessage(key, convertParams(params), locale));
     }
 
     public Content localizeOrDefault(String key, String defaultValue, Object... params) {
-        String result = messageSource.getMessage(key, params, defaultValue, locale);
-        return output -> output.writeUserContent(result);
+        return asContent(messageSource.getMessage(key, convertParams(params), defaultValue, locale));
+    }
+
+    private Object[] convertParams(Object... params) {
+        Object[] newParams = new Object[params.length];
+        for (int i = 0; i < params.length; i++) {
+            newParams[i] = switch (params[i]) {
+                case User user -> asString(format(user));
+                case LoginStateModel lsm -> asString(format(lsm));
+                case Content content -> asString(content);
+                case DayOfWeek dayOfWeek -> format(dayOfWeek);
+                case Month month -> format(month);
+                case LocalDateTime dateTime -> format(dateTime);
+                case LocalTime time -> format(time);
+                case null, default -> params[i];
+            };
+        }
+        return newParams;
+    }
+
+    private Content asContent(String value) {
+        return output -> output.writeUserContent(value);
+    }
+
+    private String asString(Content content) {
+        if (content.isEmptyContent()) return "";
+        StringOutput output = new StringOutput();
+        content.writeTo(output);
+        return output.toString();
     }
 
     public Content empty() {
@@ -84,5 +116,23 @@ public class JteContext implements LocalizationSupport {
 
     public PageSpec page(@PropertyKey(resourceBundle = "messages") String key) {
         return new PageSpec(lookup(key), "SOLI");
+    }
+
+    public Content format(LoginStateModel login) {
+        return switch (login.kind()) {
+            case VISITOR -> localize("user.visitor");
+            case GUEST -> localize("user.guest");
+            case ADMIN -> localize("user.admin");
+            default -> format(login.user());
+        };
+    }
+
+    public Content format(User user) {
+        if (user == null) return localize("user"); // We don't know the user
+        if (userService != null) {
+            if (userService.isGuest(user)) return localize("user.guest");
+            else if (userService.isAdmin(user)) return localize("user.admin");
+        }
+        return asContent(user.getUsername());
     }
 }

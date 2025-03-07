@@ -119,9 +119,9 @@
                             <div class="basis-1/4">
                                 <div class="relative h-20 w-20">
                                     <div class="absolute inset-x-0 bottom-0 h-16">
-                                        <label>${context.localize("layout.welcome", layout.getLogin().kind() == LoginStateModel.Kind.VISITOR
-                                                                    ? context.lookup("user.visitor")
-                                                                    : layout.getLogin().name())}</label>
+                                        <label>
+                                            ${context.localize("layout.welcome", layout.getLogin())}
+                                        </label>
                                     </div>
                                 </div>
                             </div>

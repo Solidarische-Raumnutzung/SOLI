@@ -83,7 +83,9 @@ public class EmailServiceImpl implements EmailService {
             return;
         }
 
-        JteContext context = new JteContext(messageSource, hostname, to.getLocale(), timeZone);
+        // We cannot pass the user service since that would create a circular dependency.
+        // For mails, this should be fine.
+        JteContext context = new JteContext(messageSource, hostname, to.getLocale(), timeZone, null);
         model = new HashMap<>(model);
         model.put("context", context);
         model.put("css", css);

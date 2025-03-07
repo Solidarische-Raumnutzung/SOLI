@@ -39,7 +39,7 @@ public class TestEmailServiceImpl implements EmailService {
             return;
         }
 
-        JteContext context = new JteContext(messageSource, hostname, to.getLocale(), timeZone);
+        JteContext context = new JteContext(messageSource, hostname, to.getLocale(), timeZone, null);
         model = new HashMap<>(model);
         model.put("context", context);
 
