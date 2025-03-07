@@ -146,7 +146,11 @@
 
                         @if(layout.getRoom() != null)
                             <div class="divider"></div>
-                            <li><a href="/"><i class="fa-solid fa-folder-tree"></i> ${context.localize("layout.current_room", layout.getRoom().getName())}</a></li>
+                            @if (layout.isMultipleRooms())
+                                <li><a href="/"><i class="fa-solid fa-folder-tree"></i> ${context.localize("layout.current_room", layout.getRoom().getName())}</a></li>
+                            @else
+                                <li class="pointer-events-none"><label><i class="fa-solid fa-circle-info"></i> ${context.localize("layout.current_room", layout.getRoom().getName())}</label></li>
+                            @endif
                         @endif
 
                         @if(layout.getLogin().kind() == LoginStateModel.Kind.ADMIN)
@@ -193,7 +197,7 @@
                             <h6 class="footer-title">${context.localize("layout.about")}</h6>
                             <a href="https://github.com/Solidarische-Raumnutzung/SOLI" class="link link-hover">${context.localize("layout.source")}</a>
                             <a href="https://hci.iar.kit.edu/" class="link link-hover">HCI</a>
-                            <a href="" class="link link-hover">${context.localize("layout.publisher")}</a> <%-- TODO add this --%>
+                            <a href="/publisher" class="link link-hover">${context.localize("layout.publisher")}</a>
                         </nav>
                     </footer>
                 </div>

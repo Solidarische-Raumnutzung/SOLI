@@ -1,7 +1,10 @@
 package edu.kit.hci.soli.controller;
 
 import edu.kit.hci.soli.config.SoliConfiguration;
+import edu.kit.hci.soli.domain.Room;
 import edu.kit.hci.soli.dto.KnownError;
+import edu.kit.hci.soli.dto.LayoutParams;
+import edu.kit.hci.soli.service.RoomService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -10,10 +13,9 @@ import org.springframework.boot.web.error.ErrorAttributeOptions;
 import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 import static org.springframework.boot.web.error.ErrorAttributeOptions.Include.*;
@@ -26,16 +28,19 @@ import static org.springframework.boot.web.error.ErrorAttributeOptions.Include.P
 @Slf4j
 public class MainController extends AbstractErrorController {
     private final SoliConfiguration soliConfiguration;
+    private final RoomService roomService;
 
     /**
      * Constructs a MainController with the specified {@link DefaultErrorAttributes}.
      *
      * @param errorAttributes   the default error attributes
      * @param soliConfiguration the configuration of the application
+     * @param roomService       the service for managing rooms
      */
-    public MainController(DefaultErrorAttributes errorAttributes, SoliConfiguration soliConfiguration) {
+    public MainController(DefaultErrorAttributes errorAttributes, SoliConfiguration soliConfiguration, RoomService roomService) {
         super(errorAttributes);
         this.soliConfiguration = soliConfiguration;
+        this.roomService = roomService;
     }
 
     /**
@@ -93,5 +98,39 @@ public class MainController extends AbstractErrorController {
                 Preferred-Languages: de, en
                 Canonical: %s.well-known/security.txt
                 """.formatted(soliConfiguration.getHostname());
+    }
+
+    /**
+     * Handles GET requests to the root endpoint.
+     * If there is only one room, redirect to that room.
+     *
+     * @param model the model to which attributes are added
+     * @param layout the layout parameters
+     * @return the name of the view to be rendered
+     */
+    @GetMapping("/")
+    public String index(Model model, @ModelAttribute("layout") LayoutParams layout) {
+        List<Room> rooms = roomService.getAll();
+        if (rooms.size() == 1) {
+            return "redirect:/" + rooms.getFirst().getId();
+        }
+        layout.setRoom(null);
+        model.addAttribute("rooms", rooms);
+        model.addAttribute("roomsFirst", true);
+        return "index";
+    }
+
+    /**
+     * Returns the view for the publisher information (impressum).
+     *
+     * @param model the model to be used in the view
+     * @return the view name
+     */
+    @RequestMapping("/publisher")
+    public String getPublisher(Model model) {
+        List<Room> rooms = roomService.getAll();
+        model.addAttribute("rooms", rooms);
+        model.addAttribute("roomsFirst", false);
+        return "index";
     }
 }

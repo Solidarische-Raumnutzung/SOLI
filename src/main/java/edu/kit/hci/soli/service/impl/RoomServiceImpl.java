@@ -37,6 +37,11 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
+    public long count() {
+        return roomRepository.count();
+    }
+
+    @Override
     public Room save(Room room) {
         return roomRepository.save(room);
     }

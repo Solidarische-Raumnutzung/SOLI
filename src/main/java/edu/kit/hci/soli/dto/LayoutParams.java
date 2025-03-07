@@ -9,14 +9,16 @@ import java.util.Objects;
 public class LayoutParams {
     private final LoginStateModel login;
     private final RoomChangeListener onRoomChange;
+    private final boolean hasMultipleRooms;
     private @Nullable Room room;
     private @Nullable Booking currentHighestBooking;
     private @Nullable Booking currentBookingOfUser;
 
-    public LayoutParams(@NotNull LoginStateModel login, @Nullable Room room, @NotNull RoomChangeListener onRoomChange) {
+    public LayoutParams(@NotNull LoginStateModel login, @Nullable Room room, @NotNull RoomChangeListener onRoomChange, boolean hasMultipleRooms) {
         this.login = Objects.requireNonNull(login);
         this.room = room;
         this.onRoomChange = Objects.requireNonNull(onRoomChange);
+        this.hasMultipleRooms = hasMultipleRooms;
         ParamsUpdate paramsUpdate = onRoomChange.onRoomChange(room);
         this.currentHighestBooking = paramsUpdate.currentHighestBooking();
         this.currentBookingOfUser = paramsUpdate.currentBookingOfUser();
@@ -43,6 +45,10 @@ public class LayoutParams {
 
     public @Nullable Booking getCurrentBookingOfUser() {
         return currentBookingOfUser;
+    }
+
+    public boolean isMultipleRooms() {
+        return hasMultipleRooms;
     }
 
     /**
