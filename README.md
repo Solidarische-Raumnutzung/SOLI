@@ -9,7 +9,7 @@
 # Hintergrund
 Das Projekt 'Solidarische Raumnutzung' ist ein Buchungssystem zum reservieren von Räumen. 
 Es ermöglicht die Priorisierung von Terminen, wobei deren Dringlichkeit hervorgehoben wird. 
-Entwickelt wurde es im Auftrag der Forschungsgruppe [HCI (Mensch-Maschine-Interaktion und Barrierefreiheit)](https://hci.iar.kit.edu/), im laufe des Modul PSE (Praxis der Softwareentwicklung) für den Informatik Bachelor of Science of des [KIT](https://kit.edu).
+Entwickelt wurde es im Auftrag der Forschungsgruppe [HCI (Mensch-Maschine-Interaktion und Barrierefreiheit)](https://hci.iar.kit.edu/), im Rahmen des Moduls PSE (Praxis der Softwareentwicklung) für den Informatik Bachelor of Science of des [KIT](https://kit.edu).
 
 # Installation
 Zur Installation des Projekts wird Docker benötigt.
