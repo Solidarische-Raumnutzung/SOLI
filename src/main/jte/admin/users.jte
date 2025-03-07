@@ -48,7 +48,7 @@
                 @for (User user : users.getContent())
                     <tr>
                         <td>${user.getId()}</td>
-                        <td>${context.getUserName(user)}</td>
+                        <td>${context.format(user)}</td>
                         <td>${user.getEmail()}</td>
                         <td>${user.getUserId()}</td>
                         @if(user.isDisabled())

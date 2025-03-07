@@ -120,7 +120,7 @@
                                 <div class="relative h-20 w-20">
                                     <div class="absolute inset-x-0 bottom-0 h-16">
                                         <label>
-                                            ${context.localize("layout.welcome", context.getUserName(layout.getLogin()))}
+                                            ${context.localize("layout.welcome", context.format(layout.getLogin()))}
                                         </label>
                                     </div>
                                 </div>

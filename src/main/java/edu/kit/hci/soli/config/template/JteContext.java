@@ -2,6 +2,7 @@ package edu.kit.hci.soli.config.template;
 
 import edu.kit.hci.soli.domain.User;
 import edu.kit.hci.soli.dto.LoginStateModel;
+import edu.kit.hci.soli.service.UserService;
 import gg.jte.Content;
 import gg.jte.support.LocalizationSupport;
 import lombok.Getter;
@@ -13,7 +14,6 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.TimeZone;
 
 public class JteContext implements LocalizationSupport {
@@ -24,8 +24,9 @@ public class JteContext implements LocalizationSupport {
     @Getter private final TimeZone timeZone;
     private final DateTimeFormatter dateTimeFormatter;
     private final DateTimeFormatter timeFormatter;
+    private final UserService userService;
 
-    public JteContext(MessageSource messageSource, String hostname, Locale locale, TimeZone timeZone) {
+    public JteContext(MessageSource messageSource, String hostname, Locale locale, TimeZone timeZone, UserService userService) {
         this.messageSource = messageSource;
         this.hostname = hostname;
         this.locale = locale;
@@ -37,6 +38,7 @@ public class JteContext implements LocalizationSupport {
                 .withLocale(locale)
                 .withZone(timeZone.toZoneId());
         this.timeZone = timeZone;
+        this.userService = userService;
     }
 
     @Override
@@ -89,18 +91,20 @@ public class JteContext implements LocalizationSupport {
         return new PageSpec(lookup(key), "SOLI");
     }
 
-    public String getUserName(LoginStateModel login) {
+    public Content format(LoginStateModel login) {
         switch (login.kind()) {
-            case VISITOR -> {return this.lookup("user.visitor");}
-            case GUEST -> {return this.lookup("user.guest");}
-            case ADMIN -> {return this.lookup("user.admin");}
+            case VISITOR -> {return this.localize("user.visitor");}
+            case GUEST -> {return this.localize("user.guest");}
+            case ADMIN -> {return this.localize("user.admin");}
             default -> {return login.name();}
         }
     }
 
-    public String getUserName(User user) {
-        if (Objects.equals(user.getUsername(), "Guest")) {
-            return this.lookup("user.guest");
+    public Content format(User user) {
+        if (userService.isGuest(user)) {
+            return this.localize("user.guest");
+        } else if (userService.isAdmin(user)) {
+            return this.localize("user.admin");
         } else {
             return user.getUsername();
         }
