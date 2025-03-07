@@ -1,24 +1,29 @@
 package edu.kit.hci.soli.test.controller;
 
 import edu.kit.hci.soli.controller.MainController;
+import edu.kit.hci.soli.domain.Room;
 import edu.kit.hci.soli.dto.KnownError;
+import edu.kit.hci.soli.service.impl.RoomServiceImpl;
 import edu.kit.hci.soli.test.TestService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
+import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -28,6 +33,7 @@ import static org.mockito.Mockito.when;
 public class MainControllerTest {
     @Autowired private MainController mainController;
     @Autowired private TestService testService;
+    @Autowired private RoomServiceImpl roomService;
 
     @BeforeAll
     public static void clean(@Autowired TestService testService) {
@@ -90,5 +96,32 @@ public class MainControllerTest {
         ExtendedModelMap model = new ExtendedModelMap();
         String result = mainController.getDisabled(model);
         assertEquals("error/disabled_user", result);
+    }
+
+    @Test
+    public void testSingleRoomRedirect() {
+        ExtendedModelMap model = new ExtendedModelMap();
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        assertEquals("redirect:/" + testService.room.getId(), mainController.index(model, testService.paramsFor(testService.user, request)));
+    }
+
+    @Test
+    public void testMultipleRooms() {
+        roomService.save(new Room(null, "Testraum2", "Beschreibung", "Ort2"));
+        ExtendedModelMap model = new ExtendedModelMap();
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        assertEquals("index", mainController.index(model, testService.paramsFor(testService.user2, request)));
+    }
+
+    @Test
+    public void testSecurityTxt() {
+        HttpServletResponse response = mock(HttpServletResponse.class);
+        String result = mainController.securityTxt(response);
+        assertTrue(result.startsWith("""
+                Contact: soli@iar.kit.edu
+                Expires: 2099-12-31T23:00:00.000Z
+                Preferred-Languages: de, en
+                Canonical: """));
+        assertTrue(result.endsWith(".well-known/security.txt\n"));
     }
 }

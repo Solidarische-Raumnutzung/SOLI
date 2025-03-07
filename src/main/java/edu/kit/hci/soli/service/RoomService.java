@@ -34,6 +34,13 @@ public interface RoomService {
     List<Room> getAll();
 
     /**
+     * Retrieves the number of rooms.
+     *
+     * @return the number of rooms
+     */
+    long count();
+
+    /**
      * Creates a new room.
      *
      * @param room the room to create

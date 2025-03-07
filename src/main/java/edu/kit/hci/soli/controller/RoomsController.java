@@ -33,26 +33,6 @@ public class RoomsController {
     }
 
     /**
-     * Handles GET requests to the root endpoint.
-     * If there is only one room, redirects to that room.
-     *
-     * @param model the model to which attributes are added
-     * @param layout the layout parameters
-     * @return the name of the view to be rendered
-     */
-    @GetMapping("/")
-    public String roomList(Model model,
-                           @ModelAttribute("layout") LayoutParams layout) {
-        List<Room> rooms = roomService.getAll();
-        if (rooms.size() == 1) {
-            return "redirect:/" + rooms.get(0).getId();
-        }
-        layout.setRoom(null);
-        model.addAttribute("rooms", rooms);
-        return "rooms";
-    }
-
-    /**
      * Shows the room list in edit mode.
      *
      * @param model the model to which attributes are added
@@ -64,7 +44,7 @@ public class RoomsController {
         List<Room> rooms = roomService.getAll();
         model.addAttribute("rooms", rooms);
         model.addAttribute("edit", true);
-        return "rooms";
+        return "admin/rooms/list";
     }
 
     /**
@@ -80,7 +60,7 @@ public class RoomsController {
         model.addAttribute("name", "");
         model.addAttribute("description", "");
         model.addAttribute("location", "");
-        return "admin/edit_room_page";
+        return "admin/rooms/edit";
     }
 
     /**
@@ -104,7 +84,7 @@ public class RoomsController {
         model.addAttribute("name", room.get().getName());
         model.addAttribute("description", room.get().getDescription());
         model.addAttribute("location", room.get().getLocation());
-        return "admin/edit_room_page";
+        return "admin/rooms/edit";
     }
 
     /**
@@ -188,5 +168,4 @@ public class RoomsController {
         roomService.save(room);
         return "redirect:/admin/rooms";
     }
-
 }

@@ -18,8 +18,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.ui.ExtendedModelMap;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @AutoConfigureTestDatabase
@@ -40,18 +39,11 @@ public class RoomsControllerTest {
     }
 
     @Test
-    public void testSingleRoomRedirect() {
-        ExtendedModelMap model = new ExtendedModelMap();
-        MockHttpServletRequest request = new MockHttpServletRequest();
-        assertEquals("redirect:/" + testService.room.getId(), roomsController.roomList(model, testService.paramsFor(testService.user, request)));
-    }
-
-    @Test
-    public void testMultipleRooms() {
+    public void testAdminRooms() {
         roomService.save(new Room(null, "Testraum2", "Beschreibung", "Ort2"));
         ExtendedModelMap model = new ExtendedModelMap();
         MockHttpServletRequest request = new MockHttpServletRequest();
-        assertEquals("rooms", roomsController.roomList(model, testService.paramsFor(testService.user2, request)));
+        assertEquals("admin/rooms/list", roomsController.adminRoomList(model, testService.paramsFor(testService.user2, request)));
     }
 
     @Test
