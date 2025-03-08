@@ -52,7 +52,7 @@ public class LayoutParamsAdvice {
     }
 
     /**
-     * Retrieves the login state model based on the authenticated user details.
+     * Computes a login state model based on the authenticated user details.
      *
      * @param principal the authenticated user details
      * @param csrf      the CSRF token

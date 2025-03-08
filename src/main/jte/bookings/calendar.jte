@@ -28,6 +28,7 @@
                 initialView: window.matchMedia("(width < 64rem)").matches ? 'timeGridDay' : 'timeGridWeek',
                 nowIndicator: true,
                 weekends: false,
+                firstDay: 6, // The week starts on Saturday (show next week on weekends)
                 allDaySlot: false,
                 displayEventTime: false,
                 eventContent: function(arg) {
