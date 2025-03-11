@@ -1,0 +1,28 @@
+name: Export
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Generate Export
+      run: |
+        mkdir SOLI-Export
+        cd SOLI-Export
+        docker image pull ghcr.io/solidarische-raumnutzung/soli:latest
+        docker image save ghcr.io/solidarische-raumnutzung/soli:latest | gzip > DockerImage.tar.gz
+        git clone https://github.com/Solidarische-Raumnutzung/SOLI.git
+        for f in classes.png entwurfsheft.pdf implementationsbericht.pdf pflichtenheft.pdf presi_entwurfsheft.pdf presi_implementierung.pdf presi_pflichtenheft.pdf presi_qa.pdf testbericht.pdf
+        do
+            curl -OJ "https://solidarische-raumnutzung.github.io/SOLI/$f"
+        done
+        tar cvf - . | gzip -9 > ../SOLI-Export.tar.gz
+        cd ..
+    - uses: actions/upload-artifact@v4
+      with:
+        path: SOLI-Export.tar.gz
+        if-no-files-found: error
+        retention-days: 1
+        compression-level: 0
