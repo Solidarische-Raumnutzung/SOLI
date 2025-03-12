@@ -1,9 +1,11 @@
 package edu.kit.hci.soli.service.impl;
 
 import edu.kit.hci.soli.domain.Room;
+import edu.kit.hci.soli.repository.BookingsRepository;
 import edu.kit.hci.soli.repository.RoomRepository;
 import edu.kit.hci.soli.service.RoomService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,14 +13,16 @@ import java.util.Optional;
 @Service
 public class RoomServiceImpl implements RoomService {
     private final RoomRepository roomRepository;
+    private final BookingsRepository bookingsRepository;
 
     /**
      * Constructs a RoomService with the specified {@link RoomRepository}.
      *
      * @param roomRepository the repository for managing Room entities
      */
-    public RoomServiceImpl(RoomRepository roomRepository) {
+    public RoomServiceImpl(RoomRepository roomRepository, BookingsRepository bookingsRepository) {
         this.roomRepository = roomRepository;
+        this.bookingsRepository = bookingsRepository;
     }
 
     @Override
@@ -47,7 +51,9 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
+    @Transactional
     public void delete(Room room) {
+        bookingsRepository.deleteByRoom(room);
         roomRepository.delete(room);
     }
 }

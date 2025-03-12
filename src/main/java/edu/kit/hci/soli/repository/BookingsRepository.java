@@ -186,4 +186,11 @@ public interface BookingsRepository extends JpaRepository<Booking, Serializable>
      */
     @Query("SELECT b FROM Booking b WHERE b.room = :room AND b.openRequests IS EMPTY AND b.startDate <= :time AND b.endDate >= :time AND b.user = :currentUser")
     Optional<Booking> getCurrentBookingOfUser(Room room, LocalDateTime time, User currentUser);
+
+    /**
+     * Deletes all bookings for the specified room.
+     *
+     * @param room the room whose bookings are to be deleted
+     */
+    void deleteByRoom(Room room);
 }
