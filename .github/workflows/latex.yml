@@ -81,6 +81,11 @@ jobs:
           biber presentation
           pdflatex presentation.tex
           
+          cd ../presi_final
+          pdflatex presentation.tex
+          biber presentation
+          pdflatex presentation.tex
+          
           cd ../..
           wget https://solidarische-raumnutzung.github.io/ClassDiagramGenerator/cdg.jar
           java -jar cdg.jar src/main/java edu.kit.hci.soli
@@ -94,6 +99,7 @@ jobs:
           mv ./docs/presi_implementierung/presentation.pdf ./pages/presi_implementierung.pdf
           mv ./docs/testbericht/main.pdf ./pages/testbericht.pdf
           mv ./docs/presi_qa/presentation.pdf ./pages/presi_qa.pdf
+          mv ./docs/presi_final/presentation.pdf ./pages/presi_final.pdf
           mv ./result.png ./pages/classes.png
           python3 .github/genindex.py pages
       - name: Upload artifact
