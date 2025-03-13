@@ -156,7 +156,7 @@
 \setbeamertemplate{frametitle}{
   \ifbeamer@plainframe\else%
     % Unterkante Titeltext: 22,5 mm -> 15 mm von Seitenkopf
-    \begin{textblock*}{\dimexpr\paperwidth-30mm-2\kitinnermargin}[0,1](\kitinnermargin,15mm)%
+    \begin{textblock*}{\dimexpr\paperwidth-30mm}[0,1](\kitinnermargin,15mm)%
       \usebeamerfont{frametitle}\insertframetitle%
       \ifx\insertframesubtitle\@empty\else\\[.1em]\fi
       \usebeamerfont{framesubtitle}\insertframesubtitle%
