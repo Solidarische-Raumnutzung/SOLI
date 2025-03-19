@@ -105,6 +105,6 @@ class EventFeedControllerTest {
         String result = eventFeedController.getHolidays();
 
         assertNotNull(result);
-        assertTrue(result.startsWith("BEGIN:VCALENDAR"));
+        assertTrue(result.startsWith("BEGIN:VCALENDAR"), "Result should start with BEGIN:VCALENDAR but was: " + result);
     }
 }
