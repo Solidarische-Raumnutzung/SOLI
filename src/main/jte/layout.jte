@@ -76,7 +76,8 @@
                     <div class="navbar-end">
                         @if (layout.getCurrentHighestBooking() != null)
                             <div class="badge badge-neutral m-3" aria-label="${context.localize("bookings.priority")}" title="${context.localize("bookings.priority.tooltip")}">
-                                p-${context.localize("bookings.priority." + layout.getCurrentHighestBooking().getPriority())}</div>
+                                ${context.localize("bookings.priority." + layout.getCurrentHighestBooking().getPriority())}
+                            </div>
                         @endif
 
                         !{var currentHighestBooking = layout.getCurrentHighestBooking();}
