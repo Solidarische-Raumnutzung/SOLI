@@ -7,7 +7,7 @@ plugins {
     id("org.springframework.boot") version "3.4.4"
     id("io.spring.dependency-management") version "1.1.7"
     id("org.flywaydb.flyway") version "11.4.0"
-    id("gg.jte.gradle") version "3.1.16"
+    id("gg.jte.gradle") version "3.2.1"
     jacoco
 }
 
