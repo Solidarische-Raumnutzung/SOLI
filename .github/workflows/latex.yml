@@ -103,7 +103,7 @@ jobs:
           mv ./result.png ./pages/classes.png
           python3 .github/genindex.py pages
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           # Upload entire repository
           path: 'pages'
