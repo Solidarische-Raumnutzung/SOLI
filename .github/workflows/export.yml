@@ -20,7 +20,7 @@ jobs:
         done
         tar cvf - . | gzip -9 > ../SOLI-Export.tar.gz
         cd ..
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v5
       with:
         path: SOLI-Export.tar.gz
         if-no-files-found: error
